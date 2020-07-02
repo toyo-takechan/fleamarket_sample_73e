@@ -1,0 +1,327 @@
+.account-page__inner {
+  min-width: 1000px;
+  height: 100%;
+}
+
+.account-page__inner-header{
+  background-color: lightgray;
+  font-size: 40px;
+  text-align: center;
+  list-style: none;
+  padding-bottom: 50px;
+}
+.account-page__inner-body {
+  height: 460px;
+  background-color: lightgray;
+  &-box {
+    margin: 0 300px 0 300px;
+  }
+  &-title {
+    font-size: 25px;
+    background-color: white;
+    padding: 25px 0 60px 0 ;
+    text-align: center;
+  }
+  &-tool {
+    height: 600px;
+    background-color: white;
+    text-align: center;
+    &-mail {
+      padding-bottom: 20px;
+      font-size: 15px;
+    }
+    &-google {
+      padding-bottom: 20px;
+    }
+    &-facebook {
+      padding-bottom: 20px;
+    }
+    &-apple {
+      padding-bottom: 20px;
+    }
+  }
+  &-comment {
+    background-color: white;
+    font-size: 15px;
+    padding-left: 60px;
+  }
+  &-comment2 {
+    background-color: white;
+    font-size: 15px;
+    padding-left: 5px;
+  }
+}
+.account-page__inner-footer {
+  background-color: lightgray;
+  text-align: center;
+  height:  220px;
+  &-policy {
+   display: flex;
+   &-privacy {
+     justify-content: space-between;
+     margin: 30px 40px 30px 500px;
+     font-size: 10px;
+   }
+   &-kiyaku {
+     justify-content: space-between;
+     margin: 30px 40px 30px 40px;
+     font-size: 10px;
+   }
+   &-tokusyo {
+     justify-content: space-between;
+     margin: 30px 400px 30px 40px;
+     font-size: 10px;
+   }
+  }
+  &-incline {
+    font-size: 15px;
+  }
+}
+.mail-regist-form {
+  background-color: lightgray;
+}
+
+.mail-regist-form__header {
+  height: 140px;
+  width: 700px;
+  margin: 0 auto;
+  background-color: lightgray;
+  list-style: none;
+  display: flex;
+  &-title {
+    height: 40px;
+    width: 170px;
+    font-size: 20px;
+    padding: 50px 30px ;
+    float: left;
+  }
+  &-status {
+    text-align: center;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    float: right;
+    &-bar {
+      justify-content: space-between;
+      padding: 50px 40px;
+      color: red;
+    }
+    &-bar2 {
+      justify-content: space-between;
+      padding: 50px 40px;
+    }
+    &-bar3{
+      justify-content: space-between;
+      padding: 50px 40px;
+    }
+  }
+}
+.mail-regist-form__header %li {
+    background-color: lightgray;
+    display: flex;
+    text-align: center;
+    }
+
+  %li.active {
+    color: red;
+  }
+  .regist-status{
+    justify-content: space-between;
+  }
+
+.mail-regist-form__body {
+    font-size: 20px;
+    background-color: lightgray;
+  &-inner {
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &-head {
+    font-size: 30px;
+    border-bottom-color: black;
+    text-align: center;
+    padding: 30px 0 30px 0;
+  }
+  &-middle {
+    min-width: 350px;
+    margin: 0 auto;
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &-title {
+    display: flex;
+    padding-left: 170px;
+  }
+  &-titlename {
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  &-necessary {
+    justify-content: space-between;
+    font-size: 13px;
+    padding-top: 5px;
+    padding-left: 5px;
+    color: red;
+  }
+  &-textinfo {
+    font-size: 15px;
+    color: gray;
+    padding: 10px 0 5px 0;
+  }
+  &-text-check {
+    display: flex;
+    font-size: 15px;
+    padding-bottom: 30px;
+    padding-left: 170px;
+    &-checkbox {
+      justify-content: space-between;
+   }
+    &-checkcomment {
+      justify-content: space-between;
+   }
+  }
+  &-confirm {   
+    display: flex;
+    padding-left: 170px;
+    &-title {
+      justify-content: space-between;
+    }
+  }
+  &-confirm-comment {
+    padding: 8px 180px 15px 170px;
+    font-size: 13px;
+  }
+  &-inputnametitle {
+    display: flex;
+    padding-left: 170px;
+  }
+  &-inputname{
+    float: left;
+  }
+  &-namebox {
+    display: flex;
+  }
+  &-nameleft {
+    justify-content: space-between;
+    margin-right: 5px;
+  }
+  &-nameright {
+    justify-content: space-between;
+    margin-left: 5px;
+  }
+  &-titlename {
+    font-size: 18px;
+  }
+  &-select {
+    display: flex;
+    padding-left: 170px;
+  }
+  &-selectyear {
+    justify-content: space-between;
+    
+  }
+  &-selectmonth {
+    justify-content: space-between;
+  }
+  &-selectday {
+    justify-content: space-between;
+  }
+  &-selecterror {
+    padding-top: 10px;
+  }
+  &-information {
+    font-size: 15px;
+    padding: 20px 150px 20px 180px;
+    color: gray;
+  }
+  &-next {
+    margin-top: 40px;
+    padding-bottom: 50px;
+    text-align: center;
+  }
+  &-error {
+    list-style: none;
+    color: red;
+    font-size: 15px;
+    padding-left: 170px;
+    display: flex;
+  }
+  &-errortext {
+    display: flex;
+    list-style: none;
+  &-family {
+    justify-content: space-between;
+    font-size: 15px;
+    color: red;
+    padding-left: 170px;
+  }
+  &-first {
+    justify-content: space-between;
+    font-size: 15px;
+    color: red;
+    padding-left: 50px;
+  }
+  &-familykana {
+    justify-content: space-between;
+    font-size: 15px;
+    color: red;
+    padding-left: 170px;
+  }
+  &-firstkana {
+    justify-content: space-between;
+    font-size: 15px;
+    color: red;
+    padding-left: 20px;
+  }
+ }
+}
+.input-form {
+  width: 350px;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 5px;
+  &-left {
+    width: 170px;
+    height: 50px;
+    font-size: 20px;
+    margin: 5px 5px 5px 170px;
+  }
+  &-right {
+    width: 170px;
+    height: 50px;
+    font-size: 20px;
+    margin: 5px 80px 5px 5px;
+  }
+}
+
+.mail-regist-form__footer {
+  background-color: lightgray;
+  font-size: 20px;
+  text-align: center;
+  &-policy {
+    text-decoration: none;
+    display: flex;
+  }
+  &-policyprivacy {
+    justify-content: space-between;
+    margin: 0 170px 0;
+    font-size: 20px;
+  }
+  &-policykiyaku {
+    justify-content: space-between;
+    margin: 0 90px 0;
+    font-size: 20px;
+  }
+  &-policytokusyo {
+    justify-content: space-between;
+    margin: 0 90px 0 150px;
+    font-size: 20px;
+  }
+  &-incline{
+    font-size: 25px;
+  }
+}
