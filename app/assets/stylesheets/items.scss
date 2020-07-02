@@ -1,3 +1,387 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper{
+  width: 100%;
+  height: 100vh;
+  .header{
+    width: 100%;
+    height: 80px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    &__top{
+      display: flex;
+      &__rogo{
+        margin-left: 50px;
+      }
+      &__form{
+        margin-left: 50px;
+        margin-top: 10px;
+        align-content: center;
+        .input{
+          width: calc(100vw - 450px);
+          height: 30px;
+        }
+        .btn{
+          margin-left: -5px;
+          height: 35px;
+          width: 40px;
+          background-color: #3CCACE;
+          border-radius: 3px;
+          border: none;
+          color: white;
+        }
+      }
+    }
+    &__bottom{
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+
+      // カテゴリー＆ブランド
+      &__left{
+        display: flex;
+        justify-content: space-between;
+        z-index: 1000;
+        .contents{
+          display: flex;
+          justify-content: space-between;
+          .content{
+            font-size:14px;
+            margin-right: 10px;
+            height: 40px;
+            width: 150px;
+            line-height: 40px;
+            position: relative;
+            text-decoration: none;
+            padding-left: 3px;
+            li{
+              border-bottom: 1px solid rgb(219, 219, 219);
+              padding-left: 3px;
+            }
+            .nav{
+              width: 150px;
+              position: absolute;
+              left: 50px;
+              top:35px;
+              background-color: #f7f7f7;
+              opacity: 0.9;
+              display: none;
+              .nav__content{
+                width: 150px;
+                position: absolute;
+                top: 0;
+                left: 150px;
+                background-color: #fffcee;
+                display: none;
+              }
+            }
+          }
+          &:hover{
+            .nav{
+              display: block;
+              &:hover{
+                .nav__content{
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+
+        .brand, p{
+          margin-left: 50px;
+          list-style: none;
+        }
+      }
+      a{
+        text-decoration: none;
+        color: black;
+        &:hover{
+          color: #ffcc40;
+        }
+      }
+
+      // ログイン＆新規登録
+      &__right{
+        display: flex;
+        margin-right: 50px;
+        p{
+          margin-left: 20px;
+        }
+      }
+      &__right{
+        display: flex;
+      }
+    }
+  }
+
+  // メイン
+  .main{
+    margin-top: 5px;
+    .content{
+      height: 530px;
+      .visual{
+        position: absolute;
+      }
+      .visual__comment{
+        position: relative;
+        color: white;
+        text-shadow: 1px 2px 3px #808080;
+        top: 150px;
+        left: 50px;
+        &__subtitle{
+          font-size: 60px;
+        }
+        &__text{
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
+        &__btn{
+          margin-left: -10px;
+          display: flex;
+          align-items: center;
+          a:hover{
+          opacity: 70%;
+          }
+        }
+      }
+    }
+
+    .introduction{
+      padding: 50px 50px 50px 50px;
+      .title{
+        margin-bottom: 30px;
+        font-size: 30px;
+        text-align: center;
+        position: relative;
+        &:after{
+          content: "";
+          width: 70px;
+          height: 4px;
+          background-color: #3CCACE;
+          position: absolute;
+          bottom: -5px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        h3{
+          font-size: 25px;
+        }
+      }
+      .list{
+        display: flex;
+        justify-content: space-between;
+        margin: 25px auto;
+        li{
+          list-style: none;
+          width: 265px;
+          text-align: center;
+          h3{
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px auto;
+          }
+        }
+      }
+    }
+
+    .content2{
+      height: 550px;
+      .visual{
+        position: absolute;
+      }
+      .visual__comment{
+        position: relative;
+        color: white;
+        text-shadow: 1px 2px 3px #808080;
+        top: 150px;
+        left: 100px;
+        #bottomViual{
+          text-align: center;
+          .visual__comment__subtitle{
+            font-size: 30px;
+          }
+        }
+        &__subtitle{
+          font-size: 60px;
+        }
+        &__text{
+          font-size: 20px;
+          margin-bottom: 15px;
+
+        }
+        &__btn{
+          margin-left: -10px;
+          display: flex;
+          align-items: center;
+          a:hover{
+          opacity: 70%;
+          }
+        }
+      }
+    }
+
+    // ピックアップ＆ブランド
+    .pickup{
+      background-color: rgb(231, 231, 231);
+      text-align: center;
+      font-size: 25px;
+      padding-bottom: 50px;
+      &__category{
+        padding-top: 100px;
+        h2{
+          padding-bottom: 20px;
+        }
+        &__lists{
+          padding-top: 20px;
+          display: flex;
+          justify-content: center;
+          margin: 0 auto;
+          .list{
+            height: 245px;
+            width: 220px;
+            background-color: white;
+            position: relative;
+            text-align: left;
+            a{
+              text-decoration: none;
+              color: black;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              :hover{
+                // filter:alpha(opacity=70);/* IE 6,7*/
+                // -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+                // -moz-opacity:0.7;/* FF , Netscape */
+                // -khtml-opacity: 0.7;/* Safari 1.x */
+                opacity:0.7;
+                zoom:1
+              }
+            }
+            &__content{
+              position: absolute;
+              font-size: 15px;
+              top: 170px;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+      &__brand{
+        padding-top: 100px;
+      }
+      h2{
+        font-weight: bold;
+        padding-bottom: 20px;
+      }
+      h3{
+        color: #3CCACE;
+      }
+    }
+
+    .content3{
+      height: 538px;
+      width: 100%;
+      .visual{
+        position: absolute;
+      }
+      .visual__comment{
+        height: 300px;
+        width: 800px;
+        text-align: center;
+        position: relative;
+        color: white;
+        text-shadow: 1px 2px 3px #808080;
+        top: 180px;
+        left: 250px;
+        #bottomViual{
+          .visual__comment__subtitle{
+            font-size: 30px;
+          }
+        }
+        &__subtitle{
+          font-size: 60px;
+        }
+        &__text{
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
+        &__btn{
+          width: 400px;
+          display: flex;
+          align-items: center;
+          margin-left: auto;
+          margin-right: auto;
+          a:hover{
+          opacity: 70%;
+          }
+        }
+      }
+    }
+  }
+
+  .footer{
+    background-color: rgb(32, 32, 32);
+    width: 100%;
+    height: 500px;
+    color: white;
+    .info{
+      display: flex;
+      justify-content: space-between;
+      margin-left: 200px;
+      margin-right: 200px;
+      padding-top: 100px;
+      &__title{
+        font-size: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      &__content{
+        font-size: 12px;
+        text-align: center;
+        li{
+          margin-bottom: 20px;
+        }
+        a{
+        text-decoration: none;
+        color: white;
+        &:hover{
+          text-decoration: underline;
+        }
+        }
+      }
+    }
+    .logo{
+      margin-top: 50px;
+      text-align: center;
+    }
+  }
+
+  // 固定ボタン
+  .btn{
+    :hover{
+      opacity: 90%;
+    }
+    .linkBtn{
+      background-color: #3CCACE;
+      height: 130px;
+      width: 130px;
+      text-align: center;
+      position: fixed;
+      right: 50px;
+      bottom: 50px;
+      text-decoration: none;
+      color: white;
+      font-weight: bolder;
+      border-radius: 25px;
+
+      p{
+        padding-top: 25px;
+      }
+    }
+  }
+}
