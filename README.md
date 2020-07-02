@@ -93,12 +93,12 @@ Things you may want to cover:
 |price|integer|null :false|
 |content|text|null :false|
 |category_id|references|null: false, foreign_key: true|
-|condition_id|references|null: false, foreign_key: true|
+|condition|integer|null: false|
 |brand|string||
-|size_id|references|foreign_key: true|
-|preparation_day_id|references|null: false, foreign_key: true|
-|postage_type_id|references|null: false, foreign_key: true|
-|postage_payer_id|references|null: false, foreign_key: true|
+|size|string||
+|preparation_day|integer|null: false|
+|postage_type|integer|null: false|
+|postage_payer|integer|null: false|
 |seller_id|references|null: false, foreign_key: true|
 |buyer_id|references|foreign_key: true|
 |prefecture_id|references|null: false, foreign_key: true|
@@ -106,11 +106,6 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :prefecture
 - belongs_to :category
-- belongs_to :condition
-- belongs_to :size
-- belongs_to :preparation_day
-- belongs_to :postage_type
-- belongs_to :postage_payer
 - has_many :images
 
 ## imagesテーブル
@@ -128,37 +123,4 @@ Things you may want to cover:
 ### Association
 - has_many :items
 
-## conditionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
 
-## sizesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
-
-## preparation_daysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
-
-## postage_typesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
-
-## postage_payersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
