@@ -4,9 +4,9 @@
       .header__top__rogo
         = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
       .header__top__form
-        %form{:action => "/", :method => "post"}
-          %input{:name => "search", :size => "40", class:"input", placeholder: "キーワードから探す"}
-          %input{:type => "submit", value: "検索", class: "btn"}
+        %form{action: "/", method: "post"}
+          %input{name: "search", size: "40", class:"input", placeholder: "キーワードから探す"}
+          %input{type: "submit", value: "検索", class: "btn"}
 
     .header__bottom
       .header__bottom__left
