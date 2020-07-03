@@ -1,0 +1,124 @@
+.main-page
+  %main.container.clearfix
+    .contants
+      %section.mypage__icon
+        %figure
+          .mypage__icon--link
+            = image_tag 'member_photo_noimage_thumb.png', height: '60', width: '60', class: "mypage__icon__link"
+          %h2.mypage__icon--nickname
+            ニックネーム
+          .mypage__icon--number
+            .mypage__icon--number__assess
+              評価 ０
+            .mypage__icon--number__displays
+              出品数 ０
+      %section.mypage__container
+        %ul.mypage__tabs
+          %li.notice
+            %h3
+              = link_to "お知らせ", class: 'btn'
+          %li.todo
+            %h3
+              = link_to "やることリスト", class: 'btn'
+  
+        .mypage__tabs--contents
+          %ul.mypage__tabs--contents__list
+            %li.mypage__tabs--content__link
+              %figure
+                .mypage__tabs--content__link--icon
+                  = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
+                .mypage__tabs--content__link--body
+                  .mypage__tabs--content__link--text もう購入しましたか？今なら"+20%還元"
+            %li.mypage__tabs--content__link
+              %figure
+                .mypage__tabs--content__link--icon
+                  = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
+                .mypage__tabs--content__link--body
+                  .mypage__tabs--content__link--text 《出品するだけ》最大1,000円分のポイントをもらえる！キャンペーン詳細はこちら！
+            %li.mypage__tabs--content__link
+              %figure
+                .mypage__tabs--content__link--icon
+                  = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
+                .mypage__tabs--content__link--body
+                  .mypage__tabs--content__link--text キャッシュレス決済で商品を買うとP1,500もらえる！
+            %li.mypage__tabs--content__link
+              %figure
+                .mypage__tabs--content__link--icon
+                  = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
+                .mypage__tabs--content__link--body
+                  .mypage__tabs--content__link--text 「本人確認後」＋「街のお店でのお買い物」でもれなくP1,000をプレゼント！
+            %li.mypage__tabs--content__link
+              %figure
+                .mypage__tabs--content__link--icon
+                  = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
+                .mypage__tabs--content__link--body
+                  .mypage__tabs--content__link--text フリマで買うと最大でP5,000+P1,000もらえる！事前準備はこちら
+            %li.mypage__display-list
+              = link_to "一覧を見る", class: 'btn'
+
+
+      %section.Purchased-list
+        %h2.Purchased-list__head 購入した商品
+        %ul.purchased-tabs
+          %li.trade
+            %h3
+              取引中
+          %li
+            %h3
+              過去の取引
+        .tab-contents
+          %ul.trade-item__now
+            %li.trade-item__notfound 取引中の商品がありません
+
+
+  .side
+    %nav.mypage-menu
+      %ul.mypage-menu__list
+        %li.mypage-menu__list--item--info
+          = link_to "マイページ", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "お知らせ", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "やることリスト", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "いいね！一覧", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "出品する", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "下書き一覧", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "出品した商品-出品中", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "出品した商品-取引中", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "出品した商品-売却済み", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "購入した商品-取引中", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "購入した商品-過去の取引", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "ニュース一覧", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "評価一覧", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "ガイド", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "お問い合わせ", class: 'btn'
+
+      %h3.mypage-menu__list--head
+        設定
+      %ul.mypage-menu__list--personal
+        %li.mypage-menu__list--item
+          = link_to "プロフィール", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "発送元・お届け先住所変更", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "支払い方法", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "メール/パスワード", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "本人情報", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "電話番号の確認", class: 'btn'
+        %li.mypage-menu__list--item
+          = link_to "ログアウト", class: 'btn'
