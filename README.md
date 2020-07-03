@@ -58,14 +58,13 @@ Things you may want to cover:
 |first_name_kana|string|null: false|
 |family_name_kana|string|null: false|
 |post_code|string|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
+|prefecture_id(active_hash)|integer|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string||
-|telephone_number|integer|unique: true|
+|telephone_number|string|unique: true|
 ### Association
 - belongs_to :user
-- belongs_to :prefectue
 
 ## credit_cardsテーブル
 |Column|Type|Options|
@@ -78,13 +77,6 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
-## prefecturesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :addresses
-- has_many :items
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -101,10 +93,9 @@ Things you may want to cover:
 |postage_payer|integer|null: false|
 |seller_id|references|null: false, foreign_key: true|
 |buyer_id|references|foreign_key: true|
-|prefecture_id|references|null: false, foreign_key: true|
+|prefecture_id(active_hash)|integer|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :prefecture
 - belongs_to :category
 - has_many :images
 
@@ -112,6 +103,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true|
+|image_url|string|null: false|
 ## Association
 - belongs_to :item
 
