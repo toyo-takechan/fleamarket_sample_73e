@@ -73,4 +73,4 @@ group :production do
 end
 
 gem "font-awesome-sass"
-gem 'haml-rails'
+gem "haml-rails"
