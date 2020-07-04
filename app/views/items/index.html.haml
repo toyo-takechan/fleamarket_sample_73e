@@ -1,51 +1,5 @@
 .wrapper
-  .header
-    .header__top
-      .header__top--rogo
-        = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
-      .header__top--form
-        %form{action: "/", method: "post"}
-          %input{name: "search", size: "40", class:"input", placeholder: "キーワードから探す"}
-          %input{type: "submit", value: "検索", class: "btn"}
-
-    .header__bottom
-      .header__bottom--left
-        %ul.contents
-          %li.content
-            = link_to do
-              %p カテゴリー
-            %ul.nav
-              %li
-                = link_to do
-                  レディース
-                %ul.nav__content
-                  %li
-                    = link_to do
-                      トップス
-                  %li
-                    = link_to do
-                      ボトムス
-                  %li
-                    = link_to do
-                      シューズ
-              %li
-                = link_to do
-                  メンズ
-
-              %li
-                = link_to do
-                  キッズ
-
-
-          %li.content
-            = link_to class: "brand" do
-              %p ブランド
-
-      .header__bottom--right
-        = link_to class: "login" do
-          %p ログイン
-        = link_to class: "signup" do
-          %p 新規会員登録
+  =render "header"
   .main
     .content
       .visual
@@ -234,47 +188,4 @@
                 #google
                   = image_tag '/assets/icon/google-play-badge.png',height: "80px", width: "200px", alt: 'google'
 
-
-  .footer
-    .info
-      %ul
-        .info--title
-          %li FURIMAについて
-        .info--content
-          %li
-            =link_to "会社概要"
-          %li
-            =link_to "プライバシーポリシー"
-          %li
-            =link_to "FURIMA利用規約"
-          %li
-            =link_to "ポイントに関する特約"
-      %ul
-        .info--title
-          %li FURIMAをみる
-        .info--content
-          %li
-            =link_to "カテゴリー一覧"
-          %li
-            =link_to "ブランド一覧"
-      %ul
-        .info--title
-          %li ヘルプ＆ガイド
-        .info--content
-          %li
-            =link_to "FURIMAガイド"
-          %li
-            =link_to "FURIMAロゴ利用ガイドライン"
-          %li
-            =link_to "お知らせ"
-
-    .logo
-      =link_to do
-        = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
-      %p © FURIMA
-
-  .btn
-    =link_to do
-      .linkBtn
-        %p 出品する
-        = image_tag '/assets/icon/icon_camera.png',height: "50px", width: "50px", alt: 'sell'
+  =render "footer"
