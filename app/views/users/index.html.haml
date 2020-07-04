@@ -6,7 +6,7 @@
     .account-page__inner
       .account-page__inner-header
         = link_to root_path do
-          フリマアプリ
+          = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
       .account-page__inner-body
         .account-page__inner-body-box
           .account-page__inner-body-title
@@ -14,13 +14,13 @@
           .account-page__inner-body-tool
             = form_for [@user] do |f|
               .account-page__inner-body-tool-mail
-                = link_to "メールアドレスで登録する", new_user_registration_path,class: "mail_btn"
+                = link_to "メールアドレスで登録する", new_user_registration_path , class: "mail_btn"
               .account-page__inner-body-tool-google
-                = f.button  "Googoleで登録する",class: "google-btn"
+                = link_to  "Googleで登録する", "/",class: "google-btn"
               .account-page__inner-body-tool-facebook
-                = f.button "Facebookで登録する",class: "facebook-btn"
+                = link_to "Facebookで登録する", "/",class: "facebook-btn"
               .account-page__inner-body-tool-apple
-                = f.button "Appleで登録する",class: "apple-btn"
+                = link_to "Appleで登録する", "/",class: "apple-btn"
               .account-page__inner-body-comment
                 登録することで、
                 = link_to "利用規約", root_path 
@@ -44,4 +44,6 @@
           =link_to root_path, class: "footer-logo" do
             %i.fa.fa-lightburb
         .account-page__inner-footer-incline
-          ©️フリマアプリ.Inc
+          =link_to root_path do
+            = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
+        %p © FURIMA
