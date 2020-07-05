@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+.wrapper{
+  width: 100%;
+  height: 100%;
+  background-color:gray;
+  .header{
+    width: 100%;
+    height: 80px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    }
+  .container{
+    width: 700px;
+    height: calc(100% - 80px - 80px);
+    margin: 0 auto 10px;
+    padding: 32px 16px;
+    background-color: #fff;
+    .products-top{
+     height: 97px;
+     background-color: orange;
+     border-bottom: solid #eeeeee;
+      .products-text{
+        text-align:center;
+        padding-top: 34px;
+      }
+    }
+    .products-main{
+     height: 147px;
+     background-color: yellow;
+     border-bottom: solid #eeeeee;
+    }
+    .buy-content{
+      height: 137px;
+      padding:0 0 0 0 ;
+      background-color: purple
+    }
+    .user-info-pay{
+      height: 112px;
+      padding:0 0 0 0 ;
+      background-color: red;
+      &__box{
+        padding:32px 16px;
+        margin: 0 162px 492px;
+        width: 343px;
+        height: 47px;
+        .user-info-pay-text{
+          font-size: 15px;
+          color:#333333;
+        }
+        .user-info-pay-link{
+          font-size: 15px;
+          color:#0095EE;
+          margin:0 0 0 4px;
+        }
+      }
+    }
+    .user-info-delivery{
+      height: 108px;
+      padding:0 0 0 0 ;
+      background-color: pink;
+      &__box{
+        padding:32px 16px;
+        margin: 0 162px 492px;
+        width: 343px;
+        height: 47px;
+        .user-info-delivery-text{
+          font-size: 15px;
+          color:#333333;
+        }
+        .user-info-delivery-link{
+          font-size: 15px;
+          color:#0095EE;
+          margin:0 0 0 4px;
+        }
+      }
+    }
+    .confirm{
+      background-color: blue;
+      height: 186px;
+      padding: 0 0 0 0 ;
+    }
+  }
+  .footer{
+    background-color: #d8d8d8;
+    width: 100%;
+    height: 80px;
+    margin: 0 auto;
+    position:fixed;
+    text-align: center;
+    bottom:0 ;
+  }
+}
