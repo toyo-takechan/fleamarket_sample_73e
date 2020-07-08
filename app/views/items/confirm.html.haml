@@ -1,49 +1,65 @@
 .wrapper 
   .header
+    .header__top-rogo
+      = link_to image_tag "/assets/logo/logo.png", size: "185x49", alt: "logo"
   .container
     .products-top
       %h2.products-text
         購入内容の確認
     .products-main
-      .products-main__iembox
+      .products-main__itembox
+        = image_tag "/assets/icon-01.png", size: "80x80", alt: "icon"
       .products-main__detail
-        .products-main__detail--name
-        .products-main__detail--ja
-    .buy-content
-      .buy-content__price
-        .buy-content__price__label
-        .buy-content__price__cel
-      .buy-content__point
-        .buy-content__point__label
-        .buy-content__point__cel
+        .products-main__detail__name
+          ジーンズIee201
+        .products-main__detail__price
+          %span.products-main__detail__price__ja
+            送料込み(税込)
+          %span.products-main__detail__price__fee
+            1300円
+    .buy
+      .buy__content
+        .buy__content__price
+          %span.buy__content__price__label
+            支払い金額
+          %span.buy__content__price__cel
+            ¥1300
+        .buy__content__point
+          %span.buy__content__point__input
+          %span.buy__content__point__img
+            = link_to image_tag "/assets/logo/logo.png", size: "80x18", alt: "logo"
+          %span.buy__content__point__label
+            ポイント
+          %span.buy__content__point__cel
+            所持ポイント : P0
     .user-info-pay
       .user-info-pay__box
         %h3.user-info-pay-text
           支払い方法
         %p.user-info-pay-link
-          = link_to "登録してください。", "#"
+          = link_to "+登録してください。", "#"
     .user-info-delivery
       .user-info-delivery__box
         %h3.user-info-delivery-text
           配達先
         %p.user-info-delivery-link
-          = link_to "登録してください。", "#"
+          = link_to "+登録してください。", "#"
     .confirm
-      .confirm__text
-      .confirm__contact
+      %p.confirm__info-text
+        郵便局/コンビニ受取をご希望の方は、購入後に
+        %span.products-purchase-bold  取引画面
+        から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+      %p.confirm__text--comment
+        配送先と支払い方法の入力を完了してください。
+      %button{type: "submit", class:'confirm__contact--comment'}
+        購入する
   .footer
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .footer
-    
+    %ul.footer__name
+      %li.footer__name__text
+        = link_to "プライバシーポリシー", "#"
+      %li.footer__name__text
+        = link_to "フリマ利用規約", "#"
+      %li.footer__name__text
+        = link_to "特定商取引に関する表記", "#"     
+    .footer__rogo
+      = link_to image_tag "/assets/logo/logo.png", size: "65x50", alt: "logo"
