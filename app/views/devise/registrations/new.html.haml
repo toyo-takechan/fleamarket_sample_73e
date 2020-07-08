@@ -17,10 +17,6 @@
           .mail-regist-form__header-status-bar2
             ②
             .regist-status
-              電話番号認証
-          .mail-regist-form__header-status-bar3
-            ③
-            .regist-status
               完了
 
       .mail-regist-form__body
@@ -135,10 +131,7 @@
             =link_to "アプリ利用規約", root_path
           .mail-regist-form__footer-policytokusyo
             =link_to "特定商取引に関する表記", root_path 
-        .mail-regist-form__footer-logo
-          =link_to root_path do
-            %i.fa.fa-lightbulb
         .mail-regist-form__footer-incline
-          =link_to do
+          =link_to root_path do
             = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
           %p © FURIMA
