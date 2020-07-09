@@ -17,7 +17,7 @@ mens_child_array =
       'その他'
     ]
     
-# メンズの孫カテゴリー別配列
+# メンズの孫カテゴリー配列
 mens_grandchild_array =
  [
   #  0:トップス
