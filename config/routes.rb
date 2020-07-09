@@ -10,4 +10,11 @@ resources :profiles, only: [:index]
 
 resources :items, only: :show
 
+resources :items do
+    collection do
+    get 'confirm'
+    end
+  end
+
+
 end
