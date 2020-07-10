@@ -4,7 +4,7 @@ section.credit-container{
 
 }
 .credit-head{
-  font-weight:  600;
+  font-weight: 600;
   height: 50px;
   line-height: 50px;
   font-size: 24px;
@@ -12,12 +12,12 @@ section.credit-container{
   background: #fff;
   text-align: center;
 }
-.card-form-container{
+.card-form{
   padding: 40px 40px 64px;
-}
-.card-form-content{
-  max-width: 343px;
-  margin: 0 auto;
+  &__content{
+    max-width: 343px;
+    margin: 0 auto;
+  }
 }
 .card-group label{
   font-weight:  600;

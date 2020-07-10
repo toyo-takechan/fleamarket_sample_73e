@@ -4,15 +4,14 @@
       %section.credit-container
         %h2.credit-head
           クレジットカード情報入力
-        .card-form-container
-          .card-form-content
+        .card-form
+          .card-form__content
             .card-group
               %label.card-group
                 カード番号
               %span.required-item
                 必須
               %input{type: "text", size: "40", class:"card-number", placeholder: "半角数字のみ", maxlengh: "19"}
-              %ul.error-text
             %ul.card-list
               %li
                 =link_to do
@@ -97,24 +96,17 @@
                 %i.fas.fa-chevron-down
               %span
                 年
-              %ul.error-text
-              %ul.error-text
             .security-group
               %label.security-code
                 セキュリティコード
               %span.required-item
                 必須
               %input{type: "text", size: "40", class: "security-number", placeholder: "カード背面4桁もしくは3桁の番号"}
-              %ul.error-text
             .help-number
               .help-number__text
                 %span.number-question
                   ?
                 カード裏面の番号とは？
               .security-code-info
-            %input{type: "hidden", id: "#", name: "#", value: "#"}
-            %input{type: "hidden", id: "#", name: "#", value: "#"}
-            %p{id: "#", class: "error-text"}
-            %input{type: "hidden", name: "#"}
             %button{type: "button", id: "#", class: "btn-add"}
               追加する
