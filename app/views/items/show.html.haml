@@ -26,7 +26,7 @@
       = @item.name
     .item-image-box
       .item-image-box__main
-        = image_tag src="item-dummy-1.png",class: "item-image-box__main--image"
+        = image_tag @item.images.first.image_url,class: "item-image-box__main--image"
       %ul.item-image-thumbnail
         - @item.images.each do |image|
           %li.item-image-thumbnail__part
@@ -176,60 +176,16 @@
   .product-list
     = link_to "#" do
       = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
-        
-
+    .product-list__content
+      .product-list__content--upper
+        似た商品の名前
+      %ul.product-list__content--center
+        %li
+          30000円
+        %li
+          %i.fas.fa-star
+          %span
+            0
+      .product-list__content--footer
+        (税込)
    
