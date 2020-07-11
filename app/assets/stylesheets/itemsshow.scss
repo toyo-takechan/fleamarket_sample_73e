@@ -3,8 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+@mixin fontSetting() {
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+
 .wrapper{
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   .header{
     width: 100%;
@@ -235,41 +240,71 @@
         h2{
           padding-bottom: 20px;
         }
-        &--lists{
+        .pickup-list {
           padding-top: 20px;
           display: flex;
           justify-content: center;
           margin: 0 auto;
-          .list{
-            height: 245px;
+          a {
+            display: inline-block;
             width: 220px;
-            background-color: white;
-            position: relative;
+            text-decoration: none;
+            color: #000;
+            @include fontSetting();
+            background-color: #fff;
+          }
+          .product-img {
+            width: 220px;
+            height: 150px;
+            object-fit: cover;
+          }
+          .product-content {
+            padding: 16px;
             text-align: left;
-            a{
-              text-decoration: none;
-              color: black;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              :hover{
-                opacity:0.7;
-                zoom:1
-              }
+            font-size: 16px;
+            &__center {
+              display: flex;
+              justify-content: space-between;
             }
-            &__content{
-              position: absolute;
-              font-size: 15px;
-              top: 170px;
-              margin-left: 5px;
+            &__footer {
+              font-size: 10px;
             }
           }
         }
       }
       &__brand{
         padding-top: 100px;
+        .pickup-list {
+          padding-top: 20px;
+          display: flex;
+          justify-content: center;
+          margin: 0 auto;
+          a {
+            display: inline-block;
+            width: 220px;
+            text-decoration: none;
+            color: #000;
+            @include fontSetting();
+            background-color: #fff;
+          }
+          .product-img {
+            width: 220px;
+            height: 150px;
+            object-fit: cover;
+          }
+          .product-content {
+            padding: 16px;
+            text-align: left;
+            font-size: 16px;
+            &__center {
+              display: flex;
+              justify-content: space-between;
+            }
+            &__footer {
+              font-size: 10px;
+            }
+          }
+        }
       }
       h2{
         font-weight: bold;
@@ -417,10 +452,6 @@ table {
   border-radius: 40px;
   font-size: 18px;
   color: #fff;
-}
-
-@mixin fontSetting() {
-  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 }
 
 .sale-item-page{
@@ -657,36 +688,36 @@ table {
       font-weight: bold;
     }
   }
-
-  //同じカテゴリ商品のリスト
-  .product-list {
-    @include container;
-    padding: 0;
-    background-color: #f8f8f8;
-    a {
-      display: inline-block;
-      width: 30%;
-      text-decoration: none;
-      color: #000;
-      @include fontSetting();
-      margin: 24px 23px 8px 0;
-      background-color: #fff;
-    }
-    &__img {
-      width: 210px;
-      height: 150px;
-      object-fit: cover;
-    }
-    &__content {
-      padding: 16px;
-      &--center {
-        font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-      }
-      &--footer {
-        font-size: 10px;
-      }
-    }
-  }
 }
+
+//同じカテゴリ商品のリスト
+    .product-list {
+      @include container;
+      padding: 0;
+      background-color: #f8f8f8;
+      a {
+        display: inline-block;
+        width: 30%;
+        text-decoration: none;
+        color: #000;
+        @include fontSetting();
+        margin: 24px 23px 8px 0;
+        background-color: #fff;
+      }
+      .product-img {
+        width: 210px;
+        height: 150px;
+        object-fit: cover;
+      }
+     .product-content {
+        &__center {
+          font-weight: bold;
+          display: flex;
+          justify-content: space-between;
+          font-size: 16px;
+        }
+        &__footer {
+          font-size: 10px;
+        }
+      }
+    }

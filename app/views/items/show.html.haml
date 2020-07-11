@@ -174,18 +174,4 @@
     = link_to "メンズをもっと見る", "#", class: "more-items__link"
   
   .product-list
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-    .product-list__content
-      .product-list__content--upper
-        似た商品の名前
-      %ul.product-list__content--center
-        %li
-          30000円
-        %li
-          %i.fas.fa-star
-          %span
-            0
-      .product-list__content--footer
-        (税込)
-   
+    = render partial:'item', collection: @relatedItems
