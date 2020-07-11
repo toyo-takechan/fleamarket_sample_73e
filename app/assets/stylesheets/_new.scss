@@ -1,0 +1,199 @@
+.wrapper{
+  width: 100vw;
+  height: 100%;
+  background-color: rgb(245, 245, 245);
+  .top{
+    width: 100vw;
+    &__logo{
+      height: 150px;
+      text-align: center;
+      padding-top: 25px;
+      img{
+        line-height: 150px;
+        margin-top: 25px;
+      }
+    }
+  }
+  .main{
+    align-content: center;
+    .form{
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px 25px 20px 25px;
+      background-color: white;
+      .content__1{
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgb(211, 211, 211);
+        .content__header{
+          margin-top: 25px;
+          margin-bottom: 25px;
+        }
+        .image__file{
+          margin-top: 25px;
+          padding-top: 100px;
+          height: 250px;
+          width: 550px;
+          background-color: rgb(209, 209, 209);
+          text-align: center;
+          font-size: 13px;
+          cursor: pointer;
+          border: 1px dotted rgb(172, 172, 172);
+        }
+      }
+      .content__2{
+        padding-top: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgb(211, 211, 211);
+        input{
+          margin-top: 15px;
+          margin-bottom: 30px;
+        }
+      }
+      .content__3{
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgb(211, 211, 211);
+        input{
+          margin-bottom: 15px;
+        }
+      }
+      .content__4{
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgb(211, 211, 211);
+      }
+      .content__header{
+        margin-top: 15px;
+        display: flex;
+        p{
+          margin-left: 80px;
+        }
+      }
+      h2{
+        margin-top: 30px;
+        margin-bottom: 50px;
+        color: rgb(148, 148, 148);
+        font-size: 15px;
+      }
+      h3{
+        margin-right: 5px;
+        font-size: 12px;
+        font-weight: bolder;
+      }
+      p{
+        font-size: 12px;
+      }
+      span{
+        font-size: 12px;
+        background-color: red;
+        color: white;
+        border-radius: 3px;
+        margin-left: 5px;
+      }
+      .notMust{
+        background-color: rgb(167, 167, 167);
+      }
+      input{
+        width: 550px;
+        margin-top: 15px;
+        height: 55px;
+      }
+      select{
+        margin-top: 15px;
+        font-size: 14px;
+        width: 550px;
+        height: 55px;
+        margin-bottom: 15px;
+      }
+      .plice{
+        line-height: 20px;
+        width: 350px;
+        margin-right: 25px;
+      }
+      .items__plice--input{
+        margin-bottom: 25px;
+        .content__header{
+          height: 20px;
+        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__money{
+          display: flex;
+          justify-content: space-around;
+          line-height: 55px;
+          align-items: center;
+          p{
+            font-size: 16px;
+            margin-right: 15px;
+          }
+        }
+      }
+      .fee{
+        font-size: 14px;
+        height: 55px;
+        line-height: 55px;
+        border-bottom: 1px solid rgb(211, 211, 211);
+      }
+      .benefit{
+        font-size: 14px;
+        height: 55px;
+        line-height: 55px;
+      }
+      .form__btn{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 50px;
+        &--submit{
+          background-color: rgb(235, 59, 59);
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-size: 25px;
+          width: 350px;
+          cursor: pointer;
+        }
+        &--button{
+          font-size: 20px;
+          border: none;
+          font-weight: bolder;
+          background-color: rgb(187, 187, 187);
+          width: 350px;
+          cursor: pointer;
+        }
+        &--back{
+          padding-top: 40px;
+          padding-bottom: 50px;
+          text-decoration: none;
+          color: rgb(35, 233, 233);
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .bottom{
+    padding-top: 25px;
+    padding-bottom: 50px;
+    text-align: center;
+    .link{
+      font-size: 12px;
+      margin-bottom: 25px;
+      a{
+        margin-right: 15px;
+        text-decoration: none;
+        color: black;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+    .logo{
+      p{
+        margin-top: 25px;
+        font-size: 14px;
+      }
+    }
+  }
+}

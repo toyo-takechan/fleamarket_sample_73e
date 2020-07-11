@@ -1,97 +1,162 @@
-.header
-  .header__logo
-    .header__top--rogo
+.wrapper
+  .top
+    .top__logo
       =link_to root_path do
         = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
-.main
-  .form
-    %form
-      .form__input--image
-        %h3 出品画像
-        %span 必須
-        %p 最大10枚までアップロードできます
-        %input{type: "file", placeholder: "ドラック＆ドロップ"}
-      .form__input--items
-        .items__name
-          %h3 商品名
-          %span 必須
-          %input{placeholder: "40字まで"}
-        .items__content
-          %h3 商品の説明
-          %span 必須
-          %input{placeholder: "商品の説明（必須 1000文字以内）色、素材、重さ、定価、注意点など"}
-        .items__detail
-          %h2 商品の詳細
-          .items__detail--category
-            %h3 カテゴリー
-            %span 必須
-            %select{name:"カテゴリー"}
-            %option{value:"レディース"}
-            %option(value="メンズ")
-            %option(value="キッズ")
-          .items__detail--bland
-            %h3 ブランド
-            %span 任意
-            %input{placeholder: "例）シャネル"}
-          .items__detail--condition
-            %h3 商品の状態
-            %span 必須
-            %select{value: "新品、未使用"}
-            %optino{value: "未使用に近い"}
-            %option{value: "目立った汚れや傷なし"}
-            %option{value: "やや汚れや傷あり"}
-            %option{value: "傷や汚れあり"}
-            %option{value: "全体的に状態が悪い"}
-
-        .items__delivery
-          %h3 配送について
-          .items__delivery--cost
-            %h3 配送料の負担
-            %span 必須
-            %select{name: "cost"}
-            %option{value: "送料込み（出品者負担）"}
-            %optino{value: "着払い（購入者負担）"}
-          .items__delivery--way
-            %h3 配送方法
-            %span 必須
-            %select{name:"way"}
-            %option{value: "未定"}
-            %option{value: "クロネコヤマト"}
-            %option{value: "ゆうパック"}
-            %option{value: "ゆうメール"}
-          .items__delivery--place
-            %h3 発送元の地域
-            %span 必須
-            %select{name: "place"}
-            %option{value: "新品、未使用"}
-          .items__delivery--days
-            %h3 発送までの日数
-            %span 必須
-            %select{name: "days"}
-            %option{value: "1〜2日で発送"}
-            %option{value: "2〜3日で発送"}
-            %option{value: "4〜7日で発送"}
-        .items__plice
-          %h2 価格（¥300〜¥9,999,999）
-          .items__plice--input
-            %h3 販売価格
-            %span 必須
-            %input(type="text")/
-      .form__btn
-        %input{type: "submit", name:"submit", value: "出品する"}
-        %input{type: "button", name:"save", value: "下書きを保存する"}
-        =link_to root_path do
-          もどる
-        %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
-.footer
-  .footer__link
-    =link_to do
-      プライバシーポリシー
-    =link_to do
-      メルカリ利用規約
-    =link_to do
-      特定商取引に関する表記
-  .footer__logo
-    =link_to root_path do
-      = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
-    %p © FURIMA
+  .main
+    .form
+      %form
+        .content__1
+          .image
+            .content__header
+              %h3 出品画像
+              %span 必須
+            .image__text
+              %p 最大10枚までアップロードできます
+            .image__file
+              %input{type: "file", style:"display:none", accept: "image/png, image/jpeg", multiple: "", autocomplete: "off", tabindex: "-1", id: "image1"}
+              %label{for:"image1", class: "label"}
+                ドラック＆ドロップ
+                %br/
+                クリックしてファイルを選択
+        .content__2
+          .items
+            .items__name
+              .content__header
+                %h3 商品名
+                %span 必須
+              .items__name--input
+                %input{placeholder: "40字まで"}
+            .items__content
+              .content__header
+                %h3 商品の説明
+                %span 必須
+              %input{row:"10", cols:"50", class: "input__text" ,placeholder: "商品の説明（必須 1000文字以内）色、素材、重さ、定価、注意点など"}
+        .content__3
+          .detail
+            %h2 商品の詳細
+            .detail--category
+              .content__header
+                %h3 カテゴリー
+                %span 必須
+              %select{name: "カテゴリー", class: "select"}
+                %option{value: "0"}
+                  選択してください
+                %option{value: "1"}
+                  レディース
+                %option{value: "2"}
+                  メンズ
+                %option{value: "3"}
+                  キッズ
+            .detail--bland
+              .content__header
+                %h3 ブランド
+                %span.notMust 任意
+              %input{placeholder: "例）シャネル"}
+            .detail--condition
+              .content__header
+                %h3 商品の状態
+                %span 必須
+              %select{name: "コンディション", class: "select"}
+                %option{value: "0"}
+                  選択してください
+                %option{value: "1"}
+                  新品、未使用品
+                %optino{value: "2"}
+                  未使用に近い
+                %option{value: "3"}
+                  目立った汚れなし
+                %option{value: "4"}
+                  やや汚れや傷あり
+                %option{value: "5"}
+                  傷や汚れあり
+                %option{value: "6"}
+                  全体的に状態が悪い
+        .content__4
+          .items__delivery
+            %h2 配送について
+            .items__delivery--cost
+              .content__header
+                %h3 配送料の負担
+                %span 必須
+              %select{name: "送料", class: "select"}
+                %option{value: "0"}
+                  選択してください
+                %option{value: "1"}
+                  送料込み（出品者負担）
+                %optino{value: "2"}
+                  着払い（購入者負担）
+            .items__delivery--way
+              .content__header
+                %h3 配送方法
+                %span 必須
+              %select{name: "配送方法", class: "select"}
+                %option{value: "0"}
+                  選択してください
+                %option{value: "1"}
+                  未定
+                %option{value: "2"}
+                  クロネコヤマト
+                %option{value: "3"}
+                  ゆうパック
+                %option{value: "4"}
+                  ゆうメール
+            .items__delivery--place
+              .content__header
+                %h3 発送元の地域
+                %span 必須
+              %select{name: "発送元", class: "select"}
+                %option{value: "0"}
+                  選択してください
+                %option{value: ""}
+            .items__delivery--days
+              .content__header
+                %h3 発送までの日数
+                %span 必須
+              %select{name: "発送日数", class: "select"}
+                %option{value: "0"}
+                  選択してください
+                %option{value: "1"}
+                  1〜２日で発送
+                %option{value: "2"}
+                  2〜３日で発送
+                %option{value: "3"}
+                  4〜７日で発送
+        .content__5
+          .items__plice
+            %h2 価格（¥300〜¥9,999,999）
+            .items__plice--input
+              .content__header
+                %h3 販売価格
+                %span 必須
+              .items__plice--input__money
+                %p ¥
+                %input{type:"text", class: "plice"}
+            .fee
+              .fee__text
+                販売手数料（１０％）
+              .fee__plice
+                %p -
+            .benefit
+              .benefit__text
+                販売利益
+              .benefit__plice
+                %p -
+        .form__btn
+          %input{type: "submit", name:"submit", value: "出品する", class: "form__btn--submit"}
+          %input{type: "button", name:"save", value: "下書きを保存", class: "form__btn--button"}
+          =link_to root_path, class: "form__btn--back" do
+            もどる
+          %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+  .bottom
+    .link
+      =link_to do
+        プライバシーポリシー
+      =link_to do
+        メルカリ利用規約
+      =link_to do
+        特定商取引に関する表記
+    .logo
+      =link_to root_path do
+        = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
+      %p © FURIMA
