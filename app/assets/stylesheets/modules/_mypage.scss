@@ -44,18 +44,23 @@
   }
   }
 }
-.mypage__container {
+.mypage-container {
   width: 700px;
   height:  589.84px;
   margin: 0;
   background: #fff;
-}
-.mypage__tabs {
-  position: relative;
-  text-align: center;
-  line-height: 74px;
-  display: flex;
-  
+  &__tabs {
+    position: relative;
+    text-align: center;
+    line-height: 74px;
+    display: flex;
+    &--contents {
+      height: 515.84px;
+      &__list {
+        min-height: 100%;
+      }
+    }
+  }
 }
 .notice {
   width: 50%;
@@ -79,37 +84,25 @@
   font-weight: bold;
   display: block;
 }
-.mypage__tabs--contents {
-  width: 700px;
-  height: 515.84px;
-}
-.mypage__tabs--contents__list {
-  width: 700px;
-  min-height: 100%;
-}
-.mypage__tabs--content__link {
+
+.mypage-tabs-content-link {
   display: block;
   min-height: 80px;
   padding:  16px;
   color: #333;
   border-bottom: 1px solid #eee;
+  &__icon {
+    position: relative;
+    float: left;
+  }
+  &__body {
+    margin: 0 40px 0 68px;
+  }
+  &__text {
+    font-size: 14px;
+  }
 }
-.mypage__tabs--content__link--icon {
-  position: relative;
-  float: left;
-}
-.mypage__tabs--content__link--body {
-  margin: 0 40px 0 68px;
-}
-.mypage__tabs--content__link--text {
-  font-size: 14px;
-}
-.fas.fa-chevron-right {
-  width: 8.59px;
-  height: 14px;
-  float: right;
 
-}
 .mypage__display-list {
   padding: 16px;
 }
@@ -129,15 +122,14 @@
   height: 382px;
   margin: 40px 0 0 0;
   background: #fff;
-}
-.Purchased-list__head {
-  width: 700px;
-  padding: 0 16px;
-  background: #fafafa;
-  font-size: 16px;
-  line-height: 72px;
-  color: #333;
-  font-weight: bold;
+  &__head {
+    padding: 0 16px;
+    background: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+    color: #333;
+    font-weight: bold;
+  }
 }
 .purchased-tabs {
   width: 700px;
@@ -180,39 +172,31 @@
   margin: 0 40px 0 179px;
   display: block;
 }
-.mypage-menu{
-  // background: #fff;
-}
 
-
-.mypage-menu__list--item--info {
+.mypage-menu-list--item--info {
   background: #eee;
   font-weight: 600;
   height: 48px;
   line-height: 48px;
   }
-  .mypage-menu__list--item--info a{
-    display: block;
-    color: #333;
-  }
-.mypage-menu__list--item {
+
+.mypage-menu-list--item {
   height: 48px;
   line-height: 48px;
   border-bottom: 1px solid #eee;
   background: #fff;
 }
-.mypage-menu__list--item a{
-  display: block;
-  color: #333;
-}
-.mypage-menu__list--head {
+
+.mypage-menu-list--head {
   margin: 40px 0 0;
   color: #333;
   font-weight: 600;
 }
 
-  a{ 
-    text-decoration: none;
-  }
+a{ 
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
 
 

@@ -12,8 +12,8 @@
               評価 ０
             .mypage__icon--number__displays
               出品数 ０
-      %section.mypage__container
-        %ul.mypage__tabs
+      %section.mypage-container
+        %ul.mypage-container__tabs
           %li.notice
             %h3
               = link_to "お知らせ", class: 'btn'
@@ -21,41 +21,40 @@
             %h3
               = link_to "やることリスト", class: 'btn'
   
-        .mypage__tabs--contents
+        .mypage_tabs-contents
           %ul.mypage__tabs--contents__list
-            %li.mypage__tabs--content__link
+            %li.mypage-tabs-content-link
               %figure
-                .mypage__tabs--content__link--icon
+                .mypage-tabs-content-link__icon
                   = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                .mypage__tabs--content__link--body
-                  .mypage__tabs--content__link--text もう購入しましたか？今なら"+20%還元"
-            %li.mypage__tabs--content__link
+                .mypage-tabs-content-link__body
+                  .mypage-tabs-content-link__text もう購入しましたか？今なら"+20%還元"
+            %li.mypage-tabs-content-link
               %figure
-                .mypage__tabs--content__link--icon
+                .mypage-tabs-content-link__icon
                   = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                .mypage__tabs--content__link--body
-                  .mypage__tabs--content__link--text 《出品するだけ》最大1,000円分のポイントをもらえる！キャンペーン詳細はこちら！
-            %li.mypage__tabs--content__link
+                .mypage-tabs-content-link__body
+                  .mypage-tabs-content-link__text 《出品するだけ》最大1,000円分のポイントをもらえる！キャンペーン詳細はこちら！
+            %li.mypage-tabs-content-link
               %figure
-                .mypage__tabs--content__link--icon
+                .mypage-tabs-content-link__icon
                   = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                .mypage__tabs--content__link--body
-                  .mypage__tabs--content__link--text キャッシュレス決済で商品を買うとP1,500もらえる！
-            %li.mypage__tabs--content__link
+                .mypage-tabs-content-link__body
+                  .mypage-tabs-content-link__text キャッシュレス決済で商品を買うとP1,500もらえる！
+            %li.mypage-tabs-content-link
               %figure
-                .mypage__tabs--content__link--icon
+                .mypage-tabs-content-link__icon
                   = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                .mypage__tabs--content__link--body
-                  .mypage__tabs--content__link--text 「本人確認後」＋「街のお店でのお買い物」でもれなくP1,000をプレゼント！
-            %li.mypage__tabs--content__link
+                .mypage-tabs-content-link__body
+                  .mypage-tabs-content-link__text 「本人確認後」＋「街のお店でのお買い物」でもれなくP1,000をプレゼント！
+            %li.mypage-tabs-content-link
               %figure
-                .mypage__tabs--content__link--icon
+                .mypage-tabs-content-link__icon
                   = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                .mypage__tabs--content__link--body
-                  .mypage__tabs--content__link--text フリマで買うと最大でP5,000+P1,000もらえる！事前準備はこちら
+                .mypage-tabs-content-link__body
+                  .mypage-tabs-content-link__text フリマで買うと最大でP5,000+P1,000もらえる！事前準備はこちら
             %li.mypage__display-list
               = link_to "一覧を見る", class: 'btn'
-
 
       %section.Purchased-list
         %h2.Purchased-list__head 購入した商品
