@@ -41,7 +41,7 @@
             %p ブランド
 
     .header__bottom--right
-      = link_to class: "login" do
+      = link_to new_user_session_path class: "login" do
         %p ログイン
-      = link_to class: "signup" do
+      = link_to users_path class: "signin" do
         %p 新規会員登録

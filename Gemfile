@@ -72,10 +72,8 @@ gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 gem 'devise'
+gem 'active_hash'
 
 group :production do
   gem 'unicorn'
 end
-
-gem "font-awesome-sass"
-gem "haml-rails"
