@@ -23,38 +23,30 @@
      
   .sale-item__container
     %h2.item-name
-      商品名のエリア
+      = @item.name
     .item-image-box
       .item-image-box__main
         = image_tag src="item-dummy-1.png",class: "item-image-box__main--image"
       %ul.item-image-thumbnail
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-1.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-2.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
-
+        - @item.images.each do |image|
+          %li.item-image-thumbnail__part
+            = image_tag image.image_url, class:"item-image-thumbnail__part--mini-image"
     .item-price-box
       .item-price-box__price
-        ¥30000
+        =@item.price
       .item-price-box__detail
         %span.item-price-box__detail--tax
           (税込)
         %span.item-price-box__detail--postage
-          送料込み
+          - case @item.postage_payer
+            - when 1
+              = "送料込み"
+            - when 2
+              = "送料別"
 
     .item-content
-      商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。
-      <br/>
-      <br/>
-      商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。
+      = @item.content
+      
       <br/>
     //出品者以外がログイン時のみ閲覧可能
     = link_to "購入する", "#", class: "item-buy-link"
@@ -81,15 +73,29 @@
             %th
               ブランド
             %td
+              = @item.brand
           %tr
             %th
-              商品のサイズ
+              サイズ
             %td
+              = @item.size
           %tr
             %th
               商品の状態
             %td
-              新品/未使用
+              - case @item.condition
+                - when 1
+                  = "新品、未使用"
+                - when 2
+                  = "未使用に近い"
+                - when 3
+                  = "目立った傷や汚れなし"
+                - when 4
+                  = "やや傷や汚れあり"
+                - when 5
+                  = "傷や汚れあり"
+                - when 6
+                  = "全体的に状態が悪い"
           %tr
             %th
               配送方法
@@ -99,17 +105,29 @@
             %th
               配送料の負担
             %td
-              着払い（購入者負担）
+              - case @item.postage_payer
+                - when 1
+                  = "送料込み(出品者負担)"
+                - when 2
+                  = "着払い(購入者負担)"
           %tr
             %th
               発送元の地域
             %td
-              =link_to "青森県", "#"
+              =link_to "#" do
+                青森県
           %tr
             %th
               発送日の目安
             %td
-              1-2日で発送
+              - case @item.preparation_day
+                - when 1
+                  = "1~2日で発送"
+                - when 2
+                  = "2~3日で発送"
+                - when 3
+                  = "4~7日で発送"
+              
     //出品者以外がログイン時のみ閲覧可能
     .item-menu
       %ul.item-menu__list
