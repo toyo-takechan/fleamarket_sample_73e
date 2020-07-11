@@ -179,14 +179,20 @@
   height: 48px;
   line-height: 48px;
   }
-
+  .mypage-menu-list--item--info a{
+    display: block;
+    color: #333;
+  }
 .mypage-menu-list--item {
   height: 48px;
   line-height: 48px;
   border-bottom: 1px solid #eee;
   background: #fff;
 }
-
+.mypage-menu-list--item a{
+  display: block;
+  color: #333;
+}
 .mypage-menu-list--head {
   margin: 40px 0 0;
   color: #333;
@@ -195,8 +201,6 @@
 
 a{ 
   text-decoration: none;
-  display: block;
-  color: #333;
 }
 
 
