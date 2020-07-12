@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+    @item = Item.find(params[:id])
   end
   
   def show

@@ -53,7 +53,7 @@
       -# 出品者以外がログイン時のみ閲覧可能
       -# ログイン機能実装次第、if文のコメントを外し、link_toのインデントを下げる
       -# - if user_signed_in? && current_user.id != @item.seller_id
-      = link_to "購入する", "#", class: "item-buy-link"
+      = link_to "購入する", confirm_item_path, class: "item-buy-link"
       -# ここまで
 
       .item-content
