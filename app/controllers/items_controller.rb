@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @relatedItems = Item.where(category_id: @item.category_id)
+    @lastItem = Item.last
   end
 
   

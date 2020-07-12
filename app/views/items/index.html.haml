@@ -82,42 +82,18 @@
         .pickup-list
           - @items.each do |item|
             = render partial: 'item', locals: {item: item}
-            -# .list
-              -# = link_to do
-              -#   = image_tag item.images.first.image_url, width:"100%", alt: 'img'
-              -# .list__content
-              -#   .list__content--title
-              -#     %p 
-              -#       = item.name
-              -#   .list__content--price
-              -#     %p 
-              -#       = item.price
-              -#   .list__content--star
-              -#     %p ★ 0
-         
+            
       .pickup__brand
         %h2 ピックアップブランド
         %h3 アーカイブ
         .pickup-list
           - @brandItems.each do |item|
             = render partial: 'item', locals: {item: item}
-            -# .product-list
-            -#   = link_to do
-            -#     = image_tag item.images.first.image_url, width:"100%", alt: 'img'
-            -#   .list__content
-            -#     .list__content--title
-            -#       %p
-            -#         =item.name
-            -#     .list__content--price
-            -#       %p 
-            -#         =item.price
-            -#     .list__content--star
-            -#       %p ★ 0
-         
+
 
     .content3
       .visual
-        = image_tag "/assets/pict/bg-appBanner-pict.jpg",width: "100%", alt: "visual-1"
+        = image_tag "/assets/pict/bg-appBanner-pict.jpg",alt: "visual-1"
       .visual__comment
         #bottomVisual
           .visual__comment--text
