@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @relatedItems = Item.where(category_id: @item.category_id).where.not(id: params[:id])
+    @relatedItems = Item.where(category_id: @item.category_id).where.not(id: params[:id]).order("RAND()").limit(3)
     @lastItem = Item.last
   end
 

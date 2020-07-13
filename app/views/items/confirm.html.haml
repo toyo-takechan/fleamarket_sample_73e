@@ -1,6 +1,6 @@
 .wrapper 
-  .header
-    .header__top-rogo
+  .confirm-header
+    .confirm-header__top-rogo
       = link_to image_tag "/assets/logo/logo.png", size: "185x49", alt: "logo"
   .container
     .products-top
@@ -53,13 +53,13 @@
         配送先と支払い方法の入力を完了してください。
       %button{type: "submit", class:'confirm__contact--comment'}
         購入する
-  .footer
-    %ul.footer__name
+  .confirm-footer
+    %ul.confirm-footer__name
       %li.footer__name__text
         = link_to "プライバシーポリシー", "#"
-      %li.footer__name__text
+      %li.confirm-footer__name__text
         = link_to "フリマ利用規約", "#"
-      %li.footer__name__text
+      %li.confirm-footer__name__text
         = link_to "特定商取引に関する表記", "#"     
-    .footer__rogo
+    .confirm-footer__rogo
       = link_to image_tag "/assets/logo/logo.png", size: "65x50", alt: "logo"
