@@ -1,29 +1,28 @@
-section.credit-container{
+.creditContainer{
   margin: 0;
   background: #fff;
-
+  &__head{
+    font-weight: 600;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    border-bottom: 1px solid #f5f5f5;
+    background: #fff;
+    text-align: center;
+  }
 }
-.credit-head{
-  font-weight: 600;
-  height: 50px;
-  line-height: 50px;
-  font-size: 24px;
-  border-bottom: 1px solid #f5f5f5;
-  background: #fff;
-  text-align: center;
-}
-.card-form{
+.card{
   padding: 40px 40px 64px;
   &__content{
     max-width: 343px;
     margin: 0 auto;
   }
 }
-.card-group label{
+.cardGroup label{
   font-weight:  600;
   display: inline-block;
 }
-.required-item{
+.requiredItem{
   background: #ea352d;
   color: #fff;
   padding: 2px 4px;
@@ -31,7 +30,7 @@ section.credit-container{
   font-size: 12px;
   vertical-align: top;
 }
-.card-number{
+.cardNumber{
   width: 343px;
   height: 48px;
   padding:10px 16px 8px;
@@ -50,63 +49,67 @@ section.credit-container{
 height: 30px;
 margin: 0 8px 0 0;
 }
-.card-expiration{
+.cardExpiration{
   margin-top: 32px;
+  &__date{
+    font-weight: 600;
+  }
 }
-.expiration-date{
-  font-weight: 600;
-}
-.select-month-box{
+
+.monthBox{
   height: 48px;
   width: 168px;
   display: inline-block;
+  &__expire{
+    height: 48px;
+    width: 131.5px;
+  }
 }
-.select-year-box{
+.yearBox{
   height: 48px;
   width: 168px;
   display: inline-block;
+  &__expire{
+    height: 48px;
+    width: 131.5px;
+  }
 }
-.expire-month{
-  height: 48px;
-  width: 131.5px;
-}
-.expire-year{
-  height: 48px;
-  width: 131.5px;
-}
-.security-group{
+
+.securityGroup{
   width: 343px;
   height: 80px;
   margin-top: 32px;
+  &__code{
+    font-weight: 600;
+  }
+  &__number{
+    height: 48px;
+    width: 100%;
+    padding: 10px 16px 8px;
+    margin: 8px 0 0;
+  }
 }
-.security-code{
-  font-weight: 600;
-}
-.security-number{
-  height: 48px;
-  width: 100%;
-  padding: 10px 16px 8px;
-  margin: 8px 0 0;
-}
-.help-number{
+
+.helpNumber{
   position: relative;
   margin: 8px 0 0;
+  &__text{
+    text-align: right;
+    color: #0099e8
+    &--question{
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0099e8;
+      color: #fff;
+      line-height: 14px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
 }
-.help-number__text{
-  text-align: right;
-  color: #0099e8
-}
-.number-question{
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #0099e8;
-  color: #fff;
-  line-height: 14px;
-  font-size: 12px;
-  text-align: center;
-}
+
 .btn-add{
   margin: 24px 0 0;
   background: #ea352d;
