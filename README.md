@@ -22,13 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
 # fleamarket_sample_73e DB設計
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|email|string|null: false|
+|email|string|null: false, unique: true|
 |password|string|null: false|
 ### Association
 - has_many :items
@@ -59,14 +58,13 @@ Things you may want to cover:
 |first_name_kana|string|null: false|
 |family_name_kana|string|null: false|
 |post_code|string|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
+|prefecture_id(active_hash)|integer|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string||
-|telephone_number|integer|unique: true|
+|telephone_number|string|unique: true|
 ### Association
 - belongs_to :user
-- belongs_to :prefectue
 
 ## credit_cardsテーブル
 |Column|Type|Options|
@@ -79,13 +77,6 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
-## prefecturesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :addresses
-- has_many :items
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -94,30 +85,25 @@ Things you may want to cover:
 |price|integer|null :false|
 |content|text|null :false|
 |category_id|references|null: false, foreign_key: true|
-|condition_id|references|null: false, foreign_key: true|
+|condition|integer|null: false|
 |brand|string||
-|size_id|references|foreign_key: true|
-|preparation_day_id|references|null: false, foreign_key: true|
-|postage_type_id|references|null: false, foreign_key: true|
-|postage_payer_id|references|null: false, foreign_key: true|
+|size|string||
+|preparation_day|integer|null: false|
+|postage_type|integer|null: false|
+|postage_payer|integer|null: false|
 |seller_id|references|null: false, foreign_key: true|
 |buyer_id|references|foreign_key: true|
-|prefecture_id|references|null: false, foreign_key: true|
+|prefecture_id(active_hash)|integer|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :prefecture
 - belongs_to :category
-- belongs_to :condition
-- belongs_to :size
-- belongs_to :preparation_day
-- belongs_to :postage_type
-- belongs_to :postage_payer
 - has_many :images
 
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true|
+|image_url|string|null: false|
 ## Association
 - belongs_to :item
 
@@ -129,37 +115,4 @@ Things you may want to cover:
 ### Association
 - has_many :items
 
-## conditionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
 
-## sizesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
-
-## preparation_daysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
-
-## postage_typesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
-
-## postage_payersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
