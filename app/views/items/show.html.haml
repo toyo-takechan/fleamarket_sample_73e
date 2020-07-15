@@ -196,12 +196,12 @@
 
     %ul.item-links
       %li
-        - if @item.id > 1
+        - if @item.id != @items.first.id
           = link_to item_path(@item.id - 1), class:"item-links__btn" do
             %icon.fa.fa-angle-left
             前の商品
       %li
-        - if @item.id != @lastItem.id
+        - if @item.id != @items.last.id
           = link_to item_path(@item.id + 1), class:"item-links__btn" do
             後ろの商品
             %icon.fa.fa-angle-right
