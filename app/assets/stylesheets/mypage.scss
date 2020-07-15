@@ -1,0 +1,146 @@
+.mypage {
+  background: white;
+  height: 200px;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  color: #333;
+  &__nickname {
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  &__number {
+    margin: 8px 0 0;
+    &--assess {
+      display: inline-block;
+      font-size: 14px;
+    }
+    &--displays {
+      display: inline-block;
+      font-size: 14px;
+  }
+  }
+}
+.mypage-container {
+  width: 700px;
+  height:  589.84px;
+  margin: 0;
+  background: #eee;
+  &__tabs {
+    position: relative;
+    text-align: center;
+    line-height: 74px;
+    display: flex;
+    &--notice{
+      width: 50%;
+      background-color: #fff;
+      border-top: 2px solid #ea352d;
+    }
+    &--notice a{
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+    }
+    &--todo {
+      width: 50%;
+    }
+    &--todo a{
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+    }
+    &--contents {
+      height: 515.84px;
+      &__list {
+        min-height: 100%;
+      }
+    }
+  }
+}
+
+
+.mypageContentsList{
+  &--link {
+    display: block;
+    min-height: 80px;
+    padding:  16px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    &__icon {
+      position: relative;
+      float: left;
+    }
+    &__body {
+      margin: 0 40px 0 68px;
+    }
+    &__text {
+      font-size: 14px;
+    }
+  }
+  &--display {
+    padding: 16px;
+  }
+  &--display a{
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: #eee;
+    color: #333;
+    line-height: 56px;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
+.Purchased {
+  width: 700px;
+  height: 382px;
+  margin: 40px 0 0 0;
+  background: #fff;
+  &__head {
+    padding: 0 16px;
+    background: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+    color: #333;
+    font-weight: bold;
+  }
+}
+.purchased-tabs {
+  width: 700px;
+  height: 74px;
+  list-style: none;
+}
+.purchased-tabs li{
+  width: 50%;
+  height: 74px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  line-height: 74px;
+  background: #eee;
+}
+
+.purchased-tabs li.trade {
+  background: #fff;
+  border-top: 2px solid #ea352d;
+}
+
+.tab-contents {
+  width: 700px;
+  height: 236px;
+  position: relative;
+  &__notfound {
+    padding: 160px 0 60px;
+    text-align: center;
+    font-size: 16px;
+    color: #ccc;
+    position: relative;
+  }
+}
