@@ -1,6 +1,6 @@
 .wrapper 
-  .header
-    .header__top-rogo
+  .confirm-header
+    .confirm-header__top-rogo
       = link_to image_tag "/assets/logo/logo.png", size: "185x49", alt: "logo"
   .container
     .products-top
@@ -8,22 +8,22 @@
         購入内容の確認
     .products-main
       .products-main__itembox
-        = image_tag "/assets/icon-01.png", size: "80x80", alt: "icon"
+        = image_tag @item.images.first.image_url
       .products-main__detail
         .products-main__detail__name
-          ジーンズIee201
+          = @item.name
         .products-main__detail__price
           %span.products-main__detail__price__ja
             送料込み(税込)
           %span.products-main__detail__price__fee
-            1300円
+            = "#{@item.price}円"
     .buy
       .buy__content
         .buy__content__price
           %span.buy__content__price__label
             支払い金額
           %span.buy__content__price__cel
-            ¥1300
+            = "#{@item.price}円"
         .buy__content__point
           %span.buy__content__point__input
           %span.buy__content__point__img
@@ -53,13 +53,13 @@
         配送先と支払い方法の入力を完了してください。
       %button{type: "submit", class:'confirm__contact--comment'}
         購入する
-  .footer
-    %ul.footer__name
+  .confirm-footer
+    %ul.confirm-footer__name
       %li.footer__name__text
         = link_to "プライバシーポリシー", "#"
-      %li.footer__name__text
+      %li.confirm-footer__name__text
         = link_to "フリマ利用規約", "#"
-      %li.footer__name__text
+      %li.confirm-footer__name__text
         = link_to "特定商取引に関する表記", "#"     
-    .footer__rogo
+    .confirm-footer__rogo
       = link_to image_tag "/assets/logo/logo.png", size: "65x50", alt: "logo"

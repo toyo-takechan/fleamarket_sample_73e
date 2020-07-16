@@ -79,101 +79,21 @@
       .pickup__category
         %h2 ピックアップカテゴリー
         %h3 新規投稿商品
-        .pickup__category--lists
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
-
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
-
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
-
-
+        .pickup-list
+          - @items.each do |item|
+            = render partial: 'item', locals: {item: item}
+            
       .pickup__brand
         %h2 ピックアップブランド
         %h3 アーカイブ
-        .pickup__category--lists
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
+        .pickup-list
+          - @brandItems.each do |item|
+            = render partial: 'item', locals: {item: item}
 
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
-
-          .list
-            = link_to do
-              = image_tag '/assets/pict/mitte20614014_TP_V4.jpg', width:"100%", alt: 'img'
-            .list__content
-              .list__content--title
-                %p list1
-              .list__content--price
-                %p 2000円
-              .list__content--star
-                %p ★ 0
 
     .content3
       .visual
-        = image_tag "/assets/pict/bg-appBanner-pict.jpg",width: "100%", alt: "visual-1"
+        = image_tag "/assets/pict/bg-appBanner-pict.jpg",alt: "visual-1"
       .visual__comment
         #bottomVisual
           .visual__comment--text
@@ -189,4 +109,4 @@
                   = image_tag '/assets/icon/google-play-badge.png',height: "80px", width: "200px", alt: 'google'
 
 
-  =render "footer"
+  = render "footer"

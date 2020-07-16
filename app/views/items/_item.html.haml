@@ -1,0 +1,16 @@
+= link_to item_path(item) do
+  = image_tag item.images.first.image_url,class: "product-img"
+  .product-content
+    .product-content__upper
+      = item.name
+    %ul.product-content__center
+      %li
+        = item.price
+        円
+      %li
+        %i.fas.fa-star
+        %span
+          0
+    .product-content__footer
+      (税込)
+   

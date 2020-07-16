@@ -1,6 +1,6 @@
 .header
   .header__top
-    .header__top--rogo
+    = link_to root_path, class:"header__top--rogo" do
       = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
     .header__top--form
       %form{action: "/", method: "post"}
