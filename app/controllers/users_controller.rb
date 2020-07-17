@@ -19,11 +19,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def singin
+  end
   
   private
 
   def user_params
-    params.require(:user).permit(:name, :email).merge(user_id: current_user.id)
+    params.require(:user).permit(:nickname, :email).merge(user_id: current_user.id)
   end
   
 end

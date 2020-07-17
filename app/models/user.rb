@@ -4,7 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, uniqueness: true
+  #パスワードは7文字以上制限をかける
+  validates :nickname, presence: true, uniqueness: true
+  validates :password, length: { minimum: 7 }
 
-  belongs_to :profile
+  has_many :items
+  has_one :profile
+  has_one :address
+  has_one :credit_card
+
 end

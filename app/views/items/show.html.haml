@@ -1,217 +1,230 @@
-.sale-item-page
-  -# カテゴリのナビゲーター
-  .category-nav
-    %ul
-      %li
-        = link_to "FURIMA", "#"
-      %li
-        %i.fa.fa-angle-right
-      %li
-        = link_to "ベビー・キッズ", "#"
-      %li
-        %i.fa.fa-angle-right
-      %li
-        = link_to "ベビー服(男女兼用)~95cm", "#"
-      %li
-        %i.fa.fa-angle-right
-      %li
-        = link_to "アウター", "#"
-      %li
-        %i.fa.fa-angle-right
-      %li
-        = link_to "商品名のエリア", "#", class: "current-page"
-     
-  .sale-item__container
-    %h2.item-name
-      商品名のエリア
-    .item-image-box
-      .item-image-box__main
-        = image_tag src="item-dummy-1.png",class: "item-image-box__main--image"
-      %ul.item-image-thumbnail
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-1.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-2.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
-        %li.item-image-thumbnail__part
-          = image_tag src="item-dummy-3.png", class:"item-image-thumbnail__part--mini-image"
+.wrapper
+  = render "header"
+  .sale-item-page
+    -# カテゴリのナビゲーター
+    .category-nav
+      %ul
+        %li
+          = link_to "FURIMA", "#"
+        %li
+          %i.fa.fa-angle-right
+        %li
+          = link_to "ベビー・キッズ", "#"
+        %li
+          %i.fa.fa-angle-right
+        %li
+          = link_to "ベビー服(男女兼用)~95cm", "#"
+        %li
+          %i.fa.fa-angle-right
+        %li
+          = link_to "アウター", "#"
+        %li
+          %i.fa.fa-angle-right
+        %li
+          = link_to "商品名のエリア", "#", class: "current-page"
+      
+    .sale-item__container
+      %h2.item-name
+        = @item.name
+      .item-image-box
+        .item-image-box__main
+          = image_tag @item.images.first.image_url,class: "item-image-box__main--image"
+        %ul.item-image-thumbnail
+          - @item.images.each do |image|
+            %li.item-image-thumbnail__part
+              = image_tag image.image_url, class:"item-image-thumbnail__part--mini-image"
+      .item-price-box
+        .item-price-box__price
+          = "¥#{@item.price}"
+        .item-price-box__detail
+          %span.item-price-box__detail--tax
+            (税込)
+          %span.item-price-box__detail--postage
+            - case @item.postage_payer
+              - when 1
+                = "送料込み"
+              - when 2
+                = "送料別"
 
-    .item-price-box
-      .item-price-box__price
-        ¥30000
-      .item-price-box__detail
-        %span.item-price-box__detail--tax
-          (税込)
-        %span.item-price-box__detail--postage
-          送料込み
-
-    .item-content
-      商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。
-      <br/>
-      <br/>
-      商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。商品説明の欄です。
-      <br/>
-    //出品者以外がログイン時のみ閲覧可能
-    = link_to "購入する", "#", class: "item-buy-link"
-    //ここまで
-
-    .item-content
-      %table
-        %tbody
-          %tr
-            %th
-              出品者
-            %td
-              hoge
-          %tr
-            %th
-              カテゴリー
-            %td
-              =link_to "メンズ", "#"
-              %br
-              =link_to "ジャケット/アウター", "#"
-              %br
-              =link_to "ノーカラージャケット", "#"
-          %tr
-            %th
-              ブランド
-            %td
-          %tr
-            %th
-              商品のサイズ
-            %td
-          %tr
-            %th
-              商品の状態
-            %td
-              新品/未使用
-          %tr
-            %th
-              配送方法
-            %td
-              未定
-          %tr
-            %th
-              配送料の負担
-            %td
-              着払い（購入者負担）
-          %tr
-            %th
-              発送元の地域
-            %td
-              =link_to "青森県", "#"
-          %tr
-            %th
-              発送日の目安
-            %td
-              1-2日で発送
-    //出品者以外がログイン時のみ閲覧可能
-    .item-menu
-      %ul.item-menu__list
-        %li.item-menu__list--like-btn
-          %icon.fa.fa-star
-          お気に入り 0
-        %li.item-menu__list--report-btn
-          = link_to "#" ,class:"report-link" do
-            %icon.fa.fa-flag
-            不適切な商品の通報
-    //ここまで
-  
-  //出品者のみ閲覧可能
-  .exhibitor-menu-container 
-    = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
-    %p or
-    = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
-  //ここまで
-
-  //ログイン時のみ閲覧可能（ログインしているユーザー全て）
-  .comment-container
-    = form_with url: "#" do |f|
-      = f.text_area :comment, class: "comment-inputbox"
-      %p.notice
-        相手のことを考え丁寧なコメントを心がけましょう。
-        %br
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %br
-      = button_tag type: "submit", class: "comment-submit-btn" do
-        %icon.fa.fa-comment
-        コメントする
-  // ここまで
-
-  %ul.item-links
-    %li
-      = link_to "#", class:"item-links__btn" do
-        %icon.fa.fa-angle-left
-        前の商品
-    %li
-      = link_to "#", class:"item-links__btn" do
-        後ろの商品
-        %icon.fa.fa-angle-right
-  .more-items
-    = link_to "メンズをもっと見る", "#", class: "more-items__link"
-  
-  .product-list
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
-    = link_to "#" do
-      = image_tag src="item-dummy-1.png",class: "product-list__img"
-      .product-list__content
-        .product-list__content--upper
-          似ている商品の名前
-        %ul.product-list__content--center
-          %li
-            30000円
-          %li
-            %i.fas.fa-star
-            %span
-              0
-        .product-list__content--footer
-          (税込)
+      .item-content
+        = @item.content
         
+        <br/>
+      -# 出品者以外がログイン時のみ閲覧可能
+      -# ログイン機能実装次第、if文のコメントを外し、link_toのインデントを下げる
+      -# - if user_signed_in? && current_user.id != @item.seller_id
+      = link_to "購入する", confirm_item_path, class: "item-buy-link"
+      -# ここまで
 
-   
+      .item-content
+        %table
+          %tbody
+            %tr
+              %th
+                出品者
+              %td
+                -# ログイン機能実装次第、下記コメントを外す
+                -# = @item.user.name
+                hoge
+            %tr
+              %th
+                カテゴリー
+              %td
+                =link_to "メンズ", "#"
+                %br
+                =link_to "ジャケット/アウター", "#"
+                %br
+                =link_to "ノーカラージャケット", "#"
+            %tr
+              %th
+                ブランド
+              %td
+                = @item.brand
+            %tr
+              %th
+                サイズ
+              %td
+                = @item.size
+            %tr
+              %th
+                商品の状態
+              %td
+                - case @item.condition
+                  - when 1
+                    = "新品、未使用"
+                  - when 2
+                    = "未使用に近い"
+                  - when 3
+                    = "目立った傷や汚れなし"
+                  - when 4
+                    = "やや傷や汚れあり"
+                  - when 5
+                    = "傷や汚れあり"
+                  - when 6
+                    = "全体的に状態が悪い"
+            %tr
+              %th
+                配送方法
+              %td
+                -case @item.postage_type
+                  - when 1
+                    = "未定"
+                  - when 2
+                    = "らくらくFURIMA便"
+                  - when 3
+                    = "ゆうゆうFURIMA便"
+                  - when 4
+                    = "ゆうメール"
+                  - when 5
+                    = "レターパック"
+                  - when 6
+                    = "普通郵便(定型、定形外)"
+                  - when 7
+                    = "クロネコヤマト"
+                  - when 8
+                    = "ゆうパック"
+                  - when 9
+                    = "クリックポスト"
+                  - when 10
+                    = "ゆうパケット"
+            %tr
+              %th
+                配送料の負担
+              %td
+                - case @item.postage_payer
+                  - when 1
+                    = "送料込み(出品者負担)"
+                  - when 2
+                    = "着払い(購入者負担)"
+            %tr
+              %th
+                発送元の地域
+              %td
+                =link_to "#" do
+                  -# prefecturesテーブルとアソシエーションを組んだ後、下記コメントを外す
+                  -# = @item.prefecture.name
+                  青森県
+            %tr
+              %th
+                発送日の目安
+              %td
+                - case @item.preparation_day
+                  - when 1
+                    = "1~2日で発送"
+                  - when 2
+                    = "2~3日で発送"
+                  - when 3
+                    = "4~7日で発送"
+                
+      -# 出品者以外がログイン時のみ閲覧可能
+      -# ログイン機能実装次第、if文のコメントを外し、.item-menu以下のインデントをずらす
+      -# - if user_signed_in? && current_user.id != @item.seller_id
+      .item-menu
+        %ul.item-menu__list
+          %li.item-menu__list--like-btn
+            %icon.fa.fa-star
+            お気に入り 0
+          %li.item-menu__list--report-btn
+            = link_to "#" ,class:"report-link" do
+              %icon.fa.fa-flag
+                不適切な商品の通報
+      -# ここまで
+    
+    -# 出品者のみ閲覧可能
+    -# ログイン機能実装次第、if文のコメントを外し、.exhibitor-menu-container以下のインデントをずらす
+    -# - if current_user.id == @item.seller_id
+    .exhibitor-menu-container 
+      = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
+      %p or
+      = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
+    -# ここまで
+
+    -# ログイン時のみ閲覧可能（ログインしているユーザー全て）
+    - if user_signed_in?
+      .comment-container
+        = form_with url: "#" do |f|
+          = f.text_area :comment, class: "comment-inputbox"
+          %p.notice
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+          = button_tag type: "submit", class: "comment-submit-btn" do
+            %icon.fa.fa-comment
+            コメントする
+    // ここまで
+
+    %ul.item-links
+      %li
+        - if @item.id != @items.first.id
+          = link_to item_path(@item.id - 1), class:"item-links__btn" do
+            %icon.fa.fa-angle-left
+            前の商品
+      %li
+        - if @item.id != @items.last.id
+          = link_to item_path(@item.id + 1), class:"item-links__btn" do
+            後ろの商品
+            %icon.fa.fa-angle-right
+    .more-items
+      = link_to "メンズをもっと見る", "#", class: "more-items__link"
+    
+    .product-list
+      = render partial:'item', collection: @relatedItems
+  
+  .content3
+    .visual
+      = image_tag "/assets/pict/bg-appBanner-pict.jpg",width: "100%", alt: "visual-1"
+    .visual__comment
+      #bottomVisual
+        .visual__comment--text
+          %p だれでもかんたん、人生を変えるフリマアプリ
+        .visual__comment--subtitle
+          %h2 今すぐ無料ダウンロード！
+        .visual__comment--btn
+          = link_to do
+            #apple
+              = image_tag '/assets/icon/Download_on_the_App_Store_Badge_JP_blk_100317.png',height: "px", width: "150px", alt: 'apple'
+            = link_to do
+              #google
+                = image_tag '/assets/icon/google-play-badge.png',height: "80px", width: "200px", alt: 'google'
+  = render "footer"
