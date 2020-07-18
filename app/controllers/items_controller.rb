@@ -6,20 +6,27 @@ class ItemsController < ApplicationController
     @brandItems = Item.where(brand: "ABC")
   end
 
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.create
+    if @item.save
+    end
+  end
+
   def confirm
   end
-  
+
   def show
     @items = Item.all
     @relatedItems = Item.where(category_id: @item.category_id).where.not(id: params[:id]).order("RAND()").limit(3)
   end
 
-  
+
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def new
   end
 
 end
