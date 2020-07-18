@@ -1,0 +1,20 @@
+.logout{
+  text-align: center;
+  margin: 0;
+  padding: 24px 40px 64px;
+  background: #fff;
+  &__container{
+    background: #ea325d;
+    border: 1px solid #ea352d;
+    max-width: 320px;
+    height: 50px;
+    margin: 0 auto;
+  }
+}
+
+  a{
+    color: #fff;
+    font-size: 14px;
+    line-height: 48px;
+    display: block;
+}

@@ -1,0 +1,49 @@
+!!!
+%html
+  %head
+    %title 会員情報登録
+    = stylesheet_link_tag 'application', media: 'all'
+  %body
+    .rogin-form
+      .rogin-head
+        =link_to root_path do
+          = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+
+      .rogin-body
+        .rogin-body__inner
+          .rogin-body__header
+            アカウントをお持ちでない方はこちら
+          .rogin-body__header-link
+            = link_to "新規会員登録",new_user_registration_path
+          .rogin-body__middle
+            .rogin-body__middle-google
+              = link_to "Googleでログイン",root_path
+            .rogin-body__middle-facebook
+              = link_to "Facebookでログイン",root_path
+            .rogin-body__middle-apple
+              = link_to "Appleでログイン",root_path
+          .rogin-body__footer
+            = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              .rogin-body__footer-forms
+                .rogin-body__footer-mailform
+                  = f.email_field :email, class: 'input-form',placeholder: 'メールアドレス'
+                .rogin-body__footer-passwordform
+                  = f.password_field :password, class: 'input-form',placeholder: 'パスワード'
+              .rogin-body__footer-button
+                = f.submit "ログイン"
+              .rogin-body__footer-message
+                =link_to "パスワードをお忘れの方",root_path
+
+      .rogin-footer
+        .rogin-footer__policy
+          .rogin-footer__policy-privacy
+            =link_to "プライバシーポリシー", root_path
+          .rogin-footer__policy-kiyaku
+            =link_to "アプリ利用規約", root_path
+          .rogin-footer__policy-tokusyo
+            =link_to "特定商取引に関する表記", root_path 
+        .rogin-footer__incline
+          =link_to root_path do
+            = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
+          %p © FURIMA
+
