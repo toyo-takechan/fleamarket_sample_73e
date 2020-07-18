@@ -39,7 +39,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def extension_whitelist
   #   %w(jpg jpeg gif png)
   # end
-
+  if Rails.env.development? || Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
@@ -47,8 +51,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 end
 
-if Rails.env.development? || Rails.env.test?
-  storage :file
-else
-  storage :fog
-end
+
