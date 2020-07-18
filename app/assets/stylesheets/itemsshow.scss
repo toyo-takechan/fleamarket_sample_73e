@@ -83,13 +83,13 @@
                 display: none;
               }
             }
-          }
-          &:hover{
-            .nav{
-              display: block;
-              &:hover{
-                .nav__content{
-                  display: block;
+            &:hover{
+              .nav{
+                display: block;
+                &:hover{
+                  .nav__content{
+                    display: block;
+                  }
                 }
               }
             }
