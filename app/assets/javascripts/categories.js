@@ -1,0 +1,14 @@
+$(document).ready(function() {
+
+  $('.parent').hover(function() {
+    $(this).children('.nav__content').show();
+  }, function() {
+    $(this).children('.nav__content').hide();
+  });
+
+  $('.child').hover(function() {
+    $(this).children('.nav__content--grandchild').show();
+  }, function() {
+    $(this).children('.nav__content--grandchild').hide();
+  });
+});

@@ -14,28 +14,21 @@
           = link_to do
             %p カテゴリー
           %ul.nav
-            %li
-              = link_to do
-                レディース
-              %ul.nav__content
-                %li
-                  = link_to do
-                    トップス
-                %li
-                  = link_to do
-                    ボトムス
-                %li
-                  = link_to do
-                    シューズ
-            %li
-              = link_to do
-                メンズ
-
-            %li
-              = link_to do
-                キッズ
-
-
+            - @parents.each do |parent|
+              %li.parent
+                = link_to do
+                  = parent.name
+                %ul.nav__content
+                  - parent.children.each do |child|
+                    %li.child
+                      = link_to do
+                        = child.name
+                      %ul.nav__content--grandchild
+                        - child.children.each do |grandchild|
+                          %li
+                            = link_to do
+                              = grandchild.name 
+                
         %li.content
           = link_to class: "brand" do
             %p ブランド
