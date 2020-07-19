@@ -41,7 +41,11 @@
             %p ブランド
 
     .header__bottom--right
-      = link_to new_user_session_path class: "login" do
-        %p ログイン
-      = link_to users_path class: "signin" do
-        %p 新規会員登録
+      - if user_signed_in?
+        =link_to edit_user_path(id: current_user.id), class: "mypage" do
+          %p マイページ
+      - else
+        = link_to new_user_session_path class: "login" do
+          %p ログイン
+        = link_to users_path class: "signin" do
+          %p 新規会員登録

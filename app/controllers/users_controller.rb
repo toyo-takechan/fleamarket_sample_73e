@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:edit]
+
   def index
     @user = User.new
     @profile = Profile.new
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def singin
+  def logout
   end
   
   private
@@ -28,4 +30,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :email).merge(user_id: current_user.id)
   end
   
+  def set_user
+    @user = User.find(params[:id])
+  end
+
 end
