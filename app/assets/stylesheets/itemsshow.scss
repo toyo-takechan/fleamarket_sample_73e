@@ -82,7 +82,7 @@
                 background-color: #fffcee;
                 display: none;
                 &--grandchild {
-                  width: 200px;
+                  width: 250px;
                   position: absolute;
                   top: 0;
                   left: 200px;
@@ -458,7 +458,7 @@
     }
     .item-image-box {
       width: 620px;
-      margin-top: 16px;
+      margin: 16px auto 0;
       &__main {
         width: 560px;
         height: 346px;

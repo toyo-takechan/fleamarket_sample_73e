@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
 
   $('.parent').hover(function() {
     $(this).children('.nav__content').show();

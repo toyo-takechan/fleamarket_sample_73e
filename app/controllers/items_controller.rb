@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @relatedItems = Item.where(category_id: @item.category_id).where.not(id: params[:id]).order("RAND()").limit(3)
+    # @category = @item.category_id
   end
 
   def set_item
@@ -22,4 +23,5 @@ class ItemsController < ApplicationController
   def set_parent_category
     @parents = Category.where(ancestry: nil)
   end
+
 end

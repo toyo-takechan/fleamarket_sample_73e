@@ -21,15 +21,15 @@ require './db/seeds/bicycles.rb'
 require './db/seeds/others.rb'
 
 
-# Item.create(name: "ねこちゃん", content: "かわいい猫のぬいぐるみです。", category_id: 1, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1, buyer_id: 2)
+# Item.create(name: "ねこちゃん", content: "かわいい猫のぬいぐるみです。", category_id: 585, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1, buyer_id: 2)
 
-# Item.create(name: "うさちゃん", content: "かわいいウサギのぬいぐるみです。", category_id: 3, size: "", brand: "", condition: 3, postage_payer: 1, postage_type: 2, prefecture_id: 8, preparation_day: 1, price: 3000, seller_id: 1)
+# Item.create(name: "うさちゃん", content: "かわいいウサギのぬいぐるみです。", category_id: 585, size: "", brand: "", condition: 3, postage_payer: 1, postage_type: 2, prefecture_id: 8, preparation_day: 1, price: 3000, seller_id: 1)
 
-# Item.create(name: "くまさん", content: "かわいいくまのぬいぐるみです。", category_id: 3, size: "", brand: "", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1)
+# Item.create(name: "くまさん", content: "かわいいくまのぬいぐるみです。", category_id: 585, size: "", brand: "", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1)
 
 # Item.create(name: "お気に入りTシャツ", content: "かわいいTシャツです", category_id: 3, size: "38", brand: "hoge", condition: 3, postage_payer: 1, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 3000, seller_id: 1)
 
-# Item.create(name: "冬用ニット", content: "かわいいニットです。", category_id: 1, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1)
+# Item.create(name: "冬用ニット", content: "かわいいニットです。", category_id: 11, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1)
 
 
 # Image.create(item_id: 1, image_url: "https://tk.ismcdn.jp/mwimgs/e/b/1140/img_eb31afc9c1fb914d68a7c73b657c7ebe183087.jpg")

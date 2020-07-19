@@ -9,19 +9,19 @@
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "ベビー・キッズ", "#"
+          = link_to @item.category.root.name, "#"
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "ベビー服(男女兼用)~95cm", "#"
+          = link_to @item.category.parent.name, "#"
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "アウター", "#"
+          = link_to @item.category.name, "#"
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "商品名のエリア", "#", class: "current-page"
+          = link_to @item.name, "#", class: "current-page"
       
     .sale-item__container
       %h2.item-name
@@ -70,11 +70,11 @@
               %th
                 カテゴリー
               %td
-                =link_to "メンズ", "#"
+                =link_to @item.category.root.name, "#"
                 %br
-                =link_to "ジャケット/アウター", "#"
+                =link_to @item.category.parent.name, "#"
                 %br
-                =link_to "ノーカラージャケット", "#"
+                =link_to @item.category.name, "#"
             %tr
               %th
                 ブランド
@@ -206,7 +206,7 @@
             後ろの商品
             %icon.fa.fa-angle-right
     .more-items
-      = link_to "メンズをもっと見る", "#", class: "more-items__link"
+      = link_to "#{@item.category.name}をもっと見る", "#", class: "more-items__link"
     
     .product-list
       = render partial:'item', collection: @relatedItems
