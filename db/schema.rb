@@ -88,4 +88,5 @@ ActiveRecord::Schema.define(version: 2020_07_11_051104) do
     t.string "nickname", null: false
   end
 
+
 end

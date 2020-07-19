@@ -3,7 +3,7 @@
   .main
     .content
       .visual
-        = image_tag "/assets/pict/bg-mainVisual-pict_pc",width: "100%", alt: "visual-1"
+        -# background-image
       .visual__comment
         .visual__comment--subtitle
           %h1 人生を変えるフリマアプリ
@@ -39,7 +39,7 @@
 
     .content2
       .visual
-        = image_tag "/assets/pict/bg-topMiddleDl-pict.jpg",width: "100%", alt: "visual-1"
+        -# background-image
       .visual__comment
         .visual__comment--subtitle
           %h2 会員数日本一
@@ -82,7 +82,7 @@
         .pickup-list
           - @items.each do |item|
             = render partial: 'item', locals: {item: item}
-            
+
       .pickup__brand
         %h2 ピックアップブランド
         %h3 アーカイブ
@@ -93,7 +93,7 @@
 
     .content3
       .visual
-        = image_tag "/assets/pict/bg-appBanner-pict.jpg",alt: "visual-1"
+        -# background-image
       .visual__comment
         #bottomVisual
           .visual__comment--text
@@ -108,5 +108,10 @@
                 #google
                   = image_tag '/assets/icon/google-play-badge.png',height: "80px", width: "200px", alt: 'google'
 
+  .btn
+    =link_to new_item_path do
+      .linkBtn
+        %p 出品する
+        = image_tag '/assets/icon/icon_camera.png',height: "50px", width: "50px", alt: 'sell'
 
   = render "footer"

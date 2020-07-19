@@ -77,4 +77,6 @@ end
 
 gem "haml-rails"
 gem "jquery-rails"
-
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
