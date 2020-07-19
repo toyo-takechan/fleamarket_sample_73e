@@ -5,16 +5,19 @@
         = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
   .main
     .form
-      %form
+      = form_for @item do |f|
         .content__1
           .image
             .content__header
               %h3 出品画像
               %span 必須
             .image__file
+              = f.fields_for :images do |i|
+                = i.file_field :src
               %label
                 %input{type:"file",name: "file", class: "js-upload-file", id:"myImage", accept:"image/*"}
                   ファイルを選択してください
+
         .content__2
           .items
             .items__name
@@ -22,12 +25,13 @@
                 %h3 商品名
                 %span 必須
               .items__name--input
-                %input{placeholder: "40字まで"}
+                = f.text_field :name, placeholder: "40字まで"
             .items__content
               .content__header
                 %h3 商品の説明
                 %span 必須
-              %input{row:"10", cols:"50", class: "input__text" ,placeholder: "商品の説明（必須 1000文字以内）色、素材、重さ、定価、注意点など"}
+              .input
+                = f.text_area :content, row:"10", cols:"50",class:"input__text" ,placeholder: "商品の説明（必須 1000文字以内）色、素材、重さ、定価、注意点など"
         .content__3
           .detail
             %h2 商品の詳細

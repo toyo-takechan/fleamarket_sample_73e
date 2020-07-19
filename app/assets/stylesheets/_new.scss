@@ -50,9 +50,13 @@
         padding-top: 25px;
         padding-bottom: 25px;
         border-bottom: 1px solid rgb(211, 211, 211);
-        input{
+        .input{
           margin-top: 15px;
           margin-bottom: 30px;
+          &__text{
+            height: 200px;
+            width: 550px;
+          }
         }
       }
       .content__3{
