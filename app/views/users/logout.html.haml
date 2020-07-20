@@ -3,5 +3,5 @@
     .contents
       .logout
         .logout__container
-          =link_to class: "logout-btn" do
+          =link_to destroy_user_session_path,class: "logout-btn", method: :delete do
             ログアウト

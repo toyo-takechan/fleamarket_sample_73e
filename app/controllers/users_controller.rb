@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show,:edit]
+  before_action :set_user, only: [:edit]
 
   def index
     @user = User.new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def singin
+  def logout
   end
   
   private

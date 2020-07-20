@@ -1,4 +1,5 @@
 ja:
+
   errors:
     messages:
       not_found: "は見つかりませんでした"
