@@ -4,5 +4,4 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user
 
-  mount_uploader :image, ImageUploader
 end
