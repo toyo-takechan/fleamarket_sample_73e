@@ -1,4 +1,6 @@
-.main-page
+.wrapper
+  = render "header"
+  = render "side"
   %main.container.clearfix
     .contents
       .creditContainer
@@ -110,3 +112,4 @@
               .securityCode-info
             %button{type: "button", id: "#", class: "btn-add"}
               追加する
+  = render "footer"
