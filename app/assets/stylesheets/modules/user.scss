@@ -476,7 +476,7 @@ select{
   font-size: 30px;
   text-align: center;
   background-color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 .content__body {
@@ -601,4 +601,24 @@ select {
   width: 350px;
   font-size: 15px;
   margin-bottom: 5px;
+}
+.content__footer{
+  text-align: center;
+  margin: 0;
+  padding: 24px 40px 64px;
+  background: #fff;
+}
+.change__container{
+    background: #ea325d;
+    border: 1px solid #ea352d;
+    max-width: 320px;
+    height: 50px;
+    margin: 0 auto;
+  }
+
+.change-btn {
+    color: #fff;
+    font-size: 14px;
+    line-height: 48px;
+    display: block;
 }
