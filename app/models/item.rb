@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+
   has_many :images
   belongs_to :category
   belongs_to :prefecture
@@ -16,4 +19,5 @@ class Item < ApplicationRecord
   validates :seller_id, presence: true
 
   accepts_nested_attributes_for :images, allow_destroy: true
+
 end

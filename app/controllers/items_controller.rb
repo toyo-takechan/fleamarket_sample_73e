@@ -12,12 +12,32 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション。 ajaxからハッシュで子要素のIDを受け取る{child_id: childId}
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
   def confirm
@@ -35,8 +55,8 @@ class ItemsController < ApplicationController
 
   private
 
-def item_params
-  params.require(:item).permit(:name, :price, images_attributes: [:src])
-end
+  def item_params
+    params.require(:item).permit(:name, :content, :brand, :condition, :postage_payer, :postage_type, :prefecture_id, :preparation_day, :price, images_attributes: [:src])
+  end
 
 end
