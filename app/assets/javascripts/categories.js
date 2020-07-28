@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function() {
     $(this).children('.nav__content').hide();
   });
 
-  $('.child').hover(function() {
+  $('.child-name').hover(function() {
     $(this).children('.nav__content--grandchild').show();
   }, function() {
     $(this).children('.nav__content--grandchild').hide();

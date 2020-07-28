@@ -19,15 +19,18 @@
                 = link_to do
                   = parent.name
                 %ul.nav__content
+                  .children-backboard
                   - parent.children.each do |child|
-                    %li.child
+                    %li.child-name
                       = link_to do
                         = child.name
                       %ul.nav__content--grandchild
+                        .grandchildren-backboard
                         - child.children.each do |grandchild|
-                          %li
+                          %li.grandchild-name
                             = link_to do
                               = grandchild.name 
+                    
                 
         %li.content
           = link_to class: "brand" do

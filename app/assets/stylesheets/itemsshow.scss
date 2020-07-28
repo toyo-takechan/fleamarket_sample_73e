@@ -63,7 +63,6 @@
             text-decoration: none;
             padding-left: 3px;
             li{
-              border-bottom: 1px solid rgb(219, 219, 219);
               padding-left: 3px;
             }
             .nav{
@@ -79,15 +78,36 @@
                 position: absolute;
                 top: 0;
                 left: 200px;
-                background-color: #fffcee;
+                background-color: #f7f7f7;
                 display: none;
+                z-index: 100;
+                .children-backboard {
+                  width: 200px;
+                  height: 520px;
+                  background-color: #f7f7f7;
+                  position: absolute;
+                  z-index: -10;
+                }
+                .child-name {
+                  height: 33px;
+                }
                 &--grandchild {
                   width: 250px;
                   position: absolute;
                   top: 0;
                   left: 200px;
-                  background-color: #fffcee;
+                  background-color: #f7f7f7;
                   display: none;
+                  .grandchildren-backboard {
+                    width: 250px;
+                    height: 520px;
+                    background-color: #f7f7f7;
+                    position: absolute;
+                    z-index: -10;
+                  }
+                  .grandchild-name {
+                    height: 33px;
+                  }
                 }
               }
             }
