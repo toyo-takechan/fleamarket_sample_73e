@@ -1,29 +1,36 @@
 Rails.application.routes.draw do
 
-devise_for :users
+devise_for :users, controllers: {registrations: 'users/registrations'}
+devise_scope :user do
+  get 'addresses', to: 'users/registrations#new_address'
+  post 'addresses', to: 'users/registrations#create_address'
+end
 # after
 root 'items#index'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:edit, :update, :index]
-  resources :profiles, only: [:index]
-
   resources :items, only: [:index, :show, :new]
 
-resources :items do
+  resources :items do
+      member do
+      get 'confirm'
+      end
+    end
+
+  resources :users, only: [:show,:edit,:update] do
     member do
-    get 'confirm'
+      get 'logout'
+      patch 'profile_update'
+      get 'profile'
+    end
+    collection do
+      get 'ready'
     end
   end
-
-resources :users do
-  member do
-    get 'logout'
-  end
-end
-
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+    namespace :items do
+      resources :searches, only: [:index,:show]
+      
   end
 
-end
+  resources :registration,only: [:index]
+  end

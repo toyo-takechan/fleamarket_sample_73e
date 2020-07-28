@@ -1,74 +1,129 @@
-.wrapper
-  = render "side"
-  .main-page
-    %main.container.clearfix
-      .contents2
-        %section.mypage2
-          %figure
-            .mypage__icon
-              = image_tag 'member_photo_noimage_thumb.png', height: '60', width: '60', class: "mypage__icon__link"
-            %h2.mypage__nickname
-              = current_user.nickname
-            .mypage__number
-              .mypage__number--assess
-                評価 ０
-              .mypage__number--displays
-                出品数 ０
-        %section.mypage-container
-          %ul.mypage-container__tabs
-            %li.mypage-container__tabs--notice
-              %h3
-                = link_to "お知らせ", class: 'btn'
-            %li.mypage-container__tabs--todo
-              %h3
-                = link_to "やることリスト", class: 'btn'
-    
-          .mypageContents
-            %ul.mypageContentsList
-              %li.mypageContentsList--link
-                %figure
-                  .mypageContentsList--link__icon
-                    = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                  .mypageContentsList--link__body
-                    .mypageContentsList--link__text もう購入しましたか？今なら"+20%還元"
-              %li.mypageContentsList--link
-                %figure
-                  .mypageContentsList--link__icon
-                    = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                  .mypageContentsList--link__body
-                    .mypageContentsList--link__text 《出品するだけ》最大1,000円分のポイントをもらえる！キャンペーン詳細はこちら！
-              %li.mypageContentsList--link
-                %figure
-                  .mypageContentsList--link__icon
-                    = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                  .mypageContentsList--link__body
-                    .mypageContentsList--link__text キャッシュレス決済で商品を買うとP1,500もらえる！
-              %li.mypageContentsList--link
-                %figure
-                  .mypageContentsList--link__icon
-                    = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                  .mypageContentsList--link__body
-                    .mypageContentsList--link__text 「本人確認後」＋「街のお店でのお買い物」でもれなくP1,000をプレゼント！
-              %li.mypageContentsList--link
-                %figure
-                  .mypageContentsList--link__icon
-                    = image_tag 'icon_brand.png', height: '48', width: '48', class: "mypage__tabs--content__link--icon"
-                  .mypageContentsList--link__body
-                    .mypageContentsList--link__text フリマで買うと最大でP5,000+P1,000もらえる！事前準備はこちら
-              %li.mypageContentsList--display
-                = link_to "一覧を見る", class: 'btn'
+.edit-page
+  .main
+    .address-side
+      %nav.mypage-menu
+        %ul.mypage-menu-list
+          %li.mypage-menu-list__item--info
+            = link_to "マイページ", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "お知らせ", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "やることリスト", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "いいね！一覧", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "出品する", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "下書き一覧", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "出品した商品-出品中", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "出品した商品-取引中", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "出品した商品-売却済み", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "購入した商品-取引中", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "購入した商品-過去の取引", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "ニュース一覧", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "評価一覧", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "ガイド", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "お問い合わせ", class: 'btn'
+        %h3.mypage-menu-list__head
+          設定
+        %ul.mypage-menu-list--personal
+          %li.mypage-menu-list__item
+            = link_to "プロフィール", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "発送元・お届け先住所変更",edit_user_path, class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "支払い方法", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "メール/パスワード", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "本人情報", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "電話番号の確認", class: 'btn'
+          %li.mypage-menu-list__item
+            = link_to "ログアウト",logout_user_path, class: 'btn'
+    .address-form
+      .content__header
+        発送元・お届け先住所変更
+      .content__body
+        = form_for (@address,url: user_path,method: :patch) do |f|
+          .content__body-title
+            .content__body-titlename
+              お名前
+            .content__body-necessary
+              必須
+          .content__body-box
+            = f.text_field :family_name, class: 'input-form',placeholder: '例） 山田'
+          .content__body-box
+            = f.text_field :first_name, class: 'input-form',placeholder: '例） 彩'
+          .content__body-title
+            .content__body-titlename
+              お名前カナ
+            .content__body-necessary
+              必須
+          .content__body-box
+            = f.text_field :family_name_kana, class: 'input-form',placeholder: '例） ヤマダ'
+          .content__body-box
+            = f.text_field :first_name_kana, class: 'input-form',placeholder: '例） アヤ'
+          .content__body-title
+            .content__body-titlename
+              郵便番号
+            .content__body-necessary
+              必須
+          .content__body-box
+            = f.text_field :post_code, class: 'input-form',placeholder: '例） 123-4567'
+          .content__body-title
+            .content__body-titlename
+              都道府県
+            .content__body-necessary
+              必須
+          .content__body-box
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+          .content__body-title
+            .content__body-titlename
+              市区町村
+            .content__body-necessary
+              必須
+          .content__body-box
+            = f.text_field :city, class: 'input-form',placeholder: '例） 横浜市緑区'
+          .content__body-title
+            .content__body-titlename
+              番地
+            .content__body-necessary
+              必須
+          .content__body-box
+            = f.text_field :house_number, class: 'input-form',placeholder: '例） 青山1-1-1'
+          .content__body-title
+            .content__body-titlename
+              建物名
+            .content__body-unnecessary
+              任意
+          .content__body-box
+            = f.text_field :building_name, class: 'input-form',placeholder: '例） 柳ビル103'
+          .content__body-title
+            .content__body-titlename
+              電話
+            .content__body-unnecessary
+              任意
+          .content__body-box
+            = f.text_field :telephone_number, class: 'input-form',placeholder: '例） 09012345678'
 
-        %section.Purchased
-          %h2.Purchased__head 購入した商品
-          %ul.purchased-tabs
-            %li.trade
-              %h3
-                取引中
-            %li
-              %h3
-                過去の取引
-          .tab-contents
-            %ul.tab-contents__now
-              %li.tab-contents__notfound 取引中の商品がありません
+        .content__footer
+          = f.submit "変更する",class: "change-btn"
+      .itembtn
+        =link_to new_item_path do
+          .linkBtn
+            %p 出品する
+            = image_tag '/assets/icon/icon_camera.png',height: "50px", width: "50px", alt: 'sell'
+        
+= render "/items/footer"
 
-
+  
