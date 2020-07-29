@@ -3,7 +3,7 @@
   = render "side"
   .main-page
     %main.container.clearfix
-          .contents
+      .contents
         .logout
           .logout__container
             =link_to destroy_user_session_path,class: "logout-btn", method: :delete do
