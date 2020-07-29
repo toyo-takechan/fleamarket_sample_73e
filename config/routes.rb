@@ -17,7 +17,7 @@ resources :items do
     end
   end
 
-resources :users do
+resources :users, only: [:show,:edit,:update] do
   member do
     get 'logout'
   end

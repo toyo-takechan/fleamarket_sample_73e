@@ -63,7 +63,7 @@
 
     .header__bottom--right
       - if user_signed_in?
-        =link_to edit_user_path(id: current_user.id), class: "mypage" do
+        =link_to user_path(current_user.id), class: "mypage" do
           %p マイページ
       - else
         = link_to new_user_session_path class: "login" do
