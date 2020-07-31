@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def new
   end
-  
+
   def edit
   end
 
@@ -23,13 +23,13 @@ class UsersController < ApplicationController
 
   def singin
   end
-  
+
   private
 
   def user_params
     params.require(:user).permit(:nickname, :email)
   end
-  
+
   def set_user
     @user = User.find(params[:id])
   end

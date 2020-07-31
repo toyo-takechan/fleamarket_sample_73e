@@ -14,12 +14,9 @@
             .image__file#image-box
               = f.fields_for :images do |i|
                 %div{data: {class: "js-file_group"}}
-                %label
-                  ファイルを選択してください
-                  = i.file_field :src, class: "js-file"
-                .js-remove
-                  削除
-
+                  %label
+                    ファイルを選択してください
+                    = i.file_field :image_url, class: "js-file"
 
         .content__2
           .items
@@ -42,35 +39,37 @@
               .content__header
                 %h3 カテゴリー
                 %span 必須
-              %select{name: "カテゴリー", class: "select"}
-                %option{value: "0"}
-                  選択してください
-                %option{value: "1"}
-                  レディース
-                %option{value: "2"}
-                  メンズ
-                %option{value: "3"}
-                  ベビー・キッズ
-                %option{value: "4"}
-                  インテリア・住まい・小物
-                %option{value: "5"}
-                  本・音楽・ゲーム
-                %option{value: "6"}
-                  おもちゃ・ホビー・グッズ
-                %option{value: "7"}
-                  コスメ・香水・美容
-                %option{value: "8"}
-                  家電・スマホ・カメラ
-                %option{value: "9"}
-                  スポーツ・レジャー
-                %option{value: "10"}
-                  ハンドメイド
-                %option{value: "11"}
-                  チケット
-                %option{value: "12"}
-                  自動車・オートバイ
-                %option{value: "13"}
-                  その他
+              = f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください"
+
+              -# %select{name: "カテゴリー", class: "select"}
+              -#   %option{value: "0"}
+              -#     選択してください
+              -#   %option{value: "1"}
+              -#     レディース
+              -#   %option{value: "2"}
+              -#     メンズ
+              -#   %option{value: "3"}
+              -#     ベビー・キッズ
+              -#   %option{value: "4"}
+              -#     インテリア・住まい・小物
+              -#   %option{value: "5"}
+              -#     本・音楽・ゲーム
+              -#   %option{value: "6"}
+              -#     おもちゃ・ホビー・グッズ
+              -#   %option{value: "7"}
+              -#     コスメ・香水・美容
+              -#   %option{value: "8"}
+              -#     家電・スマホ・カメラ
+              -#   %option{value: "9"}
+              -#     スポーツ・レジャー
+              -#   %option{value: "10"}
+              -#     ハンドメイド
+              -#   %option{value: "11"}
+              -#     チケット
+              -#   %option{value: "12"}
+              -#     自動車・オートバイ
+              -#   %option{value: "13"}
+              -#     その他
             .detail--bland
               .content__header
                 %h3 ブランド
@@ -118,7 +117,7 @@
                 %span 必須
               .items__price--input__money
                 %p ¥
-                = f.text_field :price, class: "price", name: "sell_price"
+                = f.text_field :price, class: "price"
             .fee
               .fee__text
                 販売手数料（１０％）
