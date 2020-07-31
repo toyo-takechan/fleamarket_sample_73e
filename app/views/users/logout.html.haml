@@ -1,11 +1,11 @@
 .wrapper
   = render "header"
-  = render "side"
   .main-page
-    %main.container.clearfix
-      .contents
-        .logout
-          .logout__container
+    = render "side"
+    %main.containerClearfix
+      .logout
+        .logoutContents
+          .logoutContents__container
             =link_to destroy_user_session_path,class: "logout-btn", method: :delete do
               ログアウト
   = render "footer"

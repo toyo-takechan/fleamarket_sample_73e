@@ -1,11 +1,26 @@
 .wrapper
   = render "header"
-  = render "side"
   .main-page
-    %main.container.clearfix
-      .contents
-        .logout
-          .logout__container
-            =link_to destroy_user_session_path,class: "logout-btn", method: :delete do
-              クレジットカードを追加する
+    = render "side"
+    %main.containerClearfix
+      .cardContent
+        %section.cardContent__box
+          %h2.cardContent__head
+            支払い方法
+          .cardContent__inner
+            %section
+              .cardContent__innerlist
+                %h3.cardContent__innerlist--header
+                  クレジットカード一覧
+              .cardContent__cardList
+            %section.cardContent__addCard
+              .cardContent__innerlist
+                =link_to class: "addCard-btn", method: :delete do
+                  %i.far.fa-credit-card
+                    クレジットカードを追加する
+
+            .cardContent__about
+              %span.cardContent__about--payment
+                = link_to "支払い方法について"
+                %i.fas.fa-angle-right
   = render "footer"
