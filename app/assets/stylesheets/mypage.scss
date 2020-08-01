@@ -63,7 +63,9 @@
   }
 }
 
-
+.mypageContents {
+  background-color: #fff;
+}
 .mypageContentsList{
   &--link {
     display: block;
@@ -71,7 +73,6 @@
     padding:  16px;
     color: #333;
     border-bottom: 1px solid #eee;
-    background: #fff;
     &__icon {
       position: relative;
       float: left;

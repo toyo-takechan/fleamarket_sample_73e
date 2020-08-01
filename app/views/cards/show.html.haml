@@ -5,22 +5,23 @@
     %main.containerClearfix
       .cardContent
         %section.cardContent__box
-          %h2.cardContent__head
+          %h2.cardContent__box--head
             支払い方法
-          .cardContent__inner
+          .cardContent__box--inner
             %section
-              .cardContent__innerlist
-                %h3.cardContent__innerlist--header
+              .cardContent__box--innerList
+                %h3.cardContent__box--innerListHeader
                   クレジットカード一覧
-              .cardContent__cardList
-            %section.cardContent__addCard
-              .cardContent__innerlist
-                =link_to class: "addCard-btn", method: :delete do
+              .cardContent__box--cardList
+            %section.cardContent__box--addCard
+              .cardContent__box--addCard__btn
+                =link_to class: "addCard__btn", method: :delete do
                   %i.far.fa-credit-card
                     クレジットカードを追加する
 
             .cardContent__about
               %span.cardContent__about--payment
-                = link_to "支払い方法について"
-                %i.fas.fa-angle-right
+                = link_to "#", class:"abtPayment" do
+                  支払い方法について
+                  %i.fas.fa-angle-right
   = render "footer"
