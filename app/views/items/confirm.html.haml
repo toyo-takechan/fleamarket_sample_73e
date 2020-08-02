@@ -8,7 +8,7 @@
         購入内容の確認
     .products-main
       .products-main__itembox
-        = image_tag @item.images.first.image_url
+        = image_tag @item.images.first.image_url if@item.images.present?
       .products-main__detail
         .products-main__detail__name
           = @item.name
