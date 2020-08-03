@@ -103,16 +103,7 @@
               .items__price--input__money
                 %p ¥
                 = f.text_field :price, class: "price", id: "input__price"
-            .fee#price__fee
-              .fee__text
-                販売手数料（１０％）
-              .fee__price
-                %p -
-            .benefit
-              .benefit__text
-                販売利益
-              .benefit__price
-                %p -
+
         .form__btn
           = f.submit name:"submit", value: "出品する", class: "form__btn--submit"
           = f.button name:"buttom", value: "下書きを保存", class: "form__btn--button"
