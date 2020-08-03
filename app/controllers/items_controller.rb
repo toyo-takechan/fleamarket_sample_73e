@@ -14,30 +14,24 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to root_path, notice: '出品が完了しました'
     else
+      flash.now[:alert] = '正しく入力してください。'
       render :new
     end
   end
 
   def update
-    if @product.update(product_params)
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
     end
   end
 
-  # 親カテゴリーが選択された後に動くアクション
-  def get_category_children
-    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  end
-
-  # 子カテゴリーが選択された後に動くアクション。 ajaxからハッシュで子要素のIDを受け取る{child_id: childId}
-  def get_category_grandchildren
-    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def confirm
@@ -56,7 +50,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :content, :brand, :category_id, :condition, :postage_payer, :postage_type, :prefecture_id, :preparation_day, :price, images_attributes: [:image_url])
+    params.require(:item).permit(:name, :content, :brand, :category_id, :condition, :postage_payer, :postage_type, :prefecture_id, :preparation_day, :price, images_attributes: [:image_url]).merge(seller_id: current_user.id)
   end
 
 end

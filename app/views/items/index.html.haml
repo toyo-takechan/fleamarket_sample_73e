@@ -107,11 +107,11 @@
               = link_to do
                 #google
                   = image_tag '/google-play-badge.png',height: "80px", width: "200px", alt: 'google'
-
-  .btn
-    =link_to new_item_path do
-      .linkBtn
-        %p 出品する
-        = image_tag '/icon_camera.png',height: "50px", width: "50px", alt: 'sell'
+  - if user_signed_in?
+    .btn
+      =link_to new_item_path do
+        .linkBtn
+          %p 出品する
+          = image_tag '/icon_camera.png',height: "50px", width: "50px", alt: 'sell'
 
   = render "footer"

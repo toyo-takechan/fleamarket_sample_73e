@@ -2,21 +2,34 @@
   .top
     .top__logo
       =link_to root_path do
-        = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+        = image_tag "/logo.png", size: "180x54", alt: "logo"
   .main
     .form
       = form_for @item do |f|
+        = f.hidden_field :seller_id, value: current_user.id
         .content__1
           .image
             .content__header
               %h3 出品画像
               %span 必須
             .image__file#image-box
+              #previews
+                -if @item.persisted?
+                  -@item.images.image_url.each_with_index do |image, i|
+                    =image_tag image.url, data:{ index: i }, width: "100", height: '100'
               = f.fields_for :images do |i|
-                %div{data: {class: "js-file_group"}}
-                  %label
-                    ファイルを選択してください
-                    = i.file_field :image_url, class: "js-file"
+                %div{data:{index: i.index}, class: "js-file_group"}
+                  = i.file_field :image_url,item_id: @item.id, class: "js-file"
+                  .js-remove
+                    %span 削除
+
+                - if @item.persisted?
+                  = image.check_box :destroy, data:{ index: i.index}, class: "hidden-destroy"
+              - if @item.persisted?
+                %div{data:{index: @item.images.count}}
+                  = file_field_tag :image_url, name: "item[images_attributes][#{@item.images_url.count}][image_url]", class: 'js-file'
+                  .js-remove
+                    %span 削除
 
         .content__2
           .items
@@ -41,35 +54,7 @@
                 %span 必須
               = f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください"
 
-              -# %select{name: "カテゴリー", class: "select"}
-              -#   %option{value: "0"}
-              -#     選択してください
-              -#   %option{value: "1"}
-              -#     レディース
-              -#   %option{value: "2"}
-              -#     メンズ
-              -#   %option{value: "3"}
-              -#     ベビー・キッズ
-              -#   %option{value: "4"}
-              -#     インテリア・住まい・小物
-              -#   %option{value: "5"}
-              -#     本・音楽・ゲーム
-              -#   %option{value: "6"}
-              -#     おもちゃ・ホビー・グッズ
-              -#   %option{value: "7"}
-              -#     コスメ・香水・美容
-              -#   %option{value: "8"}
-              -#     家電・スマホ・カメラ
-              -#   %option{value: "9"}
-              -#     スポーツ・レジャー
-              -#   %option{value: "10"}
-              -#     ハンドメイド
-              -#   %option{value: "11"}
-              -#     チケット
-              -#   %option{value: "12"}
-              -#     自動車・オートバイ
-              -#   %option{value: "13"}
-              -#     その他
+
             .detail--bland
               .content__header
                 %h3 ブランド
@@ -117,8 +102,8 @@
                 %span 必須
               .items__price--input__money
                 %p ¥
-                = f.text_field :price, class: "price"
-            .fee
+                = f.text_field :price, class: "price", id: "input__price"
+            .fee#price__fee
               .fee__text
                 販売手数料（１０％）
               .fee__price

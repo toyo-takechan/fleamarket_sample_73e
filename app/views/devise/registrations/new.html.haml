@@ -8,7 +8,7 @@
       .mail-regist-form__header
         .mail-regist-form__header-title
           =link_to root_path do
-            = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+            = image_tag "/logo.png", size: "180x54", alt: "logo"
         .mail-regist-form__header-status
           .mail-regist-form__header-status-bar
             ①
@@ -61,7 +61,7 @@
               %li.errortext パスワードを入力してください(確認用)
             .mail-regist-form__body-text-check
               .mail-regist-form__body-text-checkbox
-                = check_box_tag :check1 
+                = check_box_tag :check1
               .mail-regist-form__body-text-checkcomment
                 パスワードを表示する
             .mail-regist-form__body-confirm
@@ -82,7 +82,7 @@
                   .mail-regist-form__body-nameright
                     = f.text_field :first_name, class: 'input-form-right',placeholder: '例） 彩'
               .mail-regist-form__body-errortext
-                .mail-regist-form__body-errortext-family 
+                .mail-regist-form__body-errortext-family
                   %li.errortext 姓を入力してください
                 .mail-regist-form__body-errortext-first
                   %li.errortext 名を入力してください
@@ -135,8 +135,8 @@
           .mail-regist-form__footer-policykiyaku
             =link_to "アプリ利用規約", root_path
           .mail-regist-form__footer-policytokusyo
-            =link_to "特定商取引に関する表記", root_path 
+            =link_to "特定商取引に関する表記", root_path
         .mail-regist-form__footer-incline
           =link_to root_path do
-            = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
+            = image_tag "/logo-white.png",size: "200x60", alt: "visual-1"
           %p © FURIMA
