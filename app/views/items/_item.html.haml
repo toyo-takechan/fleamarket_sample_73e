@@ -1,5 +1,5 @@
 = link_to item_path(item) do
-  -# = image_tag item.images,class: "product-img"
+  -# = image_tag item.images.first.image_url,class: "product-img"
   .product-content
     .product-content__upper
       = item.name

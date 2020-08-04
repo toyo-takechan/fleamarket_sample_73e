@@ -16,5 +16,14 @@ resources :items do
     end
   end
 
+resources :users do
+  member do
+    get 'logout'
+  end
+end
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
 end
