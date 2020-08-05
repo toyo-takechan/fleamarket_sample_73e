@@ -15,7 +15,7 @@
               .cardContent__box--cardList
             %section.cardContent__box--addCard
               .cardContent__box--addCard__btn
-                =link_to class: "addCard__btn", method: :delete do
+                =link_to new_card_path, class: "addCard__btn" do
                   %i.far.fa-credit-card
                     クレジットカードを追加する
 
@@ -24,4 +24,5 @@
                 = link_to "#", class:"abtPayment" do
                   支払い方法について
                   %i.fas.fa-angle-right
+                  
   = render "footer"
