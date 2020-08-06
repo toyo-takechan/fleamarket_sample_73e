@@ -86,7 +86,7 @@
             .content__body-necessary
               必須
           .content__body-box
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+            = f.collection_select :prefecture_id,class: 'input-prefecture' Prefecture.all, :id, :name
           .content__body-title
             .content__body-titlename
               市区町村

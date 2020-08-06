@@ -149,6 +149,12 @@
 .mail-regist-form__body {
     font-size: 20px;
     background-color: lightgray;
+    min-width: 350px;
+    margin: 0 auto;
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
   &-inner {
     background-color: white;
     width: 700px;
@@ -160,14 +166,6 @@
     border-bottom-color: black;
     text-align: center;
     padding: 30px 0 30px 0;
-  }
-  &-middle {
-    min-width: 350px;
-    margin: 0 auto;
-    background-color: white;
-    width: 700px;
-    margin: 0 auto;
-    text-align: center;
   }
   &-title {
     display: flex;
@@ -213,13 +211,6 @@
     padding: 8px 180px 15px 170px;
     font-size: 13px;
   }
-  &-inputnametitle {
-    display: flex;
-    padding-left: 170px;
-  }
-  &-inputname{
-    float: left;
-  }
   &-namebox {
     display: flex;
   }
@@ -240,13 +231,25 @@
     padding-top: 10px;
   }
   &-selectyear {
-    justify-content: space-between;
+    height: 50px;
+    width: 100px;
+  }
+  &-year {
+    width: 20px;
   }
   &-selectmonth {
-    justify-content: space-between;
+    height: 50px;
+    width: 100px;
   }
-  &-selectday {
-    justify-content: space-between;
+  &-month {
+    width: 20px;
+  }
+  &-selectday{
+    height: 50px;
+    width: 100px;
+  }
+  &-day {
+    width: 20px;
   }
   &-selecterror {
     padding-top: 10px;
@@ -298,10 +301,22 @@
  }
 }
 
-select{
-  height: 40px;
-  width: 70px;
-  font-size: 15px;
+#user_profile_attributes_birth_year {
+  height: 35px;
+  width: 90px;
+}
+#user_profile_attributes_birth_month {
+  height: 35px;
+  width: 90px;
+}
+#user_profile_attributes_birth_day {
+  height: 35px;
+  width: 90px;
+}
+#user_address_attributes_prefecture_id {
+  height: 50px;
+  width: 350px;
+  margin: 0 auto;
 }
 
 .input-form {
@@ -596,9 +611,9 @@ select{
     text-align: center;
   }
 }
-select {
-  height: 45px;
-  width: 350px;
+.select {
+  height: 160px;
+  width: 200px;
   font-size: 15px;
   margin-bottom: 5px;
 }

@@ -1,10 +1,12 @@
 class Address < ApplicationRecord
   
-  belongs_to :user
-  belongs_to :prefecture
+  belongs_to :user, optional: :true
   
   #郵便番号は7ケタ限定にする
-  validates :post_code, length: { is: 7 }
+  validates :post_code, presence: true, length: { is: 7 }
+  validates :city, presence: true
+  validates :prefecture_id, presence: true
+  validates :post_code, presence: true
 
   enum prefecture:{
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

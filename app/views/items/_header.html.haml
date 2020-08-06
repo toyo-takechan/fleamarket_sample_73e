@@ -1,7 +1,7 @@
 .header
   .header__top
     = link_to root_path, class:"header__top--rogo" do
-      = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+      = image_tag "/logo.png", size: "180x54", alt: "logo"
     .header__top--form
       %form{action: "/", method: "post"}
         %input{name: "search", size: "40", class:"input", placeholder: "キーワードから探す"}
@@ -63,10 +63,12 @@
 
     .header__bottom--right
       - if user_signed_in?
-        =link_to user_path(current_user.id), class: "mypage" do
+        =link_to destroy_user_session_path do
+          %p ログアウト
+        =link_to user_path(current_user), class: "mypage" do
           %p マイページ
       - else
-        = link_to new_user_session_path class: "login" do
+        = link_to new_user_session_path, class: "login" do
           %p ログイン
-        = link_to "/registration/", class: "registration" do
+        = link_to users_path, class: "registration" do
           %p 新規会員登録

@@ -1,56 +1,26 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit,:profile,:profile_update,:logout]
-  before_action :set_address, only: [:edit, :update]
+
+  def index
+  end
 
   def show
-  end
-
-  def edit
-  end
-
-  def logout
-  end
-
-  def update
-    if @address.update(address_params)
-      redirect_to edit_user_path(@address)
-    else
-      render :edit
-    end
-  end
-  def profile   
-  end
-
-  def profile_update
-    if @user.update(user_params)
-      redirect_to user_path
-    else
-      render :profile
-    end
-  end
-  def ready
+    @items = Items.all
+    @user = User.find_by(id: current_user.id)
   end
 
   private
-  def address_params
-    params.require(:address).permit(:postal_code, :prefecture, :city, :address, :apartment)
-  end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  def set_address
-    @address = Address.find(params[:id])
-  end
-
-  def set_category
-    @parents = Category.all.order("id ASC").limit(13)
-  end
   def user_params
-    params.require(:user).permit(
-      :nickname,
-      :introduction,
-    )
+    params.require(:user).permit(:nickname, :email, :password)
   end
+
+  def profile_params
+    params.require(:profile).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_year, :birth_month, :birth_day)
+  end
+
+  def address_params
+    params.require(:address).permit(:post_cord, :prefecture_id, :city, :building_name, :house_number, :telephone_number)
+  end
+
+
 end

@@ -8,7 +8,7 @@
             .mypage__icon
               = image_tag 'member_photo_noimage_thumb.png', height: '60', width: '60', class: "mypage__icon__link"
             %h2.mypage__nickname
-              = current_user.nickname
+              = @user.nickname
             .mypage__number
               .mypage__number--assess
                 評価 ０
