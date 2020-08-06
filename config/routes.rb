@@ -9,7 +9,7 @@ root 'items#index'
   resources :profiles, only: [:index]
 
   resources :items, only: [:index, :show, :new]
-  resources :credit_cards, only: [:new, :create]
+  resources :credit_cards, only: [:new, :create,:show]
 
 resources :items do
     member do

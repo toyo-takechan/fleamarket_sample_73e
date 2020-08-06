@@ -1,6 +1,12 @@
 class CreditCardsController < ApplicationController
-  # require "payjp"
-  # before_action :set_creditcard
+  require "payjp"
+  before_action :set_creditcard, only: [:show]
+
+  def new
+  end
+
+  def create
+  end
 
   def show
     Payjp.api_key = Rails.application.secrets.payjp_access_key
@@ -36,15 +42,13 @@ class CreditCardsController < ApplicationController
   #   end
   # end
   
-  def new
-  end
+  
 
-  def create
-  end
+  
 
   private
 
   def set_creditcard
-    @creditcard = Creditcard.where(user_id: current_user.id).first if Creditcard.where(user_id: current_user.id).present?
+    @creditcard = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
   end
 end
