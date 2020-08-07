@@ -4,10 +4,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @items = Items.all
+    #@items = Items.all
     @user = User.find_by(id: current_user.id)
   end
 
+  def logout
+  end
+
+  def mypage
+  end
+  
   private
 
   def user_params
