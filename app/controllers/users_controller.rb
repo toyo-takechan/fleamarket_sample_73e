@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
   end
 
+
   def show
   end
 
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
 
   def mypage
   end
-  
+
   private
 
   def user_params
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_year, :birth_month, :birth_day)
+
   end
 
   def address_params

@@ -5,16 +5,32 @@
         = image_tag "/logo.png", size: "180x54", alt: "logo"
   .main
     .form
-      %form
+      = form_for @item do |f|
+        = f.hidden_field :seller_id, value: current_user.id
         .content__1
           .image
             .content__header
               %h3 出品画像
               %span 必須
-            .image__file
-              %label
-                %input{type:"file",name: "file", class: "js-upload-file", id:"myImage", accept:"image/*"}
-                  ファイルを選択してください
+            .image__file#image-box
+              #previews
+                -if @item.persisted?
+                  -@item.images.image_url.each_with_index do |image, i|
+                    =image_tag image.url, data:{ index: i }, width: "100", height: '100'
+              = f.fields_for :images do |i|
+                %div{data:{index: i.index}, class: "js-file_group"}
+                  = i.file_field :image_url,item_id: @item.id, class: "js-file"
+                  .js-remove
+                    %span 削除
+
+                - if @item.persisted?
+                  = image.check_box :destroy, data:{ index: i.index}, class: "hidden-destroy"
+              - if @item.persisted?
+                %div{data:{index: @item.images.count}}
+                  = file_field_tag :image_url, name: "item[images_attributes][#{@item.images_url.count}][image_url]", class: 'js-file'
+                  .js-remove
+                    %span 削除
+
         .content__2
           .items
             .items__name
@@ -22,12 +38,13 @@
                 %h3 商品名
                 %span 必須
               .items__name--input
-                %input{placeholder: "40字まで"}
+                = f.text_field :name, placeholder: "40字まで"
             .items__content
               .content__header
                 %h3 商品の説明
                 %span 必須
-              %input{row:"10", cols:"50", class: "input__text" ,placeholder: "商品の説明（必須 1000文字以内）色、素材、重さ、定価、注意点など"}
+              .input
+                = f.text_area :content, row:"10", cols:"50",class:"input__text" ,placeholder: "商品の説明（必須 1000文字以内）色、素材、重さ、定価、注意点など"
         .content__3
           .detail
             %h2 商品の詳細
@@ -35,59 +52,20 @@
               .content__header
                 %h3 カテゴリー
                 %span 必須
-              %select{name: "カテゴリー", class: "select"}
-                %option{value: "0"}
-                  選択してください
-                %option{value: "1"}
-                  レディース
-                %option{value: "2"}
-                  メンズ
-                %option{value: "3"}
-                  ベビー・キッズ
-                %option{value: "4"}
-                  インテリア・住まい・小物
-                %option{value: "5"}
-                  本・音楽・ゲーム
-                %option{value: "6"}
-                  おもちゃ・ホビー・グッズ
-                %option{value: "7"}
-                  コスメ・香水・美容
-                %option{value: "8"}
-                  家電・スマホ・カメラ
-                %option{value: "9"}
-                  スポーツ・レジャー
-                %option{value: "10"}
-                  ハンドメイド
-                %option{value: "11"}
-                  チケット
-                %option{value: "12"}
-                  自動車・オートバイ
-                %option{value: "13"}
-                  その他
+              = f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください"
+
+
             .detail--bland
               .content__header
                 %h3 ブランド
                 %span.notMust 任意
-              %input{placeholder: "例）シャネル"}
+              = f.text_field :brand, placeholder: "例）シャネル"
             .detail--condition
               .content__header
                 %h3 商品の状態
                 %span 必須
-              %select{name: "コンディション", class: "select"}
-                %option{value: "0"}
-                  選択してください
-                %option{value: "1"}
-                  新品、未使用品
-                %option{value: "2"}
-                  未使用に近い
-                %option{value: "3"}
-                  目立った汚れなし
-                %option{value: "4"}
-                  やや汚れや傷あり
-                %option{value: "5"}
-                  傷や汚れあり
-                %option{value: "6"}
-                  全体的に状態が悪い
+              = f.select :condition, [["新品、未使用", 1], ["未使用に近い",2], ["目立った汚れなし", 3], ["やや汚れや傷あり", 4], ["傷や汚れ有り",5],["全体的に状態が悪い",6]],include_blank: "選択してください", class: "select"
+
         .content__4
           .items__delivery
             %h2 配送について
@@ -95,72 +73,40 @@
               .content__header
                 %h3 配送料の負担
                 %span 必須
-              %select{name: "送料", class: "select"}
-                %option{value: "0"}
-                  選択してください
-                %option{value: "1"}
-                  送料込み（出品者負担）
-                %option{value: "2"}
-                  着払い（購入者負担）
+              = f.select :postage_payer, [["送料込み（出品者負担）", 1], ["着払い（購入者負担）",2]],include_blank: "選択してください", class: "select"
+
             .items__delivery--way
               .content__header
                 %h3 配送方法
                 %span 必須
-              %select{name: "配送方法", class: "select"}
-                %option{value: "0"}
-                  選択してください
-                %option{value: "1"}
-                  未定
-                %option{value: "2"}
-                  クロネコヤマト
-                %option{value: "3"}
-                  ゆうパック
-                %option{value: "4"}
-                  ゆうメール
+              = f.select :postage_type, [["未定", 1], ["クロネコヤマト",2],["ゆうパック",3], ["ゆうメール", 4]],include_blank: "選択してください", class: "select"
+
             .items__delivery--place
               .content__header
                 %h3 発送元の地域
                 %span 必須
-              %select{name: "発送元", class: "select"}
-                %option{value: "0"}
-                  選択してください
-                %option{value: ""}
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択してください"
+
             .items__delivery--days
               .content__header
                 %h3 発送までの日数
                 %span 必須
-              %select{name: "発送日数", class: "select"}
-                %option{value: "0"}
-                  選択してください
-                %option{value: "1"}
-                  1〜２日で発送
-                %option{value: "2"}
-                  2〜３日で発送
-                %option{value: "3"}
-                  4〜７日で発送
+              = f.select :preparation_day, [["１〜２日で発送", 1], ["２〜３日で発送",2],["４〜７日で発送",3]],include_blank: "選択してください", class: "select"
+
         .content__5
-          .items__plice
+          .items__price
             %h2 価格（¥300〜¥9,999,999）
-            .items__plice--input
+            .items__price--input
               .content__header
                 %h3 販売価格
                 %span 必須
-              .items__plice--input__money
+              .items__price--input__money
                 %p ¥
-                %input{type:"text", class: "plice"}
-            .fee
-              .fee__text
-                販売手数料（１０％）
-              .fee__plice
-                %p -
-            .benefit
-              .benefit__text
-                販売利益
-              .benefit__plice
-                %p -
+                = f.text_field :price, class: "price", id: "input__price"
+
         .form__btn
-          %input{type: "submit", name:"submit", value: "出品する", class: "form__btn--submit"}
-          %input{type: "button", name:"save", value: "下書きを保存", class: "form__btn--button"}
+          = f.submit name:"submit", value: "出品する", class: "form__btn--submit"
+          = f.button name:"buttom", value: "下書きを保存", class: "form__btn--button"
           =link_to root_path, class: "form__btn--back" do
             もどる
           %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

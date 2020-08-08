@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2020_08_06_125900) do
     t.index ["telephone_number"], name: "index_addresses_on_telephone_number", unique: true
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.string "index"
+  end
+
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "card_number", null: false
@@ -41,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_125900) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.text "content", null: false
     t.integer "category_id", null: false
     t.string "size"
@@ -56,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_125900) do
     t.integer "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,6 +86,8 @@ ActiveRecord::Schema.define(version: 2020_08_06_125900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

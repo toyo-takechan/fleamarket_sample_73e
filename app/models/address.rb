@@ -1,7 +1,7 @@
 class Address < ApplicationRecord
-  
+
   belongs_to :user, optional: :true
-  
+
   #郵便番号は7ケタ限定にする
   validates :post_code, presence: true, length: { is: 7 }
   validates :city, presence: true
