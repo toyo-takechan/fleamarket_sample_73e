@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    #@items = Items.all
-    @user = User.find_by(id: current_user.id)
   end
 
   def logout
