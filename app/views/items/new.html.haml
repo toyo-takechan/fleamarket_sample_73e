@@ -1,0 +1,124 @@
+.wrapper
+  .top
+    .top__logo
+      =link_to root_path do
+        = image_tag "/logo.png", size: "180x54", alt: "logo"
+  .main
+    .form
+      = form_for @item do |f|
+        = f.hidden_field :seller_id, value: current_user.id
+        .content__1
+          .image
+            .content__header
+              %h3 出品画像
+              %span 必須
+            .image__file#image-box
+              #previews
+                -if @item.persisted?
+                  -@item.images.image_url.each_with_index do |image, i|
+                    =image_tag image.url, data:{ index: i }, width: "100", height: '100'
+              = f.fields_for :images do |i|
+                %div{data:{index: i.index}, class: "js-file_group"}
+                  = i.file_field :image_url,item_id: @item.id, class: "js-file"
+                  .js-remove
+                    %span 削除
+
+                - if @item.persisted?
+                  = image.check_box :destroy, data:{ index: i.index}, class: "hidden-destroy"
+              - if @item.persisted?
+                %div{data:{index: @item.images.count}}
+                  = file_field_tag :image_url, name: "item[images_attributes][#{@item.images_url.count}][image_url]", class: 'js-file'
+                  .js-remove
+                    %span 削除
+
+        .content__2
+          .items
+            .items__name
+              .content__header
+                %h3 商品名
+                %span 必須
+              .items__name--input
+                = f.text_field :name, placeholder: "40字まで"
+            .items__content
+              .content__header
+                %h3 商品の説明
+                %span 必須
+              .input
+                = f.text_area :content, row:"10", cols:"50",class:"input__text" ,placeholder: "商品の説明（必須 1000文字以内）色、素材、重さ、定価、注意点など"
+        .content__3
+          .detail
+            %h2 商品の詳細
+            .detail--category
+              .content__header
+                %h3 カテゴリー
+                %span 必須
+              = f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください"
+
+
+            .detail--bland
+              .content__header
+                %h3 ブランド
+                %span.notMust 任意
+              = f.text_field :brand, placeholder: "例）シャネル"
+            .detail--condition
+              .content__header
+                %h3 商品の状態
+                %span 必須
+              = f.select :condition, [["新品、未使用", 1], ["未使用に近い",2], ["目立った汚れなし", 3], ["やや汚れや傷あり", 4], ["傷や汚れ有り",5],["全体的に状態が悪い",6]],include_blank: "選択してください", class: "select"
+
+        .content__4
+          .items__delivery
+            %h2 配送について
+            .items__delivery--cost
+              .content__header
+                %h3 配送料の負担
+                %span 必須
+              = f.select :postage_payer, [["送料込み（出品者負担）", 1], ["着払い（購入者負担）",2]],include_blank: "選択してください", class: "select"
+
+            .items__delivery--way
+              .content__header
+                %h3 配送方法
+                %span 必須
+              = f.select :postage_type, [["未定", 1], ["クロネコヤマト",2],["ゆうパック",3], ["ゆうメール", 4]],include_blank: "選択してください", class: "select"
+
+            .items__delivery--place
+              .content__header
+                %h3 発送元の地域
+                %span 必須
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択してください"
+
+            .items__delivery--days
+              .content__header
+                %h3 発送までの日数
+                %span 必須
+              = f.select :preparation_day, [["１〜２日で発送", 1], ["２〜３日で発送",2],["４〜７日で発送",3]],include_blank: "選択してください", class: "select"
+
+        .content__5
+          .items__price
+            %h2 価格（¥300〜¥9,999,999）
+            .items__price--input
+              .content__header
+                %h3 販売価格
+                %span 必須
+              .items__price--input__money
+                %p ¥
+                = f.text_field :price, class: "price", id: "input__price"
+
+        .form__btn
+          = f.submit name:"submit", value: "出品する", class: "form__btn--submit"
+          = f.button name:"buttom", value: "下書きを保存", class: "form__btn--button"
+          =link_to root_path, class: "form__btn--back" do
+            もどる
+          %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+  .bottom
+    .link
+      =link_to do
+        プライバシーポリシー
+      =link_to do
+        メルカリ利用規約
+      =link_to do
+        特定商取引に関する表記
+    .logo
+      =link_to root_path do
+        = image_tag "/logo-white.png",size: "200x60", alt: "visual-1"
+      %p © FURIMA

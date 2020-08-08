@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 # require './db/seeds/ladies.rb'
 # require './db/seeds/mens.rb'
 # require './db/seeds/baby_kids.rb'
@@ -19,6 +20,9 @@
 # require './db/seeds/tickets.rb'
 # require './db/seeds/bicycles.rb'
 # require './db/seeds/others.rb'
+
+require "csv"
+
 
 
 Item.create!(name: "ねこちゃん", content: "かわいい猫のぬいぐるみです。", category_id: 585, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1, buyer_id: 2)
@@ -51,3 +55,9 @@ Image.create(item_id: 4, image_url: "https://storage.googleapis.com/ttrinity/_im
 
 Image.create(item_id: 5, image_url: "https://img.elleshop.jp/images/commodity/0018/item194001806401-1-3.jpg")
 Image.create(item_id: 5, image_url: "https://aquagarage.fs-storage.jp/fs2cabinet/kw0/kw00624/kw00624-m-01-dl.jpg")
+
+
+CSV.foreach('db/categories.csv') do |row|
+  Category.create!(name: row[1])
+end
+

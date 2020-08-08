@@ -23,12 +23,12 @@
             .rogin-body__middle-apple
               = link_to "Appleでログイン",root_path
           .rogin-body__footer
-            = form_for [@user] do |f|
+            = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
               .rogin-body__footer-forms
                 .rogin-body__footer-mailform
-                  = f.text_field :email, class: 'input-form',placeholder: 'メールアドレス'
+                  = f.email_field :email, class: 'input-form',placeholder: 'メールアドレス'
                 .rogin-body__footer-passwordform
-                  = f.text_field :password, class: 'input-form',placeholder: 'パスワード'
+                  = f.password_field :password, class: 'input-form',placeholder: 'パスワード'
               .rogin-body__footer-button
                 = f.submit "ログイン"
               .rogin-body__footer-message
