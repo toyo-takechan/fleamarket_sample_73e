@@ -20,12 +20,12 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password,profile_attributes: [:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_day, :birth_month, :birth_year],address_attributes: [:post_code, :prefecture_id, :city, :house_number, :building_name, :telephone_number,]])
-
-    private
-    # 以下を追記
-    def production?
-      Rails.env.production?
-    end
-
   end
+
+    # private
+    # 以下を追記
+    # def production?
+    #   Rails.env.production?
+    # end
+
 end
