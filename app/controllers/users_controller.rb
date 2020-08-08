@@ -1,37 +1,30 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:edit]
-
   def index
-    @user = User.new
-    @profile = Profile.new
   end
 
-  def new
-  end
-  
-  def edit
-  end
-
-  def update
-    if current_user.update(user_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
+  def show
   end
 
   def logout
+  end
+
+  def mypage
   end
   
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email)
+    params.require(:user).permit(:nickname, :email, :password)
   end
-  
-  def set_user
-    @user = User.find(params[:id])
+
+  def profile_params
+    params.require(:profile).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :birth_year, :birth_month, :birth_day)
   end
+
+  def address_params
+    params.require(:address).permit(:post_cord, :prefecture_id, :city, :building_name, :house_number, :telephone_number)
+  end
+
 
 end
