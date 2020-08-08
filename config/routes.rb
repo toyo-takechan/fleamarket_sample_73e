@@ -7,7 +7,7 @@ root 'items#index'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:edit, :update, :index]
   resources :profiles, only: [:index]
-  resources :cards, only: [:show, :new]
+  resources :cards, only: [:index, :show, :new]
 
   resources :items, only: [:index, :show, :new]
 

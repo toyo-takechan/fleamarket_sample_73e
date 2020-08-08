@@ -1,0 +1,38 @@
+.wrapper
+  = render "header"
+  .main-page
+
+    %main.containerClearfix
+      .cardContent
+        %section.cardContent__box
+          %h2.cardContent__box--head
+            支払い方法
+          .cardContent__box--inner
+            %section
+              .cardContent__box--innerList
+                %h3.cardContent__box--innerListHeader
+                  クレジットカード
+                %li.registerContent
+                  %span.registerContent__check
+                    %i.fas.fa-check-circle
+                  %div.registerContent__box
+                    .registerContent__box--number
+                    ************0000
+                    .registerContent__box--expDate
+                    有効期限 00/00
+                    .registerContent__box--img
+                      = image_tag 'visa-icon.png', alt: 'visa', height: '32', width: '48'
+                  %button{type: "button", id: "#", class: "deleteBtn"}
+                    削除する
+                .registerNewCard
+                  .registerNewCard__add
+                    %i.far.fa-plus-square
+                    新規カードを登録する
+                .paymentSelect
+                  %button{type: "button", id: "#", class: "selectBtn"}
+                    選択した支払い方法を使う
+                .cardContent__about
+                  %span.cardContent__about--payment
+                    = link_to "#", class:"abtPayment" do
+                      支払い方法について
+                      %i.fas.fa-angle-right
