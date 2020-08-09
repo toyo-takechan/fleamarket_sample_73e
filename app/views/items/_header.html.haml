@@ -10,7 +10,7 @@
   .header__bottom
     .header__bottom--left
       %ul.contents
-        %li.content
+        %li.content.category
           = link_to do
             %p カテゴリー
           %ul.nav
@@ -35,27 +35,7 @@
         %li.content
           = link_to class: "brand" do
             %p ブランド
-          %ul.nav
-            %li
-              = link_to do
-                レディース
-              %ul.nav__content
-                %li
-                  = link_to do
-                    トップス
-                %li
-                  = link_to do
-                    ボトムス
-                %li
-                  = link_to do
-                    シューズ
-            %li
-              = link_to do
-                メンズ
-
-            %li
-              = link_to do
-                キッズ
+         
 
     .header__bottom--right
       - if user_signed_in?

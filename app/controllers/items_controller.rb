@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:confirm, :show]
   before_action :set_parent_category
+  before_action :set_parent_array, only: [:new, :create]
 
   def index
     @items = Item.last(4)
@@ -13,6 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path, notice: '出品が完了しました'
@@ -44,7 +46,6 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @relatedItems = Item.where(category_id: @item.category_id).where.not(id: params[:id]).order("RAND()").limit(3)
-    # @category = @item.category_id
   end
 
 
@@ -52,9 +53,24 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def set_parent_array
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << [parent.name, parent.id]
+    end
+  end
 
   def set_parent_category
     @parents = Category.where(ancestry: nil)
+  end
+
+  def get_category_children
+    @category_children = Category.find_by(params[:parent_name]).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end
 
   private
 

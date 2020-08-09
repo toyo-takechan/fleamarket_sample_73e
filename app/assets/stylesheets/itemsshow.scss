@@ -13,7 +13,6 @@
   height: 100%;
   .header{
     width: 100%;
-    height: 97px;
     padding-top: 15px;
     padding-bottom: 10px;
     &__top{
@@ -44,7 +43,8 @@
       display: flex;
       justify-content: space-between;
       font-size: 14px;
-
+      height: 50px;
+      
       // カテゴリー＆ブランド
       &--left{
         display: flex;
@@ -53,6 +53,7 @@
         .contents{
           display: flex;
           justify-content: space-between;
+          margin: 0;
           .content{
             font-size:14px;
             margin-right: 10px;
@@ -111,10 +112,13 @@
                 }
               }
             }
+            
           }
-          &:hover{
-            .nav{
-              display: block;
+          .category {
+            &:hover{
+              .nav{
+                display: block;
+              }
             }
           }
         }
@@ -539,6 +543,7 @@
       line-height: 52px;
     }
       table {
+        margin-top: 20px;
         width: 620px;
         font-size: 14px;
         th {

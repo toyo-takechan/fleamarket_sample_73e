@@ -28,11 +28,11 @@
         = @item.name
       .item-image-box
         .item-image-box__main
-          = image_tag @item.images.first.image_url,class: "item-image-box__main--image"
+          = image_tag @item.images.first.image_url.url,class: "item-image-box__main--image"
         %ul.item-image-thumbnail
           - @item.images.each do |image|
             %li.item-image-thumbnail__part
-              = image_tag image.image_url, class:"item-image-thumbnail__part--mini-image"
+              = image_tag image.image_url.url, class:"item-image-thumbnail__part--mini-image"
       .item-price-box
         .item-price-box__price
           = "¥#{@item.price}"
@@ -52,8 +52,8 @@
         <br/>
       -# 出品者以外がログイン時のみ閲覧可能
       -# ログイン機能実装次第、if文のコメントを外し、link_toのインデントを下げる
-      -# - if user_signed_in? && current_user.id != @item.seller_id
-      = link_to "購入する", confirm_item_path, class: "item-buy-link"
+      - if user_signed_in? && current_user.id != @item.seller_id
+        = link_to "購入する", confirm_item_path, class: "item-buy-link"
       -# ここまで
 
       .item-content
