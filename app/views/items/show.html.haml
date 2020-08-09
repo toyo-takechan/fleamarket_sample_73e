@@ -51,7 +51,6 @@
         
         <br/>
       -# 出品者以外がログイン時のみ閲覧可能
-      -# ログイン機能実装次第、if文のコメントを外し、link_toのインデントを下げる
       - if user_signed_in? && current_user.id != @item.seller_id
         = link_to "購入する", confirm_item_path, class: "item-buy-link"
       -# ここまで
@@ -63,9 +62,7 @@
               %th
                 出品者
               %td
-                -# ログイン機能実装次第、下記コメントを外す
-                -# = @item.user.name
-                hoge
+                = @seller.nickname
             %tr
               %th
                 カテゴリー
@@ -141,9 +138,7 @@
                 発送元の地域
               %td
                 =link_to "#" do
-                  -# prefecturesテーブルとアソシエーションを組んだ後、下記コメントを外す
-                  -# = @item.prefecture.name
-                  青森県
+                  = @item.prefecture.name
             %tr
               %th
                 発送日の目安
@@ -157,26 +152,25 @@
                     = "4~7日で発送"
                 
       -# 出品者以外がログイン時のみ閲覧可能
-      -# ログイン機能実装次第、if文のコメントを外し、.item-menu以下のインデントをずらす
-      -# - if user_signed_in? && current_user.id != @item.seller_id
-      .item-menu
-        %ul.item-menu__list
-          %li.item-menu__list--like-btn
-            %icon.fa.fa-star
-            お気に入り 0
-          %li.item-menu__list--report-btn
-            = link_to "#" ,class:"report-link" do
-              %icon.fa.fa-flag
-                不適切な商品の通報
+      - if user_signed_in? && current_user.id != @item.seller_id
+        .item-menu
+          %ul.item-menu__list
+            %li.item-menu__list--like-btn
+              %icon.fa.fa-star
+              お気に入り 0
+            %li.item-menu__list--report-btn
+              = link_to "#" ,class:"report-link" do
+                %icon.fa.fa-flag
+                  不適切な商品の通報
       -# ここまで
     
     -# 出品者のみ閲覧可能
     -# ログイン機能実装次第、if文のコメントを外し、.exhibitor-menu-container以下のインデントをずらす
-    -# - if current_user.id == @item.seller_id
-    .exhibitor-menu-container 
-      = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
-      %p or
-      = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
+    - if current_user.id == @item.seller_id
+      .exhibitor-menu-container 
+        = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
+        %p or
+        = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
     -# ここまで
 
     -# ログイン時のみ閲覧可能（ログインしているユーザー全て）
@@ -184,7 +178,7 @@
       .comment-container
         = form_with url: "#" do |f|
           = f.text_area :comment, class: "comment-inputbox"
-          %p.notice
+          %p.itemnotice
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
             不快な言葉遣いなどは利用制限や退会処分となることがあります。

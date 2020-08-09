@@ -46,6 +46,7 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @relatedItems = Item.where(category_id: @item.category_id).where.not(id: params[:id]).order("RAND()").limit(3)
+    @seller = User.find_by(id: @item.seller_id)
   end
 
 
@@ -56,7 +57,7 @@ class ItemsController < ApplicationController
   def set_parent_array
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << [parent.name, parent.id]
+      @category_parent_array << parent.name
     end
   end
 
@@ -65,7 +66,7 @@ class ItemsController < ApplicationController
   end
 
   def get_category_children
-    @category_children = Category.find_by(params[:parent_name]).children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}").children
   end
 
   def get_category_grandchildren

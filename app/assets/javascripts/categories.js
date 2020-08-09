@@ -53,12 +53,13 @@ $(document).on('turbolinks:load', function(){
   
   
   $('#parent_category').on('change', function() {
-    var parentId = ('#parent_category option:selected').value;
-    if (parentId != "---"){
+    var parentCategory = document.getElementById('parent_category').value;
+    console.log(parentCategory);
+    if (parentCategory != "---"){
       $.ajax({
         url: '/items/get_category_children',
         type: 'GET',
-        data: { parent_id: parentId },
+        data: { parent_name: parentCategory },
         dataType: 'json'
       })
       .done(function(children){
