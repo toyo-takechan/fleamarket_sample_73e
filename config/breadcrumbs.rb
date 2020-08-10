@@ -3,8 +3,13 @@ crumb :root do
 end
 
 crumb :mypage do
-  link "マイページ", user_path
+  link "マイページ", user_path(current_user.id)
   parent :root
+end
+
+crumb :logout do
+  link "ログアウト", logout_index_path(current_user.id)
+  parent :mypage
 end
 
 crumb :profile do
