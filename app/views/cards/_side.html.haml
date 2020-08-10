@@ -37,7 +37,7 @@
       %li.mypage-menu-list__item
         = link_to "プロフィール", class: 'btn'
       %li.mypage-menu-list__item
-        = link_to "発送元・お届け先住所変更", class: 'btn'
+        = link_to "発送元・お届け先住所変更",edit_user_path, class: 'btn'
       %li.mypage-menu-list__item
         = link_to "支払い方法", card_path, class: 'btn'
       %li.mypage-menu-list__item
@@ -47,4 +47,4 @@
       %li.mypage-menu-list__item
         = link_to "電話番号の確認", class: 'btn'
       %li.mypage-menu-list__item
-        = link_to "ログアウト",logout_user_path, class: 'btn'
+        = link_to "ログアウト",logout_index_path(current_user.id), class: 'btn'
