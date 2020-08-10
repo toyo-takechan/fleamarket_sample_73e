@@ -54,7 +54,6 @@ $(document).on('turbolinks:load', function(){
   
   $('#parent_category').on('change', function() {
     var parentCategory = document.getElementById('parent_category').value;
-    console.log(parentCategory);
     if (parentCategory != "---"){
       $.ajax({
         url: '/items/get_category_children',
