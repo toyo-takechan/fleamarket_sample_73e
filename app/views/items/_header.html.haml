@@ -10,56 +10,32 @@
   .header__bottom
     .header__bottom--left
       %ul.contents
-        %li.content
+        %li.content.category
           = link_to do
             %p カテゴリー
           %ul.nav
-            %li
-              = link_to do
-                レディース
-              %ul.nav__content
-                %li
-                  = link_to do
-                    トップス
-                %li
-                  = link_to do
-                    ボトムス
-                %li
-                  = link_to do
-                    シューズ
-            %li
-              = link_to do
-                メンズ
-
-            %li
-              = link_to do
-                キッズ
-
-
+            - @parents.each do |parent|
+              %li.parent
+                = link_to do
+                  = parent.name
+                %ul.nav__content
+                  .children-backboard
+                  - parent.children.each do |child|
+                    %li.child-name
+                      = link_to do
+                        = child.name
+                      %ul.nav__content--grandchild
+                        .grandchildren-backboard
+                        - child.children.each do |grandchild|
+                          %li.grandchild-name
+                            = link_to do
+                              = grandchild.name 
+                    
+                
         %li.content
           = link_to class: "brand" do
             %p ブランド
-          %ul.nav
-            %li
-              = link_to do
-                レディース
-              %ul.nav__content
-                %li
-                  = link_to do
-                    トップス
-                %li
-                  = link_to do
-                    ボトムス
-                %li
-                  = link_to do
-                    シューズ
-            %li
-              = link_to do
-                メンズ
-
-            %li
-              = link_to do
-                キッズ
+         
 
     .header__bottom--right
       - if user_signed_in?

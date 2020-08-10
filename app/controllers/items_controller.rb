@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:confirm, :show]
+  before_action :set_parent_category
+  before_action :set_parent_array, only: [:new, :create]
 
   def index
     @items = Item.last(4)
@@ -43,11 +45,31 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @relatedItems = Item.where(category_id: @item.category_id).where.not(id: params[:id]).order("RAND()").limit(3)
+    @seller = User.find_by(id: @item.seller_id)
   end
 
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_parent_array
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+  end
+
+  def set_parent_category
+    @parents = Category.where(ancestry: nil)
+  end
+
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}").children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
   end
 
   private

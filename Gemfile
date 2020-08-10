@@ -77,7 +77,9 @@ group :production do
   gem 'unicorn'
 end
 
+gem "font-awesome-sass"
 gem "haml-rails"
+gem "ancestry"
 gem "jquery-rails"
 gem 'carrierwave'
 gem 'mini_magick'

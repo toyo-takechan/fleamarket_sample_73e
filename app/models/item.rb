@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   has_many :images, dependent: :destroy
   belongs_to :category
+
   belongs_to :prefecture
   belongs_to :user, optional: true
 
@@ -19,5 +20,6 @@ class Item < ApplicationRecord
   validates :seller_id, presence: true
 
   accepts_nested_attributes_for :images, allow_destroy: true
+
 
 end
