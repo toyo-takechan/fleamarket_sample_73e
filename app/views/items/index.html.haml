@@ -1,5 +1,7 @@
 .wrapper
   =render "header"
+  - breadcrumb :root
+  = breadcrumbs separator: " &rsaquo; "
   .main
     .content
       .visual

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_125900) do
+ActiveRecord::Schema.define(version: 2020_08_10_035703) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "post_code", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_125900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.string "index"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
@@ -86,8 +87,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_125900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
