@@ -1,3 +1,7 @@
+//以下はcards/new.html.hamlのcssです。
+.contents3 {
+  margin-top: 200px;
+}
 .creditContainer{
   margin: 0;
   background: #fff;
@@ -123,13 +127,14 @@ margin: 0 8px 0 0;
   text-align: center;
 }
 
-//以下はcards/show.html.hamlのcssです。
+//以下はcards/show.html.hamlとcards/index.html.hamlのcssです。
 
 .cardContent {
   width: 700px;
   height: 1211.84px;
   float: right;
   position: relative;
+  margin-top: 200px;
   &__box {
     background-color: #fff;
     &--head {
@@ -180,6 +185,8 @@ margin: 0 8px 0 0;
   line-height: 48px;
   display: block;
 }
+
+//以下はcards/index.html.hamlのcssです。
 
 .registerContent {
   margin-top: 32px;
