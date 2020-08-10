@@ -2,7 +2,7 @@
   .mail-regist-form__header
     .mail-regist-form__header-title
       =link_to root_path do
-        = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+        = image_tag "/logo/logo.png", size: "180x54", alt: "logo"
 
   .mail-regist-form__body
     = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
@@ -149,5 +149,5 @@
         =link_to "特定商取引に関する表記", root_path 
     .mail-regist-form__footer-incline
       =link_to root_path do
-        = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
+        = image_tag "/logo/logo-white.png",size: "200x60", alt: "visual-1"
       %p © FURIMA
