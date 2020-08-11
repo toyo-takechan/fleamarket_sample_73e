@@ -1,103 +1,133 @@
-class CreditCardsController < ApplicationController
+class CardController < ApplicationController
+  before_action :move_to_root
+  before_action :set_card,    only: [:new, :show, :destroy, :buy, :pay]
+  before_action :set_item,    only: [:buy, :pay]
   require "payjp"
-  before_action :set_creditcard, only: [:show]
-
-  def index
-  end
 
   def new
-    @card = CreditCard.new
-    # card = Card.where(user: current_user).first
-    # redirect_to action: :index if card.present?
+    redirect_to card_path(current_user.id) if @card.present?
   end
 
   def create
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
     if params['payjp-token'].blank?
-      redirect_to action: :new
+      redirect_to new_card_path
     else
       customer = Payjp::Customer.create(
-        email: current_user.email,
-        card: params['payjp-token'],
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
       )
-      @card = CreditCard.new(user: current_user, customer_id: customer.id, card_id: customer.default_card)
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: :index
+        redirect_to registration_done_card_index_path
       else
-        redirect_to action: :new
+        redirect_to new_card_path
       end
     end
   end
 
+  def registration_done
+  end
+
   def show
-    Payjp.api_key = Rails.application.secrets.payjp_access_key
-    # customer = Payjp::Customer.retrieve(@creditcard.customer_id)
-    # @creditcard_information = customer.cards.retrieve(@creditcard.card_id)
-    @card_brand = @creditcard_information.brand 
-    case @card_brand
-    when "Visa"
-      @card_src = "visa.svg"
-    when "JCB"
-      @card_src = "jcb.svg"
-    when "MasterCard"
-      @card_src = "master-card.svg"
-    when "American Express"
-      @card_src = "american_express.svg"
-    when "Diners Club"
-      @card_src = "dinersclub.svg"
-    when "Discover"
-      @card_src = "discover.svg"
+    if @card.blank?
+      redirect_to new_card_path 
+    else
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_info = customer.cards.retrieve(@card.card_id)
+      case @card_info.brand
+        when "Visa"
+          @card_src = "visa.gif"
+        when "JCB"
+          @card_src = "jcb.gif"
+        when "MasterCard"
+          @card_src = "mc.png"
+        when "American Express"
+          @card_src = "amex.gif"
+        when "Diners Club"
+          @card_src = "diners.gif"
+        when "Discover"
+          @card_src = "discover.gif"
+      end
     end
   end
 
   def destroy
-    customer = Payjp::Customer.retrieve(@card.customer_id)
-    customer.delete
-    if @card.destroy
-      redirect_to action: :new, notice: "削除しました"
+    if @card.blank?
     else
-      redirect_to action: :index, alert: "削除できませんでした"
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      customer.delete
+      @card.delete
+    end
+      redirect_to delete_done_card_index_path
+  end
+
+  def delete_done
+  end
+
+  def buy
+    if user_signed_in?
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+      if @card.blank?
+        @card_info = ""
+      else
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        @card_info = customer.cards.retrieve(@card.card_id)
+        case @card_info.brand
+          when "Visa"
+            @card_src = "visa.gif"
+          when "JCB"
+            @card_src = "jcb.gif"
+          when "MasterCard"
+            @card_src = "mc.png"
+          when "American Express"
+            @card_src = "amex.gif"
+          when "Diners Club"
+            @card_src = "diners.gif"
+          when "Discover"
+            @card_src = "discover.gif"
+        end
+      end
+    else
+      redirect_to root_path
     end
   end
 
-  # def index
-  #   if @card.present?
-  #     customer = Payjp::Customer.retrieve(@card.customer_id)
-  #     @card_information = customer.cards.retrieve(@card.card_id)
-
-  #     @card_brand = @card_information.brand
-  #     case @card_brand
-  #     when "Visa"
-  #       @card_src = "visa.gif"
-  #     when "JCB"
-  #       @card_src = "jcb.gif"
-  #     when "MasterCard"
-  #       @card_src = "master.gif"
-  #     when "American Express"
-  #       @card_src = "amex.gif"
-  #     when "Diners Club"
-  #       @card_src = "diner.gif"
-  #     when "Discover"
-  #       @card_src = "discover.gif"
-  #     end
-  #   end
-  # end
-
-  # 機能追加時に使用
-  # def destroy #PayjpとCardのデータベースを削除
-  #   Payjp.api_key = "秘密鍵"
-  #   customer = Payjp::Customer.retrieve(@card.customer_id)
-  #   customer.delete
-  #   if @card.destroy #削除に成功した時にポップアップを表示します。
-  #     redirect_to action: "index", notice: "削除しました"
-  #   else #削除に失敗した時にアラートを表示します。
-  #     redirect_to action: "index", alert: "削除できませんでした"
-  #   end
-  # end
-
-  private
-
-  def set_creditcard
-    @creditcard = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+  def pay
+    if @item.auction_status == "売り切れ"
+      redirect_to buy_card_path(@item)
+    else
+      if current_user.card.present?
+        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+        charge = Payjp::Charge.create(
+          amount: @item.exhibition_price,
+          customer: Payjp::Customer.retrieve(@card.customer_id),
+          currency: 'jpy'
+          )
+        @item.update!(auction_status: 2)
+      else
+        Payjp::Charge.create(
+          amount: @item.exhibition_price,
+          card: params['payjp-token'],
+          currency: 'jpy'
+          )
+        @item.update!(auction_status: 2)
+      end
+    end
   end
 
+  private
+  def move_to_root
+    redirect_to root_path unless user_signed_in?
+  end
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
