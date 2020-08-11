@@ -28,7 +28,7 @@ root 'items#index'
   resources :logout,only: [:index]
 
   # resources :credit_cards, only: [:new, :create, :show]
-  resources :card, except: :index do
+  resources :credit_cards, except: :index do
     collection do
       get 'registration_done'
       get 'delete_done'
