@@ -9,30 +9,30 @@
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "ベビー・キッズ", "#"
+          = link_to @item.category.root.name, "#"
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "ベビー服(男女兼用)~95cm", "#"
+          = link_to @item.category.parent.name, "#"
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "アウター", "#"
+          = link_to @item.category.name, "#"
         %li
           %i.fa.fa-angle-right
         %li
-          = link_to "商品名のエリア", "#", class: "current-page"
+          = link_to @item.name, "#", class: "current-page"
       
     .sale-item__container
       %h2.item-name
         = @item.name
       .item-image-box
         .item-image-box__main
-          = image_tag @item.images.first.image_url,class: "item-image-box__main--image"
+          = image_tag @item.images.first.image_url.url,class: "item-image-box__main--image"
         %ul.item-image-thumbnail
           - @item.images.each do |image|
             %li.item-image-thumbnail__part
-              = image_tag image.image_url, class:"item-image-thumbnail__part--mini-image"
+              = image_tag image.image_url.url, class:"item-image-thumbnail__part--mini-image"
       .item-price-box
         .item-price-box__price
           = "¥#{@item.price}"
@@ -51,9 +51,8 @@
         
         <br/>
       -# 出品者以外がログイン時のみ閲覧可能
-      -# ログイン機能実装次第、if文のコメントを外し、link_toのインデントを下げる
-      -# - if user_signed_in? && current_user.id != @item.seller_id
-      = link_to "購入する", confirm_item_path, class: "item-buy-link"
+      - if user_signed_in? && current_user.id != @item.seller_id
+        = link_to "購入する", confirm_item_path, class: "item-buy-link"
       -# ここまで
 
       .item-content
@@ -63,18 +62,16 @@
               %th
                 出品者
               %td
-                -# ログイン機能実装次第、下記コメントを外す
-                -# = @item.user.name
-                hoge
+                = @seller.nickname
             %tr
               %th
                 カテゴリー
               %td
-                =link_to "メンズ", "#"
+                =link_to @item.category.root.name, "#"
                 %br
-                =link_to "ジャケット/アウター", "#"
+                =link_to @item.category.parent.name, "#"
                 %br
-                =link_to "ノーカラージャケット", "#"
+                =link_to @item.category.name, "#"
             %tr
               %th
                 ブランド
@@ -141,9 +138,7 @@
                 発送元の地域
               %td
                 =link_to "#" do
-                  -# prefecturesテーブルとアソシエーションを組んだ後、下記コメントを外す
-                  -# = @item.prefecture.name
-                  青森県
+                  = @item.prefecture.name
             %tr
               %th
                 発送日の目安
@@ -157,26 +152,25 @@
                     = "4~7日で発送"
                 
       -# 出品者以外がログイン時のみ閲覧可能
-      -# ログイン機能実装次第、if文のコメントを外し、.item-menu以下のインデントをずらす
-      -# - if user_signed_in? && current_user.id != @item.seller_id
-      .item-menu
-        %ul.item-menu__list
-          %li.item-menu__list--like-btn
-            %icon.fa.fa-star
-            お気に入り 0
-          %li.item-menu__list--report-btn
-            = link_to "#" ,class:"report-link" do
-              %icon.fa.fa-flag
-                不適切な商品の通報
+      - if user_signed_in? && current_user.id != @item.seller_id
+        .item-menu
+          %ul.item-menu__list
+            %li.item-menu__list--like-btn
+              %icon.fa.fa-star
+              お気に入り 0
+            %li.item-menu__list--report-btn
+              = link_to "#" ,class:"report-link" do
+                %icon.fa.fa-flag
+                  不適切な商品の通報
       -# ここまで
     
     -# 出品者のみ閲覧可能
     -# ログイン機能実装次第、if文のコメントを外し、.exhibitor-menu-container以下のインデントをずらす
-    -# - if current_user.id == @item.seller_id
-    .exhibitor-menu-container 
-      = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
-      %p or
-      = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
+    - if current_user.id == @item.seller_id
+      .exhibitor-menu-container 
+        = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
+        %p or
+        = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
     -# ここまで
 
     -# ログイン時のみ閲覧可能（ログインしているユーザー全て）
@@ -184,7 +178,7 @@
       .comment-container
         = form_with url: "#" do |f|
           = f.text_area :comment, class: "comment-inputbox"
-          %p.notice
+          %p.itemnotice
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
             不快な言葉遣いなどは利用制限や退会処分となることがあります。
@@ -206,7 +200,7 @@
             後ろの商品
             %icon.fa.fa-angle-right
     .more-items
-      = link_to "メンズをもっと見る", "#", class: "more-items__link"
+      = link_to "#{@item.category.name}をもっと見る", "#", class: "more-items__link"
     
     .product-list
       = render partial:'item', collection: @relatedItems

@@ -16,6 +16,7 @@
   }
   .main{
     align-content: center;
+    height: 100%;
     .form{
       width: 600px;
       margin-left: auto;
@@ -29,30 +30,40 @@
           margin-top: 25px;
           margin-bottom: 25px;
         }
+        #previews{
+          display: flex;
+          padding-bottom: 5px;
+          image{
+            margin-right: 5px;
+          }
+        }
 
-        input{
-          opacity: 0;
-          visibility: hidden;
-          position: absolute;
+        .js-file_group{
+          .is-file{
+            span{
+            font-size: 12px;
+            background-color: red;
+            color: white;
+            border-radius: 3px;
+            margin-left: 5px;
+            padding: 2px 2px;
+            cursor: pointer;
+            }
+          }
         }
-        label {
-          padding: 10px 25px;
-          margin: 0 0 10px;
-          background: #fff;
-          color: #aaa;
-          display: inline-block;
-          cursor: pointer;
-          border: 1px solid black;
-          border-radius: 3px;
-        }
+
       }
       .content__2{
         padding-top: 25px;
         padding-bottom: 25px;
         border-bottom: 1px solid rgb(211, 211, 211);
-        input{
+        .input{
           margin-top: 15px;
           margin-bottom: 30px;
+          &__text{
+            height: 200px;
+            width: 550px;
+          }
         }
       }
       .content__3{
@@ -93,6 +104,7 @@
         color: white;
         border-radius: 3px;
         margin-left: 5px;
+        padding: 2px 2px;
       }
       .notMust{
         background-color: rgb(167, 167, 167);
@@ -109,12 +121,12 @@
         height: 55px;
         margin-bottom: 15px;
       }
-      .plice{
+      .price{
         line-height: 20px;
         width: 350px;
         margin-right: 25px;
       }
-      .items__plice--input{
+      .items__price--input{
         margin-bottom: 25px;
         .content__header{
           height: 20px;
@@ -165,7 +177,9 @@
           cursor: pointer;
         }
         &--button{
-          font-size: 20px;
+          height: 55px;
+          font-size: 25px;
+          border-radius: 5px;
           border: none;
           font-weight: bolder;
           background-color: rgb(187, 187, 187);

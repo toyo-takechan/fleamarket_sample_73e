@@ -10,13 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_051104) do
+ActiveRecord::Schema.define(version: 2020_08_06_125900) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "family_name", null: false
-    t.string "first_name_kana", null: false
-    t.string "family_name_kana", null: false
     t.string "post_code", null: false
     t.string "city", null: false
     t.string "house_number", null: false
@@ -24,9 +20,15 @@ ActiveRecord::Schema.define(version: 2020_07_11_051104) do
     t.string "telephone_number"
     t.integer "user_id", null: false
     t.integer "prefecture_id", null: false
+    t.index ["telephone_number"], name: "index_addresses_on_telephone_number", unique: true
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["telephone_number"], name: "index_addresses_on_telephone_number", unique: true
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -47,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_07_11_051104) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.text "content", null: false
     t.integer "category_id", null: false
     t.string "size"
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_051104) do
     t.integer "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,13 +74,11 @@ ActiveRecord::Schema.define(version: 2020_07_11_051104) do
     t.string "family_name", null: false
     t.string "first_name_kana", null: false
     t.string "family_name_kana", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname", null: false
+    t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -86,7 +86,10 @@ ActiveRecord::Schema.define(version: 2020_07_11_051104) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["nickname"], name: "index_users_on_nickname", unique: true
+    t.string "nickname", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

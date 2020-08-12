@@ -1,49 +1,44 @@
-%html
-  %head
-    %title 会員情報登録
-    = stylesheet_link_tag 'application', media: 'all'
-  %body
-    .account-page__inner
-      .account-page__inner-header
-        = link_to root_path do
-          = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
-      .account-page__inner-body
-        .account-page__inner-body-box
-          .account-page__inner-body-title
-            新規会員登録
-          .account-page__inner-body-tool
-            = form_for [@user] do |f|
-              .account-page__inner-body-tool-mail
-                = link_to "メールアドレスで登録する", new_user_registration_path , class: "mail_btn"
-              .account-page__inner-body-tool-google
-                = link_to  "Googleで登録する", "/",class: "google-btn"
-              .account-page__inner-body-tool-facebook
-                = link_to "Facebookで登録する", "/",class: "facebook-btn"
-              .account-page__inner-body-tool-apple
-                = link_to "Appleで登録する", "/",class: "apple-btn"
-              .account-page__inner-body-comment
-                登録することで、
-                = link_to "利用規約", root_path 
-                と
-                = link_to "プライバシーポリシー", root_path 
-                に
-              .account-page__inner-body-comment2
-                同意したものとみなされます。
-      .account-page__inner-footer
-        .account-page__inner-footer-policy
-          .account-page__inner-footer-policy-privacy
-            =link_to root_path do
-              プライバシーポリシー
-          .account-page__inner-footer-policy-kiyaku
-            =link_to root_path do
-              アプリ利用規約
-          .account-page__inner-footer-policy-tokusyo
-            =link_to root_path do
-              特定商取引に関する表記 
-        .account-page__inner-footer-logo
-          =link_to root_path, class: "footer-logo" do
-            %i.fa.fa-lightburb
-        .account-page__inner-footer-incline
-          =link_to root_path do
-            = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
-        %p © FURIMA
+.account-page__inner
+  .account-page__inner-header
+    = link_to root_path do
+      = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+  .account-page__inner-body
+    .account-page__inner-body-box
+      .account-page__inner-body-title
+        新規会員登録
+      .account-page__inner-body-tool
+        .account-page__inner-body-tool-mail
+          = link_to "メールアドレスで登録する", new_user_registration_path, class: "mail_btn"
+        .account-page__inner-body-tool-google
+          = link_to  "Googleで登録する", "/",class: "google-btn"
+        .account-page__inner-body-tool-facebook
+          = link_to "Facebookで登録する", "/",class: "facebook-btn"
+        .account-page__inner-body-tool-apple
+          = link_to "Appleで登録する", "/",class: "apple-btn"
+        .account-page__inner-body-comment
+          登録することで、
+          = link_to "利用規約", root_path 
+          と
+          = link_to "プライバシーポリシー", root_path 
+          に
+        .account-page__inner-body-comment2
+          同意したものとみなされます。
+  .account-page__inner-footer
+    .account-page__inner-footer-policy
+      .account-page__inner-footer-policy-privacy
+        =link_to root_path do
+          プライバシーポリシー
+      .account-page__inner-footer-policy-kiyaku
+        =link_to root_path do
+          アプリ利用規約
+      .account-page__inner-footer-policy-tokusyo
+        =link_to root_path do
+          特定商取引に関する表記 
+    .account-page__inner-footer-logo
+      =link_to root_path, class: "footer-logo" do
+        %i.fa.fa-lightburb
+    .account-page__inner-footer-incline
+      =link_to root_path do
+        = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
+    %p © FURIMA
+

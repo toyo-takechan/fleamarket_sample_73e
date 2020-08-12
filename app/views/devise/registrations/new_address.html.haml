@@ -1,0 +1,19 @@
+.mail-regist-form
+  .mail-regist-form__header
+    .mail-regist-form__header-title
+      =link_to root_path do
+        = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+
+.address-form
+      .content__header
+        発送元・お届け先住所変更
+      .content__body
+        = form_for @address do |f|
+          
+
+          .content__footer
+            = f.submit "登録する",class: "btn"
+        
+= render "/items/footer"
+
+  

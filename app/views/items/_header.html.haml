@@ -1,7 +1,7 @@
 .header
   .header__top
     = link_to root_path, class:"header__top--rogo" do
-      = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+      = image_tag "/logo.png", size: "180x54", alt: "logo"
     .header__top--form
       %form{action: "/", method: "post"}
         %input{name: "search", size: "40", class:"input", placeholder: "キーワードから探す"}
@@ -10,63 +10,41 @@
   .header__bottom
     .header__bottom--left
       %ul.contents
-        %li.content
+        %li.content.category
           = link_to do
             %p カテゴリー
           %ul.nav
-            %li
-              = link_to do
-                レディース
-              %ul.nav__content
-                %li
-                  = link_to do
-                    トップス
-                %li
-                  = link_to do
-                    ボトムス
-                %li
-                  = link_to do
-                    シューズ
-            %li
-              = link_to do
-                メンズ
-
-            %li
-              = link_to do
-                キッズ
-
-
+            - @parents.each do |parent|
+              %li.parent
+                = link_to do
+                  = parent.name
+                %ul.nav__content
+                  .children-backboard
+                  - parent.children.each do |child|
+                    %li.child-name
+                      = link_to do
+                        = child.name
+                      %ul.nav__content--grandchild
+                        .grandchildren-backboard
+                        - child.children.each do |grandchild|
+                          %li.grandchild-name
+                            = link_to do
+                              = grandchild.name 
+                    
+                
         %li.content
           = link_to class: "brand" do
             %p ブランド
-          %ul.nav
-            %li
-              = link_to do
-                レディース
-              %ul.nav__content
-                %li
-                  = link_to do
-                    トップス
-                %li
-                  = link_to do
-                    ボトムス
-                %li
-                  = link_to do
-                    シューズ
-            %li
-              = link_to do
-                メンズ
-
-            %li
-              = link_to do
-                キッズ
+         
 
     .header__bottom--right
       - if user_signed_in?
-        =link_to user_path(current_user.id), class: "mypage" do
+        =link_to logout_index_path do
+          %p ログアウト
+        =link_to mypage_users_path, class: "mypage" do
           %p マイページ
       - else
-        = link_to new_user_session_path class: "login" do
+        = link_to new_user_session_path, class: "login" do
           %p ログイン
-        = link_to users_path class: "signin" do
+        = link_to users_path, class: "registration" do
           %p 新規会員登録
