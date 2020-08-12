@@ -17,10 +17,11 @@ resources :items do
     end
   end
 
+resources :logout,only: [:index]
+
+
 resources :users, only: [:show,:edit,:update] do
-  member do
-    get 'logout'
-  end
+
 end
 
   devise_scope :user do
