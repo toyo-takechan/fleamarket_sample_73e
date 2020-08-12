@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:confirm, :show]
+  before_action :set_item, only: [:confirm, :show, :edit, :update]
   before_action :set_parent_category
-  before_action :set_parent_array, only: [:new, :create]
+  before_action :set_parent_array, only: [:new, :create, :edit]
 
   def index
     @items = Item.last(4)
@@ -20,6 +20,22 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = '正しく入力してください。'
       render :new
+    end
+  end
+
+  def edit
+    @grandchild_category = @item.category
+    @child_category = @grandchild_category.parent
+    @parent_category = @grandchild_category.root
+
+    @child_category_array = []
+    @item.category.parent.siblings.each do |children|
+      @child_category_array << children
+    end
+
+    @grandchild_category_array = ["---"]
+    @item.category.siblings.each do |grandchildren|
+      @grandchild_category_array << grandchildren.name
     end
   end
 
@@ -67,6 +83,7 @@ class ItemsController < ApplicationController
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}").children
   end
+
 
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
