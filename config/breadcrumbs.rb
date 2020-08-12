@@ -33,7 +33,7 @@ crumb :item do
 end
 
 crumb :new_item do
-  link "出品", new_item_path
+  link "新規出品", new_item_path
   parent :root
 end
 
