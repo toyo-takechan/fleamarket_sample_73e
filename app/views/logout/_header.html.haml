@@ -1,0 +1,72 @@
+.header
+  .header__top
+    = link_to root_path, class:"header__top--rogo" do
+      = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+    .header__top--form
+      %form{action: "/", method: "post"}
+        %input{name: "search", size: "40", class:"input", placeholder: "キーワードから探す"}
+        %input{type: "submit", value: "検索", class: "btn"}
+
+  .header__bottom
+    .header__bottom--left
+      %ul.contents
+        %li.content
+          = link_to do
+            %p カテゴリー
+          %ul.nav
+            %li
+              = link_to do
+                レディース
+              %ul.nav__content
+                %li
+                  = link_to do
+                    トップス
+                %li
+                  = link_to do
+                    ボトムス
+                %li
+                  = link_to do
+                    シューズ
+            %li
+              = link_to do
+                メンズ
+
+            %li
+              = link_to do
+                キッズ
+
+
+        %li.content
+          = link_to class: "brand" do
+            %p ブランド
+          %ul.nav
+            %li
+              = link_to do
+                レディース
+              %ul.nav__content
+                %li
+                  = link_to do
+                    トップス
+                %li
+                  = link_to do
+                    ボトムス
+                %li
+                  = link_to do
+                    シューズ
+            %li
+              = link_to do
+                メンズ
+
+            %li
+              = link_to do
+                キッズ
+
+    .header__bottom--right
+      - if user_signed_in?
+        =link_to user_path(current_user.id), class: "mypage" do
+          %p マイページ
+      - else
+        = link_to new_user_session_path class: "login" do
+          %p ログイン
+        = link_to users_path class: "signin" do
+          %p 新規会員登録

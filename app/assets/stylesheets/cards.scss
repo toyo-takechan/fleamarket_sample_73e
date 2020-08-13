@@ -1,0 +1,260 @@
+//以下はcards/new.html.hamlのcssです。
+.contents3 {
+  margin-top: 200px;
+}
+.creditContainer{
+  margin: 0;
+  background: #fff;
+  &__head{
+    font-weight: 600;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    border-bottom: 1px solid #f5f5f5;
+    background: #fff;
+    text-align: center;
+  }
+}
+.card{
+  padding: 40px 40px 64px;
+  &__content{
+    max-width: 343px;
+    margin: 0 auto;
+  }
+}
+.cardGroup label{
+  font-weight:  600;
+  display: inline-block;
+}
+.requiredItem{
+  background: #ea352d;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  vertical-align: top;
+}
+.cardNumber{
+  width: 343px;
+  height: 48px;
+  padding:10px 16px 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+  background: #fff;
+}
+
+.card-list{
+  display: flex;
+  font-size: 0;
+  height: 30px;
+}
+.card-list a{
+height: 30px;
+margin: 0 8px 0 0;
+}
+.cardExpiration{
+  margin-top: 32px;
+  &__date{
+    font-weight: 600;
+  }
+}
+
+.monthBox{
+  height: 48px;
+  width: 168px;
+  display: inline-block;
+  &__expire{
+    height: 48px;
+    width: 131.5px;
+  }
+}
+.yearBox{
+  height: 48px;
+  width: 168px;
+  display: inline-block;
+  &__expire{
+    height: 48px;
+    width: 131.5px;
+  }
+}
+
+.securityGroup{
+  width: 343px;
+  height: 80px;
+  margin-top: 32px;
+  &__code{
+    font-weight: 600;
+  }
+  &__number{
+    height: 48px;
+    width: 100%;
+    padding: 10px 16px 8px;
+    margin: 8px 0 0;
+  }
+}
+
+.helpNumber {
+  position: relative;
+  margin: 8px 0 0;
+  &__text {
+    text-align: right;
+    color: #0099e8;
+    &--question {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0099e8;
+      color: #fff;
+      line-height: 14px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+}
+
+.btn-add{
+  margin: 24px 0 0;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  text-align: center;
+}
+
+//以下はcards/show.html.hamlとcards/index.html.hamlのcssです。
+
+.cardContent {
+  width: 700px;
+  height: 1211.84px;
+  float: right;
+  position: relative;
+  margin-top: 200px;
+  &__box {
+    background-color: #fff;
+    &--head {
+      font-size: 24px;
+      padding: 8px 24px;
+      border-bottom: 1px solid #f5f5f5;
+      text-align: center;
+      font-weight: bold;
+    }
+    &--inner {
+      padding: 64px;
+    }
+    &--innerList {
+      max-width: 320px;
+      margin: 0 auto;
+      &--innerListHeader {
+        font-size: 16px;
+      }
+    }
+    &--addCard {
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
+      &__btn {
+        max-width: 320px;
+        margin: 0 auto;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        border-radius: 4px;
+      }
+    }
+  }
+  &__about {
+    &--payment {
+      display: block;
+      margin: 40px 0 0;
+      text-align: right;
+    }
+  }
+}
+.abtPayment {
+  color: #0099e8;
+}
+.far.fa-credit-card {
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 48px;
+  display: block;
+}
+
+//以下はcards/index.html.hamlのcssです。
+
+.registerContent {
+  margin-top: 32px;
+  list-style: none;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  &__check {
+    color:#0095ee;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+  }
+  &__box {
+    flex: 1 1 0%;
+    margin: 0px 16px;
+    font-size: 14px;
+    line-height: 20px;
+    &--number {
+    height: 14px;
+    }
+    &--expDate {
+      height: 14px;
+      margin-top: 6px;
+    }
+    &--img {
+    margin-top: 8px;
+    height: 32px;
+    max-width: 48px;
+    }
+  }
+}
+.registerNewCard {
+  margin-top: 32px;
+&__add {
+  color: #0095ee;
+  text-align: 16px;
+  }
+}
+.paymentSelect {
+  padding: 48px 0 48px 0;
+}
+
+
+.deleteBtn {
+  background-color: initial;
+  color: #ea352d;
+  font-weight: bold;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ea352d;
+  border-image: initial;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+.selectBtn {
+  background-color: #ea352d;
+  color: #fff;
+  font-weight: bold;
+  border-style: solid;
+  border-color: #ea352d;
+  border-radius: 4px;
+  width: 100%;
+  color: fff;
+  font-size: 17px;
+  min-height: 48px;
+  padding: 0 24px;
+}
