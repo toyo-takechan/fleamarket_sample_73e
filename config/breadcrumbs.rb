@@ -12,6 +12,11 @@ crumb :logout do
   parent :mypage
 end
 
+crumb :newcard do
+  link "カード情報登録", new_card_path
+  parent :mypage
+end
+
 crumb :profile do
   link "プロフィール", new_user_path
   parent :root

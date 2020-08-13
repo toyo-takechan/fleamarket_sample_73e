@@ -1,3 +1,155 @@
+.body-mypage {
+  display: grid;
+  grid-template:
+        "... ...... ...... ...... ...... ...... ..."
+        "... ...... ...... ...... ...... ...... ..."
+        "... left   left  ...... center center center" 1fr
+        "... ...... ...... ...... ...... ...... ..."
+        "... footer footer footer footer footer ..." 300px
+        "... ...... ...... ...... ...... ...... ..."
+        / 80px 150px 150px 200px 200px 200px 200px;
+}
+.mypage-header {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+  .header__top{
+    display: flex;
+    &--rogo{
+      margin-left: 50px;
+    }
+    &--form{
+      margin-left: 50px;
+      margin-top: 10px;
+      align-content: center;
+      .input{
+        width: calc(100vw - 950px);
+        height: 30px;
+        float: left;
+      }
+      .btn{
+        margin-left: -5px;
+        height: 35px;
+        width: 40px;
+        background-color: #3CCACE;
+        border-radius: 3px;
+        border: none;
+        color: white;
+        float: right;
+      }
+    }
+  .header__bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    height: 50px;
+    
+    // カテゴリー＆ブランド
+    &--left{
+      display: flex;
+      justify-content: space-between;
+      z-index: 1000;
+      .contents5{
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        .content5{
+          font-size:14px;
+          margin-right: 10px;
+          height: 40px;
+          width: 150px;
+          line-height: 40px;
+          position: relative;
+          text-decoration: none;
+          padding-left: 3px;
+          li{
+            padding-left: 3px;
+          }
+          .nav{
+            width: 200px;
+            position: absolute;
+            left: 50px;
+            top:35px;
+            background-color: #f7f7f7;
+            opacity: 0.9;
+            display: none;
+            &__content{
+              width: 200px;
+              position: absolute;
+              top: 0;
+              left: 200px;
+              background-color: #f7f7f7;
+              display: none;
+              z-index: 100;
+              .children-backboard {
+                width: 200px;
+                height: 520px;
+                background-color: #f7f7f7;
+                position: absolute;
+                z-index: -10;
+              }
+              .child-name {
+                height: 33px;
+              }
+              &--grandchild {
+                width: 250px;
+                position: absolute;
+                top: 0;
+                left: 200px;
+                background-color: #f7f7f7;
+                display: none;
+                .grandchildren-backboard {
+                  width: 250px;
+                  height: 520px;
+                  background-color: #f7f7f7;
+                  position: absolute;
+                  z-index: -10;
+                }
+                .grandchild-name {
+                  height: 33px;
+                }
+              }
+            }
+          }
+        } 
+      }
+        .category {
+          &:hover{
+            .nav{
+              display: block;
+            }
+          }
+        }
+      }
+
+      .brand, p{
+        margin-left: 50px;
+        list-style: none;
+      }
+    }
+    a{
+      text-decoration: none;
+      color: black;
+      &:hover{
+        color: #ffcc40;
+      }
+    }
+
+    // ログイン＆新規登録
+    &--right{
+      display: flex;
+      margin-right: 50px;
+      p{
+        margin-left: 20px;
+        line-height: 40px;
+      }
+    }
+    &__right{
+      display: flex;
+    }
+  }
+
 .mypage2 {
   background: white;
   height: 200px;
@@ -170,3 +322,105 @@
     line-height: 48px;
     display: block;
 }
+//_mypage-sideの内容
+* {
+  box-sizing: border-box;
+}
+
+.mypage-main {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+  position: relative;
+  grid-area:center;
+  margin-top: 5px;
+}
+
+.containerClearfix {
+  width: 1020px;
+  margin: 40px auto 0;
+}
+
+.contents2 {
+  width: 700px;
+  height: 1211.84px;
+  position: relative;
+}
+
+.mypage-side {
+  width: 280px;
+  height: 1252px;
+  margin: 5px 40px 0 40px;
+  display: block;
+  grid-area:left;
+}
+.mypage-menu-list{
+  &__item {
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    &--info {
+      background: #eee;
+      font-weight: 600;
+      height: 48px;
+      line-height: 48px;
+      }
+    &--info a{
+      display: block;
+      color: #333;
+    }
+  }
+  &__item a{
+    display: block;
+    color: #333;
+  }
+  &__head {
+    margin: 40px 0 0;
+    color: #333;
+    font-weight: 600;
+  }
+}
+
+a{ 
+  text-decoration: none;
+}
+//フッターの内容
+.mypage-footer{
+  background-color: rgb(32, 32, 32);
+  width: 100%;
+  height: 500px;
+  color: white;
+  grid-area:footer;
+  .info{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding-top: 100px;
+    &--title{
+      font-size: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    &--content{
+      font-size: 12px;
+      text-align: center;
+      li{
+        margin-bottom: 20px;
+      }
+      a{
+      text-decoration: none;
+      color: white;
+      &:hover{
+        text-decoration: underline;
+      }
+      }
+    }
+  }
+  .logo{
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+

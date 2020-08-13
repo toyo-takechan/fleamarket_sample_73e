@@ -1,6 +1,16 @@
 //以下はcards/new.html.hamlのcssです。
+.cardmain-page {
+  display: flex;
+}
+.side-view {
+  float: left;
+  width: 300px;
+  margin-bottom: 20px;
+}
 .contents3 {
-  margin-top: 200px;
+  margin-top: 120px;
+  width: 600px;
+  float: right;
 }
 .creditContainer{
   margin: 0;
