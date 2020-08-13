@@ -86,8 +86,5 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'ancestry'
 gem 'rails-i18n'
-<<<<<<< HEAD
 gem 'gretel'
-=======
 gem 'payjp'
->>>>>>> 1e4b9b5... conflict
