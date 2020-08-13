@@ -2,7 +2,7 @@
   .mail-regist-form__header
     .mail-regist-form__header-title
       =link_to root_path do
-        = image_tag "/assets/logo/logo.png", size: "180x54", alt: "logo"
+        = image_tag "/logo/logo.png", size: "180x54", alt: "logo"
 
   .mail-regist-form__body
     = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
@@ -100,7 +100,7 @@
           .content__body-necessary
             必須
         .content__body-box
-          = d.text_field :post_code, class: 'input-form',placeholder: '例） 123-4567'
+          = d.text_field :post_code, class: 'input-form',placeholder: '例） 1234567'
         .content__body-title
           .content__body-titlename
             都道府県
@@ -149,5 +149,5 @@
         =link_to "特定商取引に関する表記", root_path 
     .mail-regist-form__footer-incline
       =link_to root_path do
-        = image_tag "/assets/logo/logo-white.png",size: "200x60", alt: "visual-1"
+        = image_tag "/logo/logo-white.png",size: "200x60", alt: "visual-1"
       %p © FURIMA
