@@ -39,8 +39,6 @@
 
     .header__bottom--right
       - if user_signed_in?
-        =link_to logout_index_path do
-          %p ログアウト
         =link_to mypage_users_path, class: "mypage" do
           %p マイページ
       - else
