@@ -33,9 +33,9 @@ class ItemsController < ApplicationController
       @child_category_array << children
     end
 
-    @grandchild_category_array = ["---"]
+    @grandchild_category_array = []
     @item.category.siblings.each do |grandchildren|
-      @grandchild_category_array << grandchildren.name
+      @grandchild_category_array << grandchildren
     end
   end
 
@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :content, :brand, :category_id, :condition, :postage_payer, :postage_type, :prefecture_id, :preparation_day, :price, images_attributes: [:image_url]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :content, :brand, :category_id, :condition, :postage_payer, :postage_type, :prefecture_id, :preparation_day, :price, images_attributes: [:image_url, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
 end

@@ -14,22 +14,22 @@
               %span 必須
             .image__file#image-box
               #previews
-                -# -if @item.persisted?
-                -#   -@item.images.image_url.each_with_index do |image, i|
-                -#     =image_tag image.url, data:{ index: i }, width: "100", height: '100'
+                -if @item.persisted?
+                  -@item.images.each_with_index do |image, i|
+                    =image_tag image.image_url.url, data:{ index: i }, width: "100", height: '100'
               = f.fields_for :images do |i|
                 %div{data:{index: i.index}, class: "js-file_group"}
                   = i.file_field :image_url,item_id: @item.id, class: "js-file"
                   .js-remove
                     %span 削除
 
-                -# - if @item.persisted?
-                -#   = image.check_box :destroy, data:{ index: i.index}, class: "hidden-destroy"
-              -# - if @item.persisted?
-              -#   %div{data:{index: @item.images.count}}
-              -#     = file_field_tag :image_url, name: "item[images_attributes][#{@item.images_url.count}][image_url]", class: 'js-file'
-              -#     .js-remove
-              -#       %span 削除
+                - if @item.persisted?
+                  = i.check_box :_destroy, data:{ index: i.index}, class: "hidden-destroy"
+              - if @item.persisted?
+                %div{data:{index: @item.images.count}, class: "js-file_group"}
+                  = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
+                  .js-remove
+                    %span 削除
 
         .content__2
           .items
@@ -56,7 +56,7 @@
               #children_wrapper
                 = f.collection_select :category_id, @child_category_array,:id, :name, selected:@child_category.id, include_blank: "---"
               #grandchildren_wrapper
-                = f.select :category_id, @grandchild_category_array,{selected:@item.category.name},{id: "grand_child_category"}
+                = f.collection_select :category_id, @grandchild_category_array,:id, :name, selected:@grandchild_category.id, include_blank: "---"
 
 
             .detail--bland
@@ -109,8 +109,7 @@
                 = f.text_field :price, class: "price", id: "input__price"
 
         .form__btn
-          = f.submit name:"submit", value: "出品する", class: "form__btn--submit"
-          = f.button name:"buttom", value: "下書きを保存", class: "form__btn--button"
+          = f.submit name:"submit", value: "更新する", class: "form__btn--submit"
           =link_to root_path, class: "form__btn--back" do
             もどる
           %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
