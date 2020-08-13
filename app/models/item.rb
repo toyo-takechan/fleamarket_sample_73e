@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user, optional: true
 
+  validates_associated :images
+
   validates :name, presence: true, length: { maximum: 40 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :category_id, presence: true
@@ -18,8 +20,10 @@ class Item < ApplicationRecord
   validates :preparation_day, presence: true
   validates :price, presence: true
   validates :seller_id, presence: true
+  validates :images, presence: true
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
+  
 
 end

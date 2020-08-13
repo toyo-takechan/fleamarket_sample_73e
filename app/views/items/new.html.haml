@@ -52,7 +52,14 @@
               .content__header
                 %h3 カテゴリー
                 %span 必須
-              = f.select :category_id, @category_parent_array,{},{id: "parent_category"}
+              - if @item.category
+                = f.select :category_id, @category_parent_array,{selected:@parent_category.name},{id: "parent_category"}
+                #children_wrapper
+                  = f.collection_select :category_id, @child_category_array,:id, :name, selected:@child_category.id, include_blank: "---"
+                #grandchildren_wrapper
+                  = f.collection_select :category_id, @grandchild_category_array,:id, :name, selected:@grandchild_category.id, include_blank: "---"
+              -else
+                = f.select :category_id, @category_parent_array,{},{id: "parent_category"}
 
 
             .detail--bland
