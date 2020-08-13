@@ -1,19 +1,28 @@
-mypage_a  
-  %main.mypage-contents.clearfix
-    .main-content
-      .payment
-        .payment-content
-          .payment-content__title
-            %h1.payment-header 支払い方法
-          .payment-content__main
-            .payment-content__creditcards
-              %h2.payment-title クレジットカード一覧
-            .payment-content__creditcards__list
-              %figure
-                = image_tag "#{@card_src}",alt: @card_brand, id: "card_image"
-              .payment-content__creditcards__list__number
-                = "**** **** **** " + @creditcard_information.last4
-              .payment-content__creditcards__list__number
-                - exp_month = @creditcard_information.exp_month.to_s
-                - exp_year = @creditcard_information.exp_year.to_s.slice(2,3)
-                = exp_month + " / " + exp_year 
+.wrapper
+  = render "header"
+  .main-page
+    = render "side"
+    %main.containerClearfix
+      .cardContent
+        %section.cardContent__box
+          %h2.cardContent__box--head
+            支払い方法
+          .cardContent__box--inner
+            %section
+              .cardContent__box--innerList
+                %h3.cardContent__box--innerListHeader
+                  クレジットカード一覧
+              .cardContent__box--cardList
+            %section.cardContent__box--addCard
+              .cardContent__box--addCard__btn
+                =link_to new_card_path, class: "addCard__btn" do
+                  %i.far.fa-credit-card
+                    クレジットカードを追加する
+
+            .cardContent__about
+              %span.cardContent__about--payment
+                = link_to "#", class:"abtPayment" do
+                  支払い方法について
+                  %i.fas.fa-angle-right
+                  
+  = render "footer"
