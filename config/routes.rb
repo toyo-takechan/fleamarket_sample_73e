@@ -27,6 +27,8 @@ root 'items#index'
 
   resources :logout,only: [:index]
 
+  resources :credit_cards, only: [:new, :create, :show]
+
   resources :items do
       member do
       get 'confirm'
