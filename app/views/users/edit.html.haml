@@ -49,12 +49,12 @@
           %li.mypage-menu-list__item
             = link_to "電話番号の確認", class: 'btn'
           %li.mypage-menu-list__item
-            = link_to "ログアウト",logout_user_path, class: 'btn'
+            = link_to "ログアウト",logout_index_path(current_user.id), class: 'btn'
     .address-form
       .content__header
         発送元・お届け先住所変更
       .content__body
-        = form_for (@address,url: user_path,method: :patch) do |f|
+        = form_for @users,new_user_path, method: :patch do |f|
           .content__body-title
             .content__body-titlename
               お名前
@@ -79,14 +79,14 @@
             .content__body-necessary
               必須
           .content__body-box
-            = f.text_field :post_code, class: 'input-form',placeholder: '例） 123-4567'
+            = f.text_field :post_code, class: 'input-form',placeholder: '例） 1234567'
           .content__body-title
             .content__body-titlename
               都道府県
             .content__body-necessary
               必須
           .content__body-box
-            = f.collection_select :prefecture_id,class: 'input-prefecture' Prefecture.all, :id, :name
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
           .content__body-title
             .content__body-titlename
               市区町村
@@ -122,7 +122,7 @@
         =link_to new_item_path do
           .linkBtn
             %p 出品する
-            = image_tag '/assets/icon/icon_camera.png',height: "50px", width: "50px", alt: 'sell'
+            = image_tag '/icon/icon_camera.png',height: "50px", width: "50px", alt: 'sell'
         
 = render "/items/footer"
 

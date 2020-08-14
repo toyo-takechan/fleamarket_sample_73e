@@ -1,6 +1,58 @@
+- breadcrumb :mypage
 .wrapper
-  = render "side"
-  .main-page
+  = render "header"
+.body-mypage
+  .mypage-side
+    %ul.mypage-menu-list
+      %li.mypage-menu-list__item--info
+        = link_to "マイページ", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "お知らせ", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "やることリスト", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "いいね！一覧", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "出品する", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "下書き一覧", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "出品した商品-出品中", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "出品した商品-取引中", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "出品した商品-売却済み", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "購入した商品-取引中", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "購入した商品-過去の取引", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "ニュース一覧", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "評価一覧", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "ガイド", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "お問い合わせ", class: 'btn'
+    %h3.mypage-menu-list__head
+      設定
+    %ul.mypage-menu-list--personal
+      %li.mypage-menu-list__item
+        = link_to "プロフィール", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "発送元・お届け先住所変更", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "支払い方法",new_card_path, class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "メール/パスワード", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "本人情報",edit_user_path, class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "電話番号の確認", class: 'btn'
+      %li.mypage-menu-list__item
+        = link_to "ログアウト",logout_index_path(current_user.id), class: 'btn'
+
+  .mypage-main
     %main.container.clearfix
       .contents2
         %section.mypage2
@@ -70,5 +122,40 @@
           .tab-contents
             %ul.tab-contents__now
               %li.tab-contents__notfound 取引中の商品がありません
+.mypage-footer
+  .info
+    %ul
+      .info--title
+        %li FURIMAについて
+      .info--content
+        %li
+          =link_to "会社概要"
+        %li
+          =link_to "プライバシーポリシー"
+        %li
+          =link_to "FURIMA利用規約"
+        %li
+          =link_to "ポイントに関する特約"
+    %ul
+      .info--title
+        %li FURIMAをみる
+      .info--content
+        %li
+          =link_to "カテゴリー一覧"
+        %li
+          =link_to "ブランド一覧"
+    %ul
+      .info--title
+        %li ヘルプ＆ガイド
+      .info--content
+        %li
+          =link_to "FURIMAガイド"
+        %li
+          =link_to "FURIMAロゴ利用ガイドライン"
+        %li
+          =link_to "お知らせ"
 
-
+  .logo
+    =link_to do
+      = image_tag "/logo-white.png",size: "200x60", alt: "visual-1"
+    %p © FURIMA
