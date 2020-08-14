@@ -1,8 +1,10 @@
+- breadcrumb :newcard
 .wrapper
   = render "header"
-  .main-page
-    = render "side"
+  .cardmain-page
     %main.containerClearfix
+      .side-view
+        = render "side"
       .contents3
         .creditContainer
           .creditContainer__head
