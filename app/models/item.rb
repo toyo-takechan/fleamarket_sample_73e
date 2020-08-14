@@ -21,9 +21,10 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :seller_id, presence: true
   validates :images, presence: true
+ 
+  
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  
 
 end

@@ -52,11 +52,11 @@
               .content__header
                 %h3 カテゴリー
                 %span 必須
-              = f.select :category_id, @category_parent_array,{selected:@parent_category.name},{id: "parent_category"}
+              = f.select :category_id, @category_parent_array,{selected:@parent_category.name, include_blank: "---"},{id: "parent_category", required: true}
               #children_wrapper
-                = f.collection_select :category_id, @child_category_array,:id, :name, selected:@child_category.id, include_blank: "---"
+                = f.collection_select :category_id, @child_category_array,:id, :name, {selected:@child_category.id, include_blank: "---"},{required: true}
               #grandchildren_wrapper
-                = f.collection_select :category_id, @grandchild_category_array,:id, :name, selected:@grandchild_category.id, include_blank: "---"
+                = f.collection_select :category_id, @grandchild_category_array,:id, :name, {selected:@grandchild_category.id,include_blank: "---"},{required: true}
 
 
             .detail--bland
@@ -109,7 +109,7 @@
                 = f.text_field :price, class: "price", id: "input__price"
 
         .form__btn
-          = f.submit name:"submit", value: "更新する", class: "form__btn--submit"
+          = f.submit name:"submit", value: "更新する",  class: "form__btn--submit"
           =link_to root_path, class: "form__btn--back" do
             もどる
           %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

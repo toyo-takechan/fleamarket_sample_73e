@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:alert] = '正しく入力してください。'
-      set_children_and_grandchildren_array_and_parent_category
+      # set_children_and_grandchildren_array_and_parent_category
       render 'items/edit'
     end
   end
@@ -76,7 +76,7 @@ class ItemsController < ApplicationController
   end
   
   def set_parent_array
-    @category_parent_array = ["---"]
+    @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
@@ -87,18 +87,20 @@ class ItemsController < ApplicationController
   end
 
   def set_children_and_grandchildren_array_and_parent_category
-    @grandchild_category = @item.category
-    @child_category = @grandchild_category.parent
-    @parent_category = @grandchild_category.root
+    if @item.category
+      @grandchild_category = @item.category
+      @child_category = @grandchild_category.parent
+      @parent_category = @grandchild_category.root
 
-    @child_category_array = []
-    @item.category.parent.siblings.each do |children|
-      @child_category_array << children
-    end
+      @child_category_array = []
+      @item.category.parent.siblings.each do |children|
+        @child_category_array << children
+      end
 
-    @grandchild_category_array = []
-    @item.category.siblings.each do |grandchildren|
-      @grandchild_category_array << grandchildren
+      @grandchild_category_array = []
+      @item.category.siblings.each do |grandchildren|
+        @grandchild_category_array << grandchildren
+      end
     end
   end
 
