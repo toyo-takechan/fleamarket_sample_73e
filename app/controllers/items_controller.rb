@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:alert] = '正しく入力してください。'
-      # set_children_and_grandchildren_array_and_parent_category
+      set_children_and_grandchildren_array_and_parent_category
       render 'items/edit'
     end
   end
@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
   end
   
   def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}").children
+    @category_children = Category.find(params[:parent_id]).children
   end
 
 
@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
   def set_parent_array
     @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
+      @category_parent_array << parent
     end
   end
 

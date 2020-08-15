@@ -52,7 +52,7 @@
               .content__header
                 %h3 カテゴリー
                 %span 必須
-              = f.select :category_id, @category_parent_array,{selected:@parent_category.name, include_blank: "---"},{id: "parent_category", required: true}
+              = f.collection_select :category_id, @category_parent_array,:id, :name, {selected:@parent_category.id, include_blank: "---"},{id: "parent_category", required: true}
               #children_wrapper
                 = f.collection_select :category_id, @child_category_array,:id, :name, {selected:@child_category.id, include_blank: "---"},{required: true}
               #grandchildren_wrapper
