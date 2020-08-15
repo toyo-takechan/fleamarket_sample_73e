@@ -87,6 +87,10 @@ describe Item do
     let(:user) { create(:user) }
     let(:item) {create(:item, seller_id: user.id)}
 
+    it "nameとcontent、category_idとcondition, category_id,postage_payerとpostage_type,prefecture_idとpreparation_day,priceとseller_idが存在すれば登録できること" do
+      expect(item).to be_valid
+    end
+
     it "nameがないと更新できないこと" do
       item.name = nil
       item.valid?
