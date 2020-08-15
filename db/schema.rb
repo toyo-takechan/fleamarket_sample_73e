@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_08_13_045705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-    t.string "index"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
@@ -86,6 +85,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_045705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
