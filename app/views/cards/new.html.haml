@@ -113,6 +113,9 @@
                     ?
                   カード裏面の番号とは？
                 .securityCode-info
-                  %button{type: "button", id: "#", class: "btn-add"}
-                    追加する
+                  %button{type: "button", id: "token_submit", class: "btn-add"}
+                    クレジット情報を登録する
+                  -# %mypage_btn
+                  -#  = link_to user_path(current_user.id), class: "submit-btn" do
+                  -#    マイページへ戻る
   = render "footer"

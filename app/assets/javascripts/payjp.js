@@ -3,11 +3,12 @@ $(function () {
   $("#token_submit").click(function (e) {
     e.preventDefault();
     let card = {
-      number: $("#card_number")[0].value,
-      cvc: $("#cvc")[0].value,
-      exp_month: $("#exp_month")[0].value,
-      exp_year: $("#exp_year")[0].value
+      number: $("#card_number").value,
+      cvc: $("#cvc").value,
+      exp_month: $("#exp_month").value,
+      exp_year: $("#exp_year").value
     };
+    console.log(card)
     Payjp.createToken(card, function (status, response) {
       if (status === 200) {
         $("#card_token").append(
