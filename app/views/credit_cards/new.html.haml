@@ -1,8 +1,10 @@
-.wrapper
-  = render "header"
+-# - breadcrumb :newcard
+.wrapper 
+  .confirm-header
+    .confirm-header__top-rogo
+      = link_to image_tag "/assets/logo/logo.png", size: "185x49", alt: "logo" 
   .main-page
-    = render "side"
-    %main.containerClearfix
+    %main.container.clearfix
       .contents3
         .creditContainer
           .creditContainer__head
@@ -111,6 +113,15 @@
                     ?
                   カード裏面の番号とは？
                 .securityCode-info
-                  %button{type: "button", id: "#", class: "btn-add"}
-                    追加する
-  = render "footer"
+              %button{type: "button", id: "#", class: "btn-add"}
+                追加する
+  .confirm-footer
+    %ul.confirm-footer__name
+      %li.footer__name__text
+        = link_to "プライバシーポリシー", "#"
+      %li.confirm-footer__name__text
+        = link_to "フリマ利用規約", "#"
+      %li.confirm-footer__name__text
+        = link_to "特定商取引に関する表記", "#"     
+    .confirm-footer__rogo
+      = link_to image_tag "/assets/logo/logo.png", size: "65x50", alt: "logo"
