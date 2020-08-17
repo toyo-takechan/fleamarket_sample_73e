@@ -3,13 +3,14 @@ $(function () {
   $("#token_submit").click(function (e) {
     e.preventDefault();
     let card = {
-      number: $("#card_number").value,
-      cvc: $("#cvc").value,
-      exp_month: $("#exp_month").value,
-      exp_year: $("#exp_year").value
+      number: $("#card_number").val(),
+      cvc: $("#cvc").val(),
+      exp_month: $("#exp_month").val(),
+      exp_year: $("#exp_year").val()
     };
     console.log(card)
     Payjp.createToken(card, function (status, response) {
+      console.log(response)
       if (status === 200) {
         $("#card_token").append(
           $('<input type="hidden" name="payjp-token">').val(response.id)

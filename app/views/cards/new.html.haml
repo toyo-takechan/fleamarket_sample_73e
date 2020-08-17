@@ -16,7 +16,7 @@
                   カード番号
                 %span.requiredItem
                   必須
-                %input{type: "text", size: "40", class:"cardNumber", placeholder: "半角数字のみ", maxlengh: "19"}
+                %input{type: "text", size: "40", class:"cardNumber", placeholder: "半角数字のみ", maxlengh: "19", id: "card_number"}
               %ul.card-list
                 %li
                   =link_to do
@@ -46,7 +46,7 @@
                   必須
                 %br
               .monthBox
-                %select.monthBox__expire
+                %select.monthBox__expire#exp_month
                   %option{value: "01"}
                     01
                   %option{value: "02"}
@@ -75,7 +75,7 @@
                 %span
                   月
               .yearBox
-                %select.yearBox__expire
+                %select.yearBox__expire#exp_year
                   %option{value: "20"}
                     20
                   %option{value: "21"}
@@ -106,7 +106,7 @@
                   セキュリティコード
                 %span.requiredItem
                   必須
-                %input{type: "text", size: "40", class: "securityGroup__number", placeholder: "カード背面4桁もしくは3桁の番号"}
+                %input{type: "text", size: "40", class: "securityGroup__number", placeholder: "カード背面4桁もしくは3桁の番号",id: "cvs"}
               .helpNumber
                 .helpNumber__text
                   %span.helpNumber__text--question
