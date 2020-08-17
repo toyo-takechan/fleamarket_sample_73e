@@ -10,6 +10,7 @@ class CardsController < ApplicationController
   end
 
   def create
+    binding.pry
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
     if params['payjp-token'].blank?
       redirect_to new_card_path

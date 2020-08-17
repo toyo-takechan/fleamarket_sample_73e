@@ -1,6 +1,8 @@
 $(function () {
+  console.log("aaa")
   Payjp.setPublicKey("pk_test_2cf741aa229ef28c8cb488a9");
   $("#token_submit").click(function (e) {
+    console.log("bbb")
     e.preventDefault();
     let card = {
       number: $("#card_number").val(),
