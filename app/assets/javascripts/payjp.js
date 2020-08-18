@@ -14,10 +14,11 @@ $(function () {
     Payjp.createToken(card, function (status, response) {
       console.log(response)
       if (status === 200) {
+        console.log(status)
         $("#card_token").append(
           $('<input type="hidden" name="payjp-token">').val(response.id)
         );
-        $('#charge-form').submit();
+        $("token_submit").submit();
       } else {
         alert("カード情報が正しくありません。");
       }
