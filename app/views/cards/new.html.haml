@@ -11,13 +11,13 @@
             クレジットカード情報入力
           .card
             .card__content
-            
+            = form_with model: @card, local: true do |f|
               .cardGroup
                 %label.cardGroup
                   カード番号
                 %span.requiredItem
                   必須
-                %input{type: "text", size: "40", class:"cardNumber", placeholder: "半角数字のみ", maxlengh: "19", id: "card_number"}
+                = f.text_field :name, class: "cardNumber" ,size: "40",placeholder: "半角数字のみ",maxlengh: "19", id: "card_number"
               %ul.card-list
                 %li
                   =link_to do
@@ -107,19 +107,15 @@
                   セキュリティコード
                 %span.requiredItem
                   必須
-                %input{type: "text", size: "40", class: "securityGroup__number", placeholder: "カード背面4桁もしくは3桁の番号",id: "cvc"}
+                = f.text_field :name, class: "securityGroup__number" ,size: "40",placeholder: "カード背面4桁もしくは3桁の番号", id: "cvc"
               .helpNumber
                 .helpNumber__text
                   %span.helpNumber__text--question
                     ?
                   カード裏面の番号とは？
                 .securityCode-info
-                  %button{type: "button", id: "token_submit", class: "btn-add"}
-                    クレジット情報を登録する
-                  -# = f.submit '登録', id: 'token_submit',class: 'btn-add'
-                    クレジット情報を登録する
+                  = f.submit 'クレジット情報を登録する', id: 'token_submit',class: 'btn-add'
                   -# %mypage_btn
                   -#  = link_to user_path(current_user.id), class: "submit-btn" do
                   -#    マイページへ戻る
   = render "footer"
-  -# = form_with model: @card, url: cards_path, local: true, html: { name: 'inputForm' } do |f|

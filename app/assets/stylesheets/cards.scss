@@ -45,6 +45,7 @@
   vertical-align: top;
 }
 .cardNumber{
+  display:block;
   width: 343px;
   height: 48px;
   padding:10px 16px 8px;
@@ -107,6 +108,7 @@ margin: 0 8px 0 0;
 .helpNumber {
   position: relative;
   margin: 8px 0 0;
+  width: 343px;
   &__text {
     text-align: right;
     color: #0099e8;
