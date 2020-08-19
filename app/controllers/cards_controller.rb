@@ -7,10 +7,11 @@ class CardsController < ApplicationController
 
   def new
     redirect_to card_path(current_user.id) if @card.present?
+    @card = CreditCard.new
   end
 
   def create
-    binding.pry
+    # binding.pry
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
     if params['payjp-token'].blank?
       redirect_to new_card_path
@@ -20,7 +21,10 @@ class CardsController < ApplicationController
       metadata: {user_id: current_user.id}
       )
     end
+    # binding.pry
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      # カードテーブル変更後の一例
+      # card = current_user.build_card()
       if @card.save
         redirect_to card_path
       else

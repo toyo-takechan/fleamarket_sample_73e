@@ -1,6 +1,6 @@
 $(function () {
   console.log("aaa")
-  Payjp.setPublicKey("pk_test_2cf741aa229ef28c8cb488a9");
+  Payjp.setPublicKey("pk_test_fd625470f0835cc2ab561f35");
   $("#token_submit").click(function (e) {
     console.log("bbb")
     e.preventDefault();
@@ -16,9 +16,9 @@ $(function () {
       if (status === 200) {
         console.log(status)
         $("#card_token").append(
-          $('<input type="hidden" name="payjp-token">').val(response.id)
+          $('<input type="btn-add" name="payjp-token">').val(response.id)
         );
-        $("token_submit").submit();
+        $("form").submit();
       } else {
         alert("カード情報が正しくありません。");
       }

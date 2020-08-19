@@ -11,7 +11,7 @@
             クレジットカード情報入力
           .card
             .card__content
-            = form_with model: @card, local: true do |f|
+            = form_with model: @card,url:cards_path, local: true do |f|
               .cardGroup
                 %label.cardGroup
                   カード番号
