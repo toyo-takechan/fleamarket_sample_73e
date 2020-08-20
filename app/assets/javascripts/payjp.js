@@ -16,7 +16,7 @@ $(function () {
       if (status === 200) {
         console.log(status)
         $("#card_token").append(
-          $('<input type="btn-add" name="payjp-token">').val(response.id)
+          $('<input type="hidden" name="payjp-token">').val(response.id)
         );
         $("form").submit();
       } else {

@@ -20,6 +20,7 @@ class CardsController < ApplicationController
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       )
+      
     end
     # binding.pry
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
