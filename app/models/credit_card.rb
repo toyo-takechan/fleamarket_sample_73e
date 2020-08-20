@@ -9,10 +9,10 @@ class CreditCard < ApplicationRecord
     # トークンを作成 
     token = Payjp::Token.create({
       card: {
-        number:     params['number'],
-        cvc:        params['cvc'],
-        exp_month:  params['valid_month'],
-        exp_year:   params['valid_year']
+        number:     params['#card_number'],
+        cvc:        params['#cvc'],
+        exp_month:  params['#exp_month'],
+        exp_year:   params['#exp_year']
       }},
       {'X-Payjp-Direct-Token-Generate': 'true'} 
     )

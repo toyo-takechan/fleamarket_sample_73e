@@ -20,16 +20,17 @@ class CardsController < ApplicationController
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       )
-      
     end
     # binding.pry
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       # カードテーブル変更後の一例
       # card = current_user.build_card()
       if @card.save
-        redirect_to card_path
+        redirect_to card_path(current_user.id)
+        flash[:notice] = 'クレジットカードの登録が完了しました'
       else
         redirect_to new_card_path
+        # flash[:alert] = 'クレジットカード登録に失敗しました'
       end
   end
 
