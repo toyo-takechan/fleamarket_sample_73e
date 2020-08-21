@@ -16,7 +16,7 @@ root 'items#index'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :cards, only: [:index, :show, :new, :create]
+  resources :cards, only: [:index, :show, :new, :create, :destroy]
 
   resources :items, only: [:index, :show, :new] do
     collection do

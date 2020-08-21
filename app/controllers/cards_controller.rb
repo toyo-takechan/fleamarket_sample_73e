@@ -35,7 +35,40 @@ class CardsController < ApplicationController
   end
 
   def show
+    if @card.blank?
+      redirect_to new_card_path 
+    else
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_info = customer.cards.retrieve(@card.card_id)
+      case @card_info.brand
+        when "Visa"
+          @card_src = "visa.gif"
+        when "JCB"
+          @card_src = "jcb.gif"
+        when "MasterCard"
+          @card_src = "mc.png"
+        when "American Express"
+          @card_src = "amex.gif"
+        when "Diners Club"
+          @card_src = "diners.gif"
+        when "Discover"
+          @card_src = "discover.gif"
+      end
+    end
   end
+
+  def destroy
+    if @card.blank?
+    else
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      customer.delete
+      @card.delete
+    end
+      redirect_to cards_path
+  end
+
   
   def index
   end
