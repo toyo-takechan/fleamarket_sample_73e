@@ -77,7 +77,6 @@ class CardsController < ApplicationController
   def move_to_root
     redirect_to root_path unless user_signed_in?
   end
-
   def set_card
     @card = CreditCard.find_by(user_id: current_user.id)
   end

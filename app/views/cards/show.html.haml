@@ -10,7 +10,7 @@
           .cardContent__box--inner
             %section
               .cardContent__box--innerList
-              = form_with model: @card,url:cards_path, local: true do |f|
+              = form_with model: @card,url:card_path(@card), method: :delete,local: true do |f|
                 %h3.cardContent__box--innerListHeader
                   クレジットカード
                 %li.registerContent
@@ -23,14 +23,14 @@
                     有効期限 00/00
                     .registerContent__box--img
                       = image_tag 'visa-icon.png', alt: 'visa', height: '32', width: '48'
-                  = f.submit '削除する', id: 'token_submit',class: 'deleteBtn'
+                  = f.submit '削除する',class: 'deleteBtn'
                   
                 .registerNewCard
                   .registerNewCard__add
                     %i.far.fa-plus-square
                     新規カードを登録する
                 .paymentSelect#card_token
-                  = f.submit '選択した支払い方法を使う', id: 'token_submit',class: 'selectBtn'
+                  = f.submit '選択した支払い方法を使う',class: 'selectBtn'
                 .cardContent__about
                   %span.cardContent__about--payment
                     = link_to cards_path, class:"abtPayment" do
