@@ -8,7 +8,7 @@
         購入内容の確認
     .products-main
       .products-main__itembox
-        = image_tag @item.images.first.image_url if@item.images.present?
+        = image_tag @item.images.first.image_url.url if@item.images.present?
       .products-main__detail
         .products-main__detail__name
           = @item.name
@@ -37,22 +37,23 @@
         %h3.user-info-pay-text
           支払い方法
         %p.user-info-pay-link
-          = link_to "+登録してください。", "#"
+          = link_to "別のカードを登録する。", "#"
     .user-info-delivery
       .user-info-delivery__box
         %h3.user-info-delivery-text
           配達先
         %p.user-info-delivery-link
-          = link_to "+登録してください。", "#"
+          = link_to "配達先を変更する", "#"
     .confirm
       %p.confirm__info-text
         郵便局/コンビニ受取をご希望の方は、購入後に
         %span.products-purchase-bold  取引画面
         から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
       %p.confirm__text--comment
-        配送先と支払い方法の入力を完了してください。
-      %button{type: "submit", class:'confirm__contact--comment'}
-        購入する
+        この配送先と支払い方法で購入する。
+    = form_with url: purchase_item_path do
+      :plain
+    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script>
   .confirm-footer
     %ul.confirm-footer__name
       %li.footer__name__text

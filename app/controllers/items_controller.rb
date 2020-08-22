@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:confirm, :show]
   before_action :set_parent_category
   before_action :set_parent_array, only: [:new, :create]
+  require 'payjp'
 
   def index
     @items = Item.last(4)
@@ -70,6 +71,15 @@ class ItemsController < ApplicationController
 
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
+  end
+
+  def purchase
+    Payjp.api_key = 'sk_test_c62fade9d045b54cd76d7036'
+    charge = Payjp::Charge.create(
+    :amount => 3500,
+    :card => 'tok_76e202b409f3da51a0706605ac81',
+    :currency => 'jpy',
+    )
   end
 
   private

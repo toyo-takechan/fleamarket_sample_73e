@@ -43,6 +43,7 @@ root 'items#index'
   resources :items do
       member do
       get 'confirm'
+      get 'purchase'
       end
     end
   end
