@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_08_13_045705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-    t.string "index"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
@@ -78,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_045705) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_045705) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname", null: false
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
 end
