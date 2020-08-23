@@ -74,12 +74,16 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    Payjp.api_key = 'sk_test_c62fade9d045b54cd76d7036'
-    charge = Payjp::Charge.create(
-    amount: @item.price,
-    card: params['#token_submit'],
-    currency: 'jpy'
+    @item = Item.find(params[:id])
+    @card = current_user.credit_card.customer_id
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+    Payjp::Charge.create(
+      amount: @item.price,
+      customer: @card,
+      currency: 'jpy'
     )
+    redirect_to root_path
+    flash[:notice] = '商品の購入が完了しました'
   end
 
   private
