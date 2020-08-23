@@ -51,9 +51,9 @@
         から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
       %p.confirm__text--comment
         この配送先と支払い方法で購入する。
-    = form_with url: purchase_item_path do
-      :plain
-    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script>
+      %button{type: "submit", class:'confirm__contact--comment'}
+        :plain
+          <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script>
   .confirm-footer
     %ul.confirm-footer__name
       %li.footer__name__text

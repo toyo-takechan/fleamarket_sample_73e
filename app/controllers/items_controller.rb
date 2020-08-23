@@ -76,9 +76,9 @@ class ItemsController < ApplicationController
   def purchase
     Payjp.api_key = 'sk_test_c62fade9d045b54cd76d7036'
     charge = Payjp::Charge.create(
-    :amount => 3500,
-    :card => 'tok_76e202b409f3da51a0706605ac81',
-    :currency => 'jpy',
+    amount: @item.price,
+    card: params['#token_submit'],
+    currency: 'jpy'
     )
   end
 
