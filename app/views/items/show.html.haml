@@ -170,7 +170,7 @@
       .exhibitor-menu-container 
         = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
         %p or
-        = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
+        = link_to "この商品を削除する", item_path(@item.id), method: :delete, class: "exhibitor-menu-container__delete"
     -# ここまで
 
     -# ログイン時のみ閲覧可能（ログインしているユーザー全て）
