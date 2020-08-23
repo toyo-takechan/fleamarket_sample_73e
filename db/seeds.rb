@@ -7,25 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-require './db/seeds/ladies.rb'
-require './db/seeds/mens.rb'
-require './db/seeds/baby_kids.rb'
-require './db/seeds/interiors.rb'
-require './db/seeds/books.rb'
-require './db/seeds/toys.rb'
-require './db/seeds/cosmes.rb'
-require './db/seeds/appliances.rb'
-require './db/seeds/sports.rb'
-require './db/seeds/handmades.rb'
-require './db/seeds/tickets.rb'
-require './db/seeds/bicycles.rb'
-require './db/seeds/others.rb'
+# require './db/seeds/ladies.rb'
+# require './db/seeds/mens.rb'
+# require './db/seeds/baby_kids.rb'
+# require './db/seeds/interiors.rb'
+# require './db/seeds/books.rb'
+# require './db/seeds/toys.rb'
+# require './db/seeds/cosmes.rb'
+# require './db/seeds/appliances.rb'
+# require './db/seeds/sports.rb'
+# require './db/seeds/handmades.rb'
+# require './db/seeds/tickets.rb'
+# require './db/seeds/bicycles.rb'
+# require './db/seeds/others.rb'
 
 # require "csv"
 
 
 
-# Item.create!(name: "ねこちゃん", content: "かわいい猫のぬいぐるみです。", category_id: 585, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1, buyer_id: 2)
+Item.create!(name: "ねこちゃん", content: "かわいい猫のぬいぐるみです。", category_id: 585, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1, buyer_id: 2)
 
 # Item.create!(name: "うさちゃん", content: "かわいいウサギのぬいぐるみです。", category_id: 585, size: "", brand: "", condition: 3, postage_payer: 1, postage_type: 2, prefecture_id: 8, preparation_day: 1, price: 3000, seller_id: 1)
 
@@ -36,10 +36,10 @@ require './db/seeds/others.rb'
 # Item.create!(name: "冬用ニット", content: "かわいいニットです。", category_id: 11, size: "S", brand: "ABC", condition: 1, postage_payer: 2, postage_type: 1, prefecture_id: 3, preparation_day: 2, price: 2000, seller_id: 1)
 
 
-# Image.create(item_id: 1, image_url: "https://tk.ismcdn.jp/mwimgs/e/b/1140/img_eb31afc9c1fb914d68a7c73b657c7ebe183087.jpg")
-# Image.create(item_id: 1, image_url: "https://dol.ismcdn.jp/mwimgs/c/8/670m/img_c8dad835c4b9134b067cc8b8efcab22f143142.jpg")
-# Image.create(item_id: 1, image_url: "https://tk.ismcdn.jp/mwimgs/4/2/1140/img_426e0bd27203f1ceb77bc4e435571749313985.jpg")
-# Image.create(item_id: 1, image_url: "https://www.newsweekjapan.jp/stories/assets_c/2017/04/iStock-501152239b-thumb-720xauto-110669.jpg")
+Image.create(item_id: 1, image_url: "https://tk.ismcdn.jp/mwimgs/e/b/1140/img_eb31afc9c1fb914d68a7c73b657c7ebe183087.jpg")
+Image.create(item_id: 1, image_url: "https://dol.ismcdn.jp/mwimgs/c/8/670m/img_c8dad835c4b9134b067cc8b8efcab22f143142.jpg")
+Image.create(item_id: 1, image_url: "https://tk.ismcdn.jp/mwimgs/4/2/1140/img_426e0bd27203f1ceb77bc4e435571749313985.jpg")
+Image.create(item_id: 1, image_url: "https://www.newsweekjapan.jp/stories/assets_c/2017/04/iStock-501152239b-thumb-720xauto-110669.jpg")
 
 # Image.create(item_id: 2, image_url: "https://s3-ap-northeast-1.amazonaws.com/petpedia/upload_by_admin/pipi_rabbit_ranking_800.jpg")
 # Image.create(item_id: 2, image_url: "https://dot.asahi.com/S2000/upload/2018050800051_1.jpg")
