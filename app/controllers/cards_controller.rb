@@ -2,7 +2,6 @@ class CardsController < ApplicationController
 
   before_action :move_to_root 
   before_action :set_card,    only: [:new, :show, :destroy, :buy, :pay]
-  # before_action :set_item,    only: [:buy, :pay]
   require "payjp"
 
   def new
@@ -11,7 +10,6 @@ class CardsController < ApplicationController
   end
 
   def create
-    # binding.pry
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
     if params['payjp-token'].blank?
       redirect_to new_card_path
@@ -21,10 +19,7 @@ class CardsController < ApplicationController
       metadata: {user_id: current_user.id}
       )
     end
-    # binding.pry
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      # カードテーブル変更後の一例
-      # card = current_user.build_card()
       if @card.save
         redirect_to card_path(current_user.id)
         flash[:notice] = 'クレジットカードの登録が完了しました'
@@ -80,10 +75,6 @@ class CardsController < ApplicationController
   def set_card
     @card = CreditCard.find_by(user_id: current_user.id)
   end
-
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
   
 end
 

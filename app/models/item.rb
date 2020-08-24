@@ -7,6 +7,8 @@ class Item < ApplicationRecord
 
   belongs_to :prefecture
   belongs_to :user, optional: true
+  # belongs_to :seller, class_name: "User", 
+  # belongs_to :buyer, class_name: "User", optional: true
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :content, presence: true, length: { maximum: 1000 }

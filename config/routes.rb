@@ -28,16 +28,16 @@ root 'items#index'
   resources :logout,only: [:index]
 
   # resources :credit_cards, only: [:new, :create, :show]
-  resources :credit_cards, except: :index do
-    collection do
-      get 'registration_done'
-      get 'delete_done'
-    end
-    member do
-      get 'buy'
-      post 'pay'
-    end
-  end
+  # resources :credit_cards, except: :index do
+  #   collection do
+  #     get 'registration_done'
+  #     get 'delete_done'
+  #   end
+  #   member do
+  #     get 'buy'
+  #     post 'pay'
+  #   end
+  # end
 
   
   resources :items do

@@ -53,7 +53,7 @@
       %p.confirm__text--comment
         この配送先と支払い方法で購入する。
       = link_to purchase_item_path do
-        - if @item.buyer_id.present?
+        - if @item.buyer_id == nil
           %button{type: "submit", class:'confirm__contact--comment'}
             購入する
     .mypage_btn
