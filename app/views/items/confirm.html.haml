@@ -37,7 +37,8 @@
         %h3.user-info-pay-text
           支払い方法
         %p.user-info-pay-link
-          = link_to "別のカードを登録する。", "#"
+          = link_to new_card_path do
+            別のカードを登録する
     .user-info-delivery
       .user-info-delivery__box
         %h3.user-info-delivery-text
@@ -45,8 +46,6 @@
         %p.user-info-delivery-link
           = link_to "配達先を変更する", "#"
     .confirm
-      -# = form_widh @item.price do |f|
-      -#   = f.hidden_field :buyer_id, value: current_user.id
       %p.confirm__info-text
         郵便局/コンビニ受取をご希望の方は、購入後に
         %span.products-purchase-bold  取引画面
@@ -54,8 +53,12 @@
       %p.confirm__text--comment
         この配送先と支払い方法で購入する。
       = link_to purchase_item_path do
-        %button{type: "submit", class:'confirm__contact--comment'}
-          購入する
+        - if @item.buyer_id.present?
+          %button{type: "submit", class:'confirm__contact--comment'}
+            購入する
+    .mypage_btn
+    = link_to mypage_users_path do
+      マイページへもどる
   .confirm-footer
     %ul.confirm-footer__name
       %li.footer__name__text
