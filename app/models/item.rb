@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user, optional: true
 
+  validates_associated :images
+
   validates :name, presence: true, length: { maximum: 40 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :category_id, presence: true
@@ -18,6 +20,13 @@ class Item < ApplicationRecord
   validates :preparation_day, presence: true
   validates :price, presence: true
   validates :seller_id, presence: true
+  validate  :images_number
+ 
+  def images_number
+    errors.add(:images, "を1つ以上指定してください") if images.size < 1
+    errors.add(:images, "は10個までです") if images.size > 10
+  end 
+  
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
