@@ -25,7 +25,6 @@ class CardsController < ApplicationController
         flash[:notice] = 'クレジットカードの登録が完了しました'
       else
         redirect_to new_card_path
-        # flash[:alert] = 'クレジットカード登録に失敗しました'
       end
   end
 
