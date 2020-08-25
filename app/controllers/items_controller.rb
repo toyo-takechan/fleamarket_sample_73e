@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:confirm, :show, :edit, :update]
+  before_action :set_item, only: [:confirm, :show, :destroy, :edit, :update]
+
   before_action :set_parent_category
   before_action :set_parent_array, only: [:new, :create, :edit, :update]
 
@@ -43,10 +44,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy(item_params)
+    if @item.destroy
       redirect_to root_path
     else
-      redirect_to :edit
+      redirect_to :show
     end
   end
 
