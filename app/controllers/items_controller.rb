@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:confirm, :show]
   before_action :set_parent_category
-  before_action :set_parent_array, only: [:new, :create]
+  before_action :set_parent_array, only: [:new, :create, :edit, :update]
   require 'payjp'
 
   def index

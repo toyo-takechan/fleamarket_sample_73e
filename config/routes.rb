@@ -18,7 +18,7 @@ root 'items#index'
 
   resources :cards, only: [:index, :show, :new, :create, :destroy]
 
-  resources :items, only: [:index, :show, :new] do
+  resources :items, only: [:index, :show, :new, :edit, :update] do
     collection do
       get 'get_category_children', defaults: {format: 'json'}
       get 'get_category_grandchildren', defaults: {format: 'json'}
