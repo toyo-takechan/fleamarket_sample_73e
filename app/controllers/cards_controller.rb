@@ -75,6 +75,8 @@ class CardsController < ApplicationController
   def set_card
     @card = CreditCard.find_by(user_id: current_user.id)
   end
+
+
   
 end
 

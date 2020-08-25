@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
       currency: 'jpy'
     )
     # @item_buyer = Item.find(params[:item_id])
-    # @item_buyer.update( buyer_id: current_user.id)
+    @item.update( buyer_id: current_user.id)
     redirect_to root_path
     flash[:notice] = '商品の購入が完了しました'
   end

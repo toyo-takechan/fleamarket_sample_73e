@@ -1,3 +1,4 @@
+- console
 .wrapper 
   .confirm-header
     .confirm-header__top-rogo
@@ -52,10 +53,10 @@
         から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
       %p.confirm__text--comment
         この配送先と支払い方法で購入する。
-      = link_to purchase_item_path do
-        - if @item.buyer_id == nil
-          %button{type: "submit", class:'confirm__contact--comment'}
-            購入する
+      - if current_user.credit_card.present?
+        = link_to "購入する", purchase_item_path, class: "confirm__contact--comment"
+      - else
+        = link_to "クレジットカードを登録してください。", new_card_path, class: "confirm__contact--comment"
     .mypage_btn
     = link_to mypage_users_path do
       マイページへもどる

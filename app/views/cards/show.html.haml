@@ -30,10 +30,14 @@
                     %i.far.fa-plus-square
                     新規カードを登録する
                 .paymentSelect#card_token
-                  = f.submit '選択した支払い方法を使う',class: 'selectBtn'
+                = link_to mypage_users_path do
+                  %button{type: "submit", class:'selectBtn'}
+                    選択した支払い方法を使う
                 .cardContent__about
                   %span.cardContent__about--payment
                     = link_to cards_path, class:"abtPayment" do
                       支払い方法について
                       %i.fas.fa-angle-right
   = render "footer"
+
+
