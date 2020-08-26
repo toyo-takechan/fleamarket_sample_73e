@@ -195,8 +195,9 @@
         line-height: 1.5;
         font-size: 14px;
         margin: 0 0 24px 0 ;
-      }     
+      }  
       &__contact--comment{
+        display:block;
         align-items: center;
         background-color: rgb(204, 204, 204);
         font-size: 15px;
@@ -204,9 +205,13 @@
         width: 343px;
         height: 50px;
         text-align: center;
-        padding-top:5px;
+        padding-top:15px;
       }
     }
+  }
+  .mypage_btn{
+    font-size: 15px;
+    color:#0095EE;
   }
   .confirm-footer{
     width: 100%;
@@ -218,7 +223,7 @@
       width: 481px;
       height: 31px;
       padding: 0 16px;
-      margin: 0 450px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       &__text{

@@ -7,9 +7,9 @@ class Item < ApplicationRecord
 
   belongs_to :prefecture
   belongs_to :user, optional: true
+  
 
   validates_associated :images
-
   validates :name, presence: true, length: { maximum: 40 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :category_id, presence: true

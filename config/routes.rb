@@ -16,11 +16,11 @@ root 'items#index'
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :cards, only: [:index, :show, :new, :create, :destroy]
 
   resources :items, only: [:index, :show, :new, :edit, :update] do
 
-  resources :cards, only: [:index, :show, :new]
-
+  
 
     collection do
       get 'get_category_children', defaults: {format: 'json'}
@@ -33,6 +33,7 @@ root 'items#index'
   resources :items do
       member do
       get 'confirm'
+      get 'purchase'
       end
     end
   end

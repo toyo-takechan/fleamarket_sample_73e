@@ -33,6 +33,9 @@
           - @item.images.each do |image|
             %li.item-image-thumbnail__part
               = image_tag image.image_url.url, class:"item-image-thumbnail__part--mini-image"
+            -# -if product.buyer_id.present? 
+            -# .items-box_photo__sold
+            -#   .items-box_photo__sold__inner SOLD
       .item-price-box
         .item-price-box__price
           = "¥#{@item.price}"
