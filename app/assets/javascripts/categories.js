@@ -18,6 +18,7 @@ $(document).on('turbolinks:load', function() {
 // 新規出品ページのカテゴリ選択部分
 $(document).on('turbolinks:load', function(){
 
+ 
   $(function(){
     
     function appendOption(category){
@@ -29,8 +30,8 @@ $(document).on('turbolinks:load', function(){
   function appendChildrenBox(insertHTML){
     var childSelectHTML = `<div class="listing-select-wrapper" id="children_wrapper">
     <div class="listing-select-wrapper__box">
-                              <select class="listing-select-wrapper__box--select" id="child_category" name="">
-                              <option value="---" data-category="---">---</option>
+                              <select class="listing-select-wrapper__box--select" id="child_category" name="" required="true">
+                              <option value="" data-category="---">---</option>
                                 ${insertHTML}
                               </select>
                               </div>
@@ -42,8 +43,8 @@ $(document).on('turbolinks:load', function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class="listing-select-wrapper" id="grandchildren_wrapper">
                               <div class="listing-select-wrapper__box">
-                              <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
-                                <option value="---" data-category="---">---</option>
+                              <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]" required="true">
+                                <option value="" data-category="---">---</option>
                                 ${insertHTML}
                                 </select>
                               </div>
@@ -54,11 +55,11 @@ $(document).on('turbolinks:load', function(){
   
   $('#parent_category').on('change', function() {
     var parentCategory = document.getElementById('parent_category').value;
-    if (parentCategory != "---"){
+    if (parentCategory != ""){
       $.ajax({
         url: '/items/get_category_children',
         type: 'GET',
-        data: { parent_name: parentCategory },
+        data: { parent_id: parentCategory },
         dataType: 'json'
       })
       .done(function(children){
@@ -82,7 +83,7 @@ $(document).on('turbolinks:load', function(){
     var childId = $('#child_category option:selected').data('category');
     if (childId != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/items/get_category_grandchildren',
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
@@ -90,8 +91,6 @@ $(document).on('turbolinks:load', function(){
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -104,9 +103,41 @@ $(document).on('turbolinks:load', function(){
       })
     }else{
       $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
+      
     }
   });
+
+  // 編集ページの子カテゴリー変更時
+  $('.detail--category').on('change', '#item_category_id', function(){
+    var childId = document.getElementById('item_category_id').value;
+    if (childId != ""){
+      $.ajax({
+        url: '/items/get_category_grandchildren',
+        type: 'GET',
+        data: { child_id: childId },
+        dataType: 'json'
+      })
+      .done(function(grandchildren){
+        if (grandchildren.length != 0) {
+          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
+          var insertHTML = '';
+          grandchildren.forEach(function(grandchild){
+            insertHTML += appendOption(grandchild);
+          });
+          appendGrandchildrenBox(insertHTML);
+        }
+      })
+      .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+      })
+    } else {
+      $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+    }
+    
+  });
 })
+
+  
+
+
 });

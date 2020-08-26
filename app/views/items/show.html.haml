@@ -168,12 +168,11 @@
       -# ここまで
     
     -# 出品者のみ閲覧可能
-    -# ログイン機能実装次第、if文のコメントを外し、.exhibitor-menu-container以下のインデントをずらす
-    - if current_user.id == @item.seller_id
+    - if user_signed_in? && current_user.id == @item.seller_id
       .exhibitor-menu-container 
-        = link_to "商品を編集する","#", class: "exhibitor-menu-container__edit"
+        = link_to "商品を編集する",edit_item_path(@item), class: "exhibitor-menu-container__edit"
         %p or
-        = link_to "この商品を削除する","#", class: "exhibitor-menu-container__delete"
+        = link_to "この商品を削除する", item_path(@item), method: :delete, class: "exhibitor-menu-container__delete"
     -# ここまで
 
     -# ログイン時のみ閲覧可能（ログインしているユーザー全て）
