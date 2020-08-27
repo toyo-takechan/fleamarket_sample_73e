@@ -53,10 +53,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|first_name|string|null: false|
-|family_name|string|null: false|
-|first_name_kana|string|null: false|
-|family_name_kana|string|null: false|
 |post_code|string|null: false|
 |prefecture_id(active_hash)|integer|null: false|
 |city|string|null: false|
@@ -71,8 +67,6 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |card_number|integer|null: false|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
 |security_code|integer|null: false|
 ### Association
 - belongs_to :user
@@ -87,7 +81,6 @@ Things you may want to cover:
 |category_id|references|null: false, foreign_key: true|
 |condition|integer|null: false|
 |brand|string||
-|size|string||
 |preparation_day|integer|null: false|
 |postage_type|integer|null: false|
 |postage_payer|integer|null: false|

@@ -88,7 +88,7 @@ tickets_grandchild_array =
   ],
   # 7:その他
   [
-
+    'その他'
   ]
 ]
 

@@ -17,7 +17,7 @@ others_grandchild_array =
 [
   # 0:まとめ売り
   [
-
+    'まとめ売り'
   ],
   # 1:ペット用品
   [
@@ -99,7 +99,7 @@ others_grandchild_array =
   ],
   # 8:その他
   [
-
+    'その他'
   ]
 ]
 
