@@ -23,6 +23,7 @@ resources :items, only: [:index, :show, :new, :edit, :update] do
   end
 end
 
+  resources :cards, only: [:index, :show, :new, :create, :destroy]
 
 
 
@@ -33,6 +34,7 @@ end
   resources :items do
       member do
       get 'confirm'
+      get 'purchase'
       end
     end
   end

@@ -11,12 +11,13 @@
             クレジットカード情報入力
           .card
             .card__content
+            = form_with model: @card,url:cards_path, local: true do |f|
               .cardGroup
                 %label.cardGroup
                   カード番号
                 %span.requiredItem
                   必須
-                %input{type: "text", size: "40", class:"cardNumber", placeholder: "半角数字のみ", maxlengh: "19"}
+                = f.text_field :name, class: "cardNumber" ,size: "40",placeholder: "半角数字のみ",maxlengh: "19", id: "card_number"
               %ul.card-list
                 %li
                   =link_to do
@@ -46,7 +47,7 @@
                   必須
                 %br
               .monthBox
-                %select.monthBox__expire
+                %select.monthBox__expire#exp_month
                   %option{value: "01"}
                     01
                   %option{value: "02"}
@@ -75,28 +76,28 @@
                 %span
                   月
               .yearBox
-                %select.yearBox__expire
-                  %option{value: "20"}
+                %select.yearBox__expire#exp_year
+                  %option{value: "2020"}
                     20
-                  %option{value: "21"}
+                  %option{value: "2021"}
                     21
-                  %option{value: "22"}
+                  %option{value: "2022"}
                     22
-                  %option{value: "23"}
+                  %option{value: "2023"}
                     23
-                  %option{value: "24"}
+                  %option{value: "2024"}
                     24
-                  %option{value: "25"}
+                  %option{value: "2025"}
                     25
-                  %option{value: "26"}
+                  %option{value: "2026"}
                     26
-                  %option{value: "27"}
+                  %option{value: "2027"}
                     27
-                  %option{value: "28"}
+                  %option{value: "2028"}
                     28
-                  %option{value: "29"}
+                  %option{value: "2029"}
                     29
-                  %option{value: "30"}
+                  %option{value: "2030"}
                     30
                   %i.fas.fa-chevron-down
                 %span
@@ -106,13 +107,13 @@
                   セキュリティコード
                 %span.requiredItem
                   必須
-                %input{type: "text", size: "40", class: "securityGroup__number", placeholder: "カード背面4桁もしくは3桁の番号"}
+                = f.text_field :name, class: "securityGroup__number" ,size: "40",placeholder: "カード背面4桁もしくは3桁の番号", id: "cvc"
               .helpNumber
                 .helpNumber__text
                   %span.helpNumber__text--question
                     ?
                   カード裏面の番号とは？
-                .securityCode-info
-                  %button{type: "button", id: "#", class: "btn-add"}
-                    追加する
+                .securityCode-info#card_token
+                  = f.submit 'クレジット情報を登録する', id: 'token_submit',class: 'btn-add'
+   
   = render "footer"

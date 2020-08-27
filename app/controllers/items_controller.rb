@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   before_action :set_parent_category
   before_action :set_parent_array, only: [:new, :create, :edit, :update]
+  require 'payjp'
 
   def index
     @items = Item.last(4)
@@ -105,6 +106,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def purchase
+    @item = Item.find(params[:id])
+    @card = current_user.credit_card.customer_id
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+    Payjp::Charge.create(
+      amount: @item.price,
+      customer: @card,
+      currency: 'jpy'
+    )
+    @item.update( buyer_id: current_user.id)
+    redirect_to root_path
+    flash[:notice] = '商品の購入が完了しました'
+  end
+
+  private
 
   def item_params
     params.require(:item).permit(:name, :content, :brand, :category_id, :condition, :postage_payer, :postage_type, :prefecture_id, :preparation_day, :price, images_attributes: [:image_url, :_destroy, :id]).merge(seller_id: current_user.id)

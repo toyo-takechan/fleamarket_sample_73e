@@ -10,19 +10,34 @@
           .cardContent__box--inner
             %section
               .cardContent__box--innerList
+              = form_with model: @card,url:card_path(@card), method: :delete,local: true do |f|
                 %h3.cardContent__box--innerListHeader
-                  クレジットカード一覧
-              .cardContent__box--cardList
-            %section.cardContent__box--addCard
-              .cardContent__box--addCard__btn
-                =link_to new_card_path, class: "addCard__btn" do
-                  %i.far.fa-credit-card
-                    クレジットカードを追加する
-
-            .cardContent__about
-              %span.cardContent__about--payment
-                = link_to "#", class:"abtPayment" do
-                  支払い方法について
-                  %i.fas.fa-angle-right
+                  クレジットカード
+                %li.registerContent
+                  %span.registerContent__check
+                    %i.fas.fa-check-circle
+                  %div.registerContent__box#card_token
+                    .registerContent__box--number
+                    ************0000
+                    .registerContent__box--expDate
+                    有効期限 00/00
+                    .registerContent__box--img
+                      = image_tag 'visa-icon.png', alt: 'visa', height: '32', width: '48'
+                  = f.submit '削除する',class: 'deleteBtn'
                   
+                .registerNewCard
+                  .registerNewCard__add
+                    %i.far.fa-plus-square
+                    新規カードを登録する
+                .paymentSelect#card_token
+                = link_to mypage_users_path do
+                  %button{type: "submit", class:'selectBtn'}
+                    選択した支払い方法を使う
+                .cardContent__about
+                  %span.cardContent__about--payment
+                    = link_to cards_path, class:"abtPayment" do
+                      支払い方法について
+                      %i.fas.fa-angle-right
   = render "footer"
+
+
