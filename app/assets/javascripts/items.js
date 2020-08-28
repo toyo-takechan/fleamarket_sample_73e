@@ -1,14 +1,14 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
   $('.item-image-thumbnail :first-child').addClass('selected');
 
   $('.item-image-thumbnail__part--mini-image').mouseover(function(){
    var $thisImg = $(this).attr('src');
    $('.item-image-box__main--image').attr({src:$thisImg});
   });
-})
 
 
-$(document).on('turbolinks:load', ()=> {
+
+
   // 画像用のinputを生成する関数
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
 
   $('.parent').hover(function() {
     $(this).children('.nav__content').show();
@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
 
 
 // 新規出品ページのカテゴリ選択部分
-$(document).on('turbolinks:load', function(){
+$(function(){
 
  
   $(function(){
@@ -136,8 +136,4 @@ $(document).on('turbolinks:load', function(){
     
   });
 })
-
-  
-
-
 });
