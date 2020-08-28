@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
   end
 
 
-  private
+  # private
 
 
   def set_item
