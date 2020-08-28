@@ -7,26 +7,27 @@ devise_for :users, controllers: {
 resources :users, only: [:index,:show,:edit]
 
 resources :users do
- collection do
-  get 'mypage'
- end
+  collection do
+    get 'mypage'
+  end
 end
+
 # after
 root 'items#index'
+resources :cards, only: [:index, :show, :new]
+resources :items, only: [:index, :show, :new, :edit, :update] do
 
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  collection do
+    get 'get_category_children', defaults: {format: 'json'}
+    get 'get_category_grandchildren', defaults: {format: 'json'}
+  end
+end
 
   resources :cards, only: [:index, :show, :new, :create, :destroy]
 
-  resources :items, only: [:index, :show, :new, :edit, :update] do
 
-  
 
-    collection do
-      get 'get_category_children', defaults: {format: 'json'}
-      get 'get_category_grandchildren', defaults: {format: 'json'}
-    end
-  end
+
 
   resources :logout,only: [:index]
 

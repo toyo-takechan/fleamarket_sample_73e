@@ -82,11 +82,6 @@
                 = @item.brand
             %tr
               %th
-                サイズ
-              %td
-                = @item.size
-            %tr
-              %th
                 商品の状態
               %td
                 - case @item.condition
@@ -110,23 +105,12 @@
                   - when 1
                     = "未定"
                   - when 2
-                    = "らくらくFURIMA便"
+                    = "クロネコヤマト"
                   - when 3
-                    = "ゆうゆうFURIMA便"
+                    = "ゆうパック"
                   - when 4
                     = "ゆうメール"
-                  - when 5
-                    = "レターパック"
-                  - when 6
-                    = "普通郵便(定型、定形外)"
-                  - when 7
-                    = "クロネコヤマト"
-                  - when 8
-                    = "ゆうパック"
-                  - when 9
-                    = "クリックポスト"
-                  - when 10
-                    = "ゆうパケット"
+          
             %tr
               %th
                 配送料の負担
@@ -219,8 +203,8 @@
         .visual__comment--btn
           = link_to do
             #apple
-              = image_tag '/assets/icon/Download_on_the_App_Store_Badge_JP_blk_100317.png',height: "px", width: "150px", alt: 'apple'
+              = image_tag '/Download_on_the_App_Store_Badge_JP_blk_100317.png',height: "px", width: "150px", alt: 'apple'
             = link_to do
               #google
-                = image_tag '/assets/icon/google-play-badge.png',height: "80px", width: "200px", alt: 'google'
+                = image_tag '/google-play-badge.png',height: "80px", width: "200px", alt: 'google'
   = render "footer"

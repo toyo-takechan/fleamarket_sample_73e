@@ -167,7 +167,7 @@ mens_grandchild_array =
   ],
   # 13:その他
   [
-    
+    'その他'
   ]
 ]
 

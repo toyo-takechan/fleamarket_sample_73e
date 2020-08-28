@@ -119,7 +119,7 @@ appliances_grandchild_array =
   ],
   # 9:その他
   [
-
+    'その他'
   ]
 ]
 

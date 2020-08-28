@@ -82,7 +82,7 @@ handmades_grandchild_array =
   ],
   # 8:その他
   [
-
+    'その他'
   ]
 ]
 

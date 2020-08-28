@@ -172,7 +172,7 @@ interior_child_array =
       ],
       # 12その他
       [
-
+        'その他'
       ]
     ]
 
