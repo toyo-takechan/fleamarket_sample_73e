@@ -1,4 +1,3 @@
-// $(document).on('turbolinks:load', function() {
 $(function() {
   $('.item-image-thumbnail :first-child').addClass('selected');
 
@@ -8,9 +7,7 @@ $(function() {
   });
 
 
-
-// $(document).on('turbolinks:load', ()=> {
-  // 画像用のinputを生成する関数
+// 画像用のinputを生成する関数
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
                     <input class="js-file" type="file"
