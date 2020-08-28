@@ -7,9 +7,7 @@ $(function() {
   });
 
 
-
-
-  // 画像用のinputを生成する関数
+// 画像用のinputを生成する関数
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
                     <input class="js-file" type="file"
@@ -65,5 +63,6 @@ $(function() {
 
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  // });
   });
-});
+})

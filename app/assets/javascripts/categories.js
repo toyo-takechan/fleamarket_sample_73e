@@ -1,5 +1,4 @@
-$(function() {
-
+$(function(){
   $('.parent').hover(function() {
     $(this).children('.nav__content').show();
   }, function() {
@@ -17,9 +16,6 @@ $(function() {
 
 // 新規出品ページのカテゴリ選択部分
 $(function(){
-
- 
-  $(function(){
     
     function appendOption(category){
       var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
