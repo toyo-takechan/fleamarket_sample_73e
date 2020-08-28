@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function() {
-
+// $(document).on('turbolinks:load', function() {
+$(function(){
   $('.parent').hover(function() {
     $(this).children('.nav__content').show();
   }, function() {
@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
 
 
 // 新規出品ページのカテゴリ選択部分
-$(document).on('turbolinks:load', function(){
+// $(document).on('turbolinks:load', function(){
 
  
   $(function(){
@@ -136,8 +136,8 @@ $(document).on('turbolinks:load', function(){
     
   });
 })
-
+// })
   
 
 
-});
+// });
