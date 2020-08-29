@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.last(4)
-    @brandItems = Item.where(brand: "ABC")
+    @brandItems = Item.where("brand IS NOT NULL").last(4)
   end
 
   def new
