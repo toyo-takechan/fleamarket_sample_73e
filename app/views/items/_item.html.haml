@@ -1,6 +1,7 @@
   
 = link_to item_path(item) do
   = image_tag item.images.first.image_url.url,class: "product-img"
+
   - if item.buyer_id.present?
     = render partial: "shared/soldout" 
   .product-content
